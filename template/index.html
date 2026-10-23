@@ -130,7 +130,7 @@ img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit
 .nav a{color:var(--mut);transition:color .2s}.nav a:hover{color:var(--tx)}
 .burger{display:none;width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);position:relative;flex:none}
 .burger i,.burger i::before,.burger i::after{position:absolute;left:50%;top:50%;width:18px;height:2px;margin:-1px 0 0 -9px;background:var(--tx);border-radius:2px;transition:transform .3s,background .3s}
-.burger i::before,.burger i::after{content:"";left:0;margin:0}.burger i::before{transform:translateY(-6px)}.burger i::after{transform:translateY(6px)}
+.burger i::before,.burger i::after{content:"";left:0;top:0;margin:0}.burger i::before{transform:translateY(-6px)}.burger i::after{transform:translateY(6px)}
 .menu-open .burger i{background:transparent}.menu-open .burger i::before{transform:rotate(45deg)}.menu-open .burger i::after{transform:rotate(-45deg)}
 @media(max-width:960px){
   .burger{display:block;z-index:2}.hdr .btn{margin-left:auto}
@@ -146,7 +146,7 @@ img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit
 .lock,.menu-open{overflow:hidden}
 
 /* первый экран */
-.hero{position:relative;min-height:min(100svh,860px);display:flex;flex-direction:column;justify-content:center;padding:96px 0 48px;overflow:hidden}
+.hero{position:relative;min-height:min(100svh,820px);display:flex;flex-direction:column;justify-content:center;padding:96px 0 clamp(48px,6vw,80px);overflow:hidden}
 .hero .grid{display:grid;grid-template-columns:minmax(560px,1fr) 1.15fr;align-items:center;gap:24px;position:relative;z-index:1}
 .hero h1{font-size:clamp(36px,5vw,68px);max-width:12ch}
 .hero .lead{font-size:clamp(17px,1.5vw,19px);color:var(--mut);max-width:38ch;margin-top:22px}
@@ -255,8 +255,15 @@ img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit
 .hrs{display:grid;grid-template-columns:auto 1fr;gap:4px 20px}
 .info .btn{margin-top:auto;align-self:flex-start}
 .map{border-radius:var(--r);overflow:hidden;min-height:440px;background:var(--card);border:1px solid var(--line)}
-.map iframe{width:100%;height:100%;min-height:440px;border:0;display:block}
-@media(max-width:860px){.cnt{grid-template-columns:1fr}.map,.map iframe{min-height:340px}}
+.map{position:relative}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;opacity:0;transition:opacity .6s}
+.map.ok iframe{opacity:1}
+.map .ph{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:10px;color:var(--mut);font-size:15px;background:repeating-linear-gradient(135deg,var(--card) 0 14px,var(--card2) 14px 15px)}
+.map .ph .pin{width:36px;height:36px}
+.map .cover{position:absolute;inset:0;z-index:2;display:none;align-items:flex-end;justify-content:center;padding:16px;background:none}
+.map .cover span{background:rgba(0,0,0,.7);color:#fff;font-size:14px;padding:9px 16px;border-radius:99px}
+@media(hover:none){.map.ok .cover{display:flex}}
+@media(max-width:860px){.cnt{grid-template-columns:1fr}.map{min-height:340px}}
 
 /* призыв */
 .cta{position:relative;background:var(--ac);color:var(--on-ac);border-radius:calc(var(--r) + 8px);padding:clamp(32px,6vw,72px);display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:24px;overflow:hidden}
@@ -304,7 +311,7 @@ dialog ul{padding-left:20px}
   section{padding:48px 0}
   h2{margin-bottom:24px}
   main .btn{width:100%}
-  .hero{padding:88px 0 32px}
+  .hero{padding:88px 0 48px}
   .facts{gap:10px}
   .fact .pic{height:120px;margin:-4px -4px 12px}.fact .pic img{max-height:112px;max-width:100%}
   .why b{font-size:44px}
@@ -369,7 +376,7 @@ const hero = `<section class="hero" id="top">
 </section>`;
 
 /* факты */
-const facts = S.facts?.length ? `<section style="padding-bottom:0"><div class="wrap"><div class="facts">
+const facts = S.facts?.length ? `<section style="padding:0"><div class="wrap"><div class="facts">
   ${S.facts.map((f, i) => `<div class="fact rv" style="--d:${i * .08}s">${f.img ? `<div class="pic"><img src="${esc(f.img)}" alt="${esc(f.text)}" loading="lazy" decoding="async"></div>` : ""}<p>${esc(f.text)}</p></div>`).join("")}
 </div></div></section>` : "";
 
@@ -432,7 +439,7 @@ const cnt = `<section id="kontakty" style="padding-top:0"><div class="wrap">
       ${viber || tg ? `<div><dt>Написать</dt><dd>${[viber && `<a href="${viber}">Viber</a>`, tg && `<a href="${tg}">Telegram</a>`].filter(Boolean).join(" · ")}</dd></div>` : ""}
       ${y.url ? `<a class="btn btn-ac btn-sm" href="${esc(y.url)}" target="_blank" rel="noopener">Построить маршрут</a>` : ""}
     </dl>
-    ${y.id ? `<div class="map rv" style="--d:.1s"><iframe src="https://yandex.by/map-widget/v1/org/${esc(y.slug || "org")}/${esc(y.id)}/?z=16" title="${esc(S.name)} на карте" loading="lazy" allowfullscreen></iframe></div>` : ""}
+    ${y.id ? `<div class="map rv" style="--d:.1s" data-src="https://yandex.by/map-widget/v1/org/${esc(y.slug || "org")}/${esc(y.id)}/?z=16"><div class="ph">${PIN}Загружаем карту…</div><button class="cover" type="button" aria-label="Включить карту"><span>Нажмите, чтобы двигать карту</span></button></div>` : ""}
   </div>
 </div></section>`;
 
@@ -524,6 +531,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click
   scrollTo({ top: Math.max(0, top), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   history.replaceState(null, "", id);
 }));
+
+/* карта: начинает грузиться заранее, показывается плавно; на телефоне включается касанием */
+const map = $(".map[data-src]");
+if (map) {
+  const load = () => { if (map.querySelector("iframe")) return;
+    const f = document.createElement("iframe");
+    f.src = map.dataset.src; f.title = S.name + " на карте"; f.allowFullscreen = true;
+    f.onload = () => setTimeout(() => map.classList.add("ok"), 150);
+    map.appendChild(f); };
+  new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { load(); o.disconnect(); } }, { rootMargin: "1200px 0px" }).observe(map);
+  map.querySelector(".cover").onclick = e => e.currentTarget.remove();
+}
 
 /* шапка с фоном после прокрутки */
 const h = $(".hdr");
