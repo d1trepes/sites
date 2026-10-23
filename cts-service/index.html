@@ -55,9 +55,10 @@ a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
-h1,h2,h3{font-family:var(--f-head);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+h1,h2,h3{font-family:var(--f-head);font-weight:700;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+p,li,dd,small{text-wrap:pretty}
 h2{font-size:clamp(28px,4.4vw,52px);margin-bottom:clamp(28px,4vw,48px);max-width:18ch}
-h2 em,h1 em{font-style:normal;color:var(--ac)}
+h1 em{font-style:normal;color:var(--ac)}
 section{padding:clamp(56px,8vw,112px) 0}
 .stars{display:inline-flex;gap:2px;color:var(--star)}
 .stars svg{width:16px;height:16px}
@@ -81,12 +82,13 @@ section{padding:clamp(56px,8vw,112px) 0}
 .logo{display:flex;align-items:center;flex:none;font:700 22px/1 var(--f-head);letter-spacing:-.01em;color:var(--ac)}
 .nav{display:flex;gap:26px;margin:0 20px 0 auto;font-weight:500;font-size:15px}
 .nav a{color:var(--mut);transition:color .2s}.nav a:hover{color:var(--tx)}
+.hdr-hrs{font-size:13px;color:var(--mut);white-space:nowrap;margin-right:4px}
 .burger{display:none;width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);position:relative;flex:none}
 .burger i,.burger i::before,.burger i::after{position:absolute;left:50%;top:50%;width:18px;height:2px;margin:-1px 0 0 -9px;background:var(--tx);border-radius:2px;transition:transform .3s,background .3s}
 .burger i::before,.burger i::after{content:"";left:0;top:0;margin:0}.burger i::before{transform:translateY(-6px)}.burger i::after{transform:translateY(6px)}
 .menu-open .burger i{background:transparent}.menu-open .burger i::before{transform:rotate(45deg)}.menu-open .burger i::after{transform:rotate(-45deg)}
 @media(max-width:1060px){
-  .burger{display:block;z-index:2}.hdr .wrap>.btn{margin-left:auto}
+  .burger{display:block;z-index:2}.hdr .wrap>.btn{margin-left:auto}.hdr-hrs{display:none}
   .nav{position:fixed;top:0;right:0;bottom:0;width:min(84vw,360px);flex-direction:column;gap:0;margin:0;padding:96px 24px 32px;background:var(--bg2);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .4s var(--ease);z-index:1}
   .nav a{font:600 22px var(--f-head);color:var(--tx);padding:16px 0;border-bottom:1px solid var(--line)}
   .menu-open .nav{transform:none}
@@ -95,59 +97,47 @@ section{padding:clamp(56px,8vw,112px) 0}
   .hdr.solid,.menu-open .hdr{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg)}
   .logo,.hdr .btn{position:relative;z-index:2}
 }
+@media(max-width:380px){.hero h1{font-size:31px}}
 @media(max-width:400px){.logo{font-size:18px}.hdr .btn-sm{padding:0 16px}}
 .lock,.menu-open{overflow:hidden}
 
 /* первый экран */
 .hero{position:relative;min-height:min(100svh,820px);display:flex;flex-direction:column;justify-content:center;padding:100px 0 clamp(48px,6vw,80px);overflow:hidden}
 .hero .grid{width:100%;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:32px}
-.hero h1{font-size:clamp(32px,4.4vw,60px);max-width:15ch}
+.hero h1{font-size:clamp(34px,4vw,56px);max-width:17ch}
 .hero .lead{font-size:clamp(17px,1.5vw,19px);color:var(--mut);max-width:42ch;margin-top:22px}
 .hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-.hours{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
-.hours span{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-size:15px}
-.hours span.on::before{content:"";width:8px;height:8px;border-radius:50%;background:#2fb344}
-.hours span.off{color:var(--mut)}
 .trust{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line);max-width:460px}
-.trust b{font:700 34px/1 var(--f-head);letter-spacing:-.03em;color:var(--ac)}
+.trust b{font:700 34px/1 var(--f-head);letter-spacing:-.03em}
 .trust span{font-size:14px;color:var(--mut);line-height:1.35}.trust .stars{color:var(--star)}
 .hpic{position:relative;aspect-ratio:1;width:min(100%,560px);justify-self:center}
-.hpic::before{content:"";position:absolute;inset:6% 0 6% 10%;border-radius:50%;background:var(--ac-soft)}
-.hpic::after{content:"";position:absolute;left:20%;right:16%;bottom:0;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.25),transparent)}
-.hpic img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-12px) rotate(-1.5deg)}}
-@media(max-width:900px){.hero{min-height:auto;padding:88px 0 48px}.hero .grid{grid-template-columns:1fr;gap:12px}.hpic{order:-1;width:min(72%,360px)}.hero .acts .btn{flex:1 1 100%}}
+.hpic::after{content:"";position:absolute;left:20%;right:16%;bottom:0;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.22),transparent)}
+.hpic img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain}
+@media(max-width:900px){.hero{min-height:auto;padding:88px 0 48px}.hero .grid{grid-template-columns:1fr;gap:12px}.hero h1{max-width:none;letter-spacing:-.03em}.hpic{order:-1;width:min(72%,360px)}.hero .acts .btn{flex:1 1 100%}}
 
 /* как мы работаем */
-.how{display:grid;grid-template-columns:1.4fr .6fr;gap:32px;align-items:center}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.step{position:relative;padding:28px 0 0;border-top:1px solid var(--line)}
-.step::before{content:"";position:absolute;left:0;top:-1px;height:3px;width:100%;background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease)}
-.step.in::before{transform:none}
-.step:nth-child(2)::before{transition-delay:.25s}.step:nth-child(3)::before{transition-delay:.5s}
-.step i{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ac);color:var(--on-ac)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 28px}
+.step i{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ac-soft);color:var(--ac)}
 .step i svg{width:22px;height:22px}
-.step h3{font-size:clamp(19px,2vw,24px);margin:16px 0 10px}
-.step p{color:var(--mut);max-width:30ch}
-.note{color:var(--mut);font-size:14px;margin-top:32px}
-.how .tools img{width:100%;transform:rotate(-4deg);transition:transform .8s var(--ease)}
-.how:hover .tools img{transform:rotate(0) scale(1.03)}
-@media(max-width:900px){.how{grid-template-columns:1fr}.how .tools{display:none}}
-@media(max-width:760px){.steps{grid-template-columns:1fr;gap:24px}}
+.step h3{font-size:clamp(19px,1.8vw,22px);margin:20px 0 10px;white-space:nowrap}
+.step p{color:var(--mut)}
+.note{color:var(--mut);font-size:14px;margin-top:16px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}.step{padding:22px}.step h3{white-space:normal}}
 
 /* отзывы */
 .rev{display:grid;grid-template-columns:360px 1fr;gap:12px;align-items:start}
 .rev>*{min-width:0}
-.rate{background:var(--ac);color:var(--on-ac);border-radius:var(--r);padding:30px;position:sticky;top:96px}
+.rate{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px;position:sticky;top:96px}
 .src{display:flex;align-items:center;gap:8px;font-weight:500;font-size:15px}
 .rate .big{display:flex;align-items:center;gap:16px;margin:22px 0 6px}
 .rate .big b{font:700 80px/1 var(--f-head);letter-spacing:-.05em}
-.rate .big .stars{color:var(--on-ac)}.rate .big .stars svg{width:20px;height:20px}
-.rate .sub{font-size:16px}
+.rate .big .stars svg{width:20px;height:20px}
+.rate .sub{font-size:16px;color:var(--mut)}
 .quotes{columns:2;column-gap:12px}
 .q{break-inside:avoid;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin-bottom:12px}
 .q header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.ava{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:700 16px var(--f-head);background:var(--ac);color:var(--on-ac);flex:none}
+.ava{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:600 16px var(--f-body);background:var(--card2);color:var(--tx);flex:none}
 .q header b{display:block;font-weight:600;line-height:1.2}
 .q header small{color:var(--mut);font-size:13px}
 .q .stars{margin-bottom:10px}
@@ -159,22 +149,20 @@ section{padding:clamp(56px,8vw,112px) 0}
 
 /* услуги */
 .hl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.hl>div{background:var(--ac);color:var(--on-ac);border-radius:var(--r);padding:26px 28px;display:flex;gap:18px;align-items:flex-start}
-.hl svg{width:34px;height:34px;flex:none}
+.hl>div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;display:flex;gap:18px;align-items:flex-start}
+.hl svg{width:34px;height:34px;flex:none;color:var(--ac)}
 .hl h3{font-size:clamp(19px,2vw,24px);line-height:1.2}
-.hl p{margin-top:8px;font-size:15.5px}
+.hl p{margin-top:8px;font-size:15.5px;color:var(--mut)}
 @media(max-width:760px){.hl{grid-template-columns:1fr}.hl>div{padding:22px}}
 .svc{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
 .sv{grid-column:span 2;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;overflow:hidden;transition:border-color .3s}
 .sv.wide{grid-column:span 3}
 .sv:hover{border-color:var(--mut)}
-.sv .pic{height:210px;margin:-8px -8px 18px;display:grid;place-items:center;border-radius:var(--r-sm);background:radial-gradient(55% 60% at 50% 58%,var(--ac-soft),transparent)}
-.sv .pic img{max-height:190px;max-width:80%;object-fit:contain;transition:transform .6s var(--ease)}
-.sv:hover .pic img{transform:translateY(-6px) rotate(-2deg) scale(1.04)}
+.sv .pic{height:210px;margin:-8px -8px 18px;display:grid;place-items:center;border-radius:var(--r-sm);background:var(--card2)}
+.sv .pic img{max-height:180px;max-width:80%;object-fit:contain}
 .sv h3{font-size:21px;line-height:1.2;margin-bottom:16px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
 .chips span{border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:14.5px;line-height:1.2}
-.chips span.y{background:var(--ac);border-color:var(--ac);color:var(--on-ac);font-weight:600}
 .sv .btn{margin-top:auto;align-self:flex-start}
 @media(max-width:960px){.svc{grid-template-columns:1fr 1fr}.sv,.sv.wide{grid-column:auto}}
 @media(max-width:640px){.svc{grid-template-columns:1fr}.sv{padding:22px}.sv .pic{height:160px}.sv .pic img{max-height:140px}.sv .btn{align-self:stretch}}
@@ -185,26 +173,26 @@ section{padding:clamp(56px,8vw,112px) 0}
 .nch p{flex:1 1 220px;color:var(--mut)}
 @media(max-width:700px){.nch{padding:22px}.nch .btn{width:100%}}
 
-/* почему мы */
-.why{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-.why>div{grid-column:span 2;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 28px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.why>div:nth-child(-n+2){grid-column:span 3}
-.why>div:first-child{background:var(--ac);border-color:var(--ac);color:var(--on-ac)}
-.why svg{width:34px;height:34px}
-.why h3{font-size:clamp(20px,2vw,26px);margin-top:28px}
-.why p{color:var(--mut);margin-top:8px;font-size:15.5px;max-width:30ch}.why>div:first-child p{color:var(--on-ac)}
-.why .card-img{position:absolute;right:-10px;top:-14px;width:170px;opacity:.95}
-@media(max-width:860px){.why{grid-template-columns:1fr 1fr}.why>div,.why>div:nth-child(-n+2){grid-column:auto}.why>div:first-child{grid-column:1/-1}}
-@media(max-width:520px){.why>div{padding:18px;min-height:160px}.why h3{font-size:18px;margin-top:20px}.why p{font-size:14px}.why .card-img{width:120px;right:-16px}}
+/* записаться */
+.cta{background:var(--ac);color:var(--on-ac);border-radius:calc(var(--r) + 8px);padding:clamp(32px,6vw,64px);display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:24px;overflow:hidden}
+.cta h2{margin:0 0 20px;font-size:clamp(30px,4.4vw,56px)}
+.cta .tel{display:inline-block;font:700 clamp(24px,3.4vw,42px)/1 var(--f-head);letter-spacing:-.03em;margin-bottom:28px}
+.cta .row{display:flex;flex-wrap:wrap;gap:12px}
+.cta .btn{--bd:var(--on-ac);color:inherit;--fill:var(--on-ac)}
+.cta .btn.inv{background:var(--on-ac);color:var(--ac);--bd:transparent;--fill:var(--tx)}
+@media(hover:hover){.cta .btn:hover{color:var(--ac)}.cta .btn.inv:hover{color:#fff}}
+.cta .tools{justify-self:center;width:min(100%,380px)}
+.cta .tools img{width:100%}
+@media(max-width:860px){.cta{grid-template-columns:1fr}.cta .tools{width:min(70%,280px);order:-1}}
+@media(max-width:640px){.cta .row{flex-direction:column}.cta .btn{width:100%}}
 
 /* как добраться */
 .cnt{display:grid;grid-template-columns:1fr 1.3fr;gap:12px}
 .info{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:24px}
 .info dt{color:var(--mut);font-size:14px;margin-bottom:6px}
 .info dd{font-size:18px;font-weight:500}
-.info dd a{border-bottom:2px solid var(--ac)}
 .info dd small{display:block;font-size:14px;color:var(--mut);font-weight:400}
-.entry{display:flex;align-items:center;gap:12px;background:var(--ac-soft);border-radius:var(--r-sm);padding:14px 16px;font-weight:600}
+.entry{display:flex;align-items:center;gap:12px;background:var(--card2);border-radius:var(--r-sm);padding:14px 16px;font-weight:600}
 .entry svg{width:26px;height:26px;color:var(--ac);flex:none}
 .hrs{display:grid;grid-template-columns:auto 1fr;gap:4px 20px}
 .info .acts{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px}
@@ -224,7 +212,7 @@ section{padding:clamp(56px,8vw,112px) 0}
 .ftr h4{font:500 13px var(--f-body);color:var(--mut);margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em}
 .ftr li{list-style:none;margin-bottom:9px}
 .ftr li button{text-align:left;padding:0;font-size:inherit;line-height:inherit}
-.ftr li a,.ftr li button{transition:box-shadow .2s}.ftr li a:hover,.ftr li button:hover{box-shadow:inset 0 -2px var(--ac)}
+.ftr li a,.ftr li button{transition:color .2s}.ftr li a:hover,.ftr li button:hover{color:var(--ac)}
 .ftr .brand .logo{font-size:26px;margin-bottom:14px}
 .ftr .brand p{color:var(--mut);max-width:32ch}
 .ftr .brand .stars{margin-top:16px}
@@ -252,7 +240,7 @@ dialog ul{padding-left:20px}
 /* лёгкое появление */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
 .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}.step::before{transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -265,8 +253,9 @@ dialog ul{padding-left:20px}
 <header class="hdr"><div class="wrap">
   <a class="logo" href="#top" aria-label="ЦТС-СЕРВИС — на главную">ЦТС-СЕРВИС</a>
   <nav class="nav">
-    <a href="#kak">Как работаем</a><a href="#otzyvy">Отзывы</a><a href="#uslugi">Услуги</a><a href="#pochemu">Почему мы</a><a href="#kontakty">Как добраться</a>
+    <a href="#kak">Как работаем</a><a href="#otzyvy">Отзывы</a><a href="#uslugi">Услуги</a><a href="#kontakty">Как добраться</a>
   </nav>
+  <span class="hdr-hrs">Пн–Пт 9:00–19:00</span>
   <a class="btn btn-ac btn-sm" href="tel:+375296500676">Позвонить</a>
   <button class="burger" type="button" aria-label="Меню"><i></i></button>
 </div></header>
@@ -277,12 +266,11 @@ dialog ul{padding-left:20px}
   <div class="wrap grid">
     <div>
       <h1 class="rv">Ремонт подвески, тормозов и&nbsp;двигателя на&nbsp;<em>Тимирязева</em></h1>
-      <p class="lead rv" style="--d:.1s">Автосервис ЦТС-СЕРВИС в Минске, ул. Тимирязева, 9/6. Ремонтируем и гибриды, и китайские марки.</p>
+      <p class="lead rv" style="--d:.1s">Автосервис ЦТС-СЕРВИС в&nbsp;Минске, ул.&nbsp;Тимирязева,&nbsp;9/6.</p>
       <div class="acts rv" style="--d:.2s">
         <a class="btn btn-ac" href="tel:+375296500676"><svg><use href="#phone"/></svg>Позвонить +375 29 650-06-76</a>
-        <a class="btn btn-gh" href="#kontakty">Как добраться</a>
+        <a class="btn btn-gh" href="#kontakty">Как проехать</a>
       </div>
-      <div class="hours rv" style="--d:.25s"><span class="on">Пн–Пт 9:00–19:00</span><span class="off">Сб–Вс выходной</span></div>
       <div class="trust rv" style="--d:.3s"><b>4,8</b><div><span class="stars" aria-label="Рейтинг 4,8 из 5"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span style="display:block;margin-top:4px">на Яндекс Картах</span></div></div>
     </div>
     <div class="hpic rv" style="--d:.15s"><img src="img/hero-caliper.webp" alt="Красный тормозной суппорт с диском — ремонт тормозов в ЦТС-СЕРВИС, Минск" width="694" height="720" fetchpriority="high"></div>
@@ -291,26 +279,21 @@ dialog ul{padding-left:20px}
 
 <!-- 2. Как мы работаем — из отзывов клиентов -->
 <section id="kak" style="padding-top:clamp(24px,4vw,56px)"><div class="wrap">
-  <h2 class="rv">Как мы <em>работаем</em></h2>
-  <div class="how">
-    <div>
-      <div class="steps">
-        <div class="step rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></svg></i><h3>Фото и цена до ремонта</h3><p>Нашли неисправность — присылаем фото, стоимость и варианты замены. Делаем то, о чём договорились.</p></div>
-        <div class="step rv" style="--d:.1s"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></i><h3>Показываем снятые детали</h3><p>Старые запчасти можно увидеть своими глазами. Мастер пришлёт и фотоотчёт.</p></div>
+  <h2 class="rv">Как мы работаем</h2>
+  <div class="steps">
+        <div class="step rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></svg></i><h3>Цена заранее</h3><p>Нашли неисправность — присылаем фото, стоимость и варианты замены. Делаем то, о чём договорились.</p></div>
+        <div class="step rv" style="--d:.1s"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></i><h3>Снятые детали</h3><p>Старые запчасти можно увидеть своими глазами. Мастер пришлёт и фотоотчёт.</p></div>
         <div class="step rv" style="--d:.2s"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 3h10l1 9H6zM5 12h14v4H5zM8 16v5M16 16v5"/></svg></i><h3>Чехлы на сиденья</h3><p>Перед работой надеваем одноразовые чехлы — салон остаётся чистым.</p></div>
-      </div>
-      <p class="note rv">Так о нас пишут клиенты в отзывах на Яндекс Картах.</p>
-    </div>
-    <div class="tools rv"><img src="img/cta-tools.webp" alt="Набор инструментов автосервиса" width="421" height="431" loading="lazy" decoding="async"></div>
   </div>
+  <p class="note rv">Так о нас пишут клиенты в отзывах на Яндекс Картах.</p>
 </div></section>
 
 <!-- 3. Отзывы -->
 <section id="otzyvy" style="padding-top:0"><div class="wrap">
-  <h2 class="rv">Что говорят <em>клиенты</em></h2>
+  <h2 class="rv">Что говорят клиенты</h2>
   <div class="rev">
     <div class="rate rv">
-      <div class="src"><svg class="pin" style="color:var(--on-ac)"><use href="#pin"/></svg>Яндекс Карты</div>
+      <div class="src"><svg class="pin"><use href="#pin"/></svg>Яндекс Карты</div>
       <div class="big"><b>4,8</b><span class="stars" aria-label="Рейтинг 4,8 из 5"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
       <div class="sub">22 оценки, 16 отзывов</div>
     </div>
@@ -336,7 +319,7 @@ dialog ul{padding-left:20px}
 
 <!-- 4. Услуги (цены в карточке — заглушки, не публикуем; только нормочас) -->
 <section id="uslugi" style="padding-top:0"><div class="wrap">
-  <h2 class="rv">Что мы <em>ремонтируем</em></h2>
+  <h2 class="rv">Что мы ремонтируем</h2>
   <div class="hl">
     <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><div><h3>Гибриды и электромобили</h3><p>Ремонт гибридов, замена масла в редукторе электромобиля</p></div></div>
     <div class="rv" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 13l2-5a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 8l2 5v5h-3v-2H6v2H3z"/><path d="M3 13h18"/><circle cx="7.5" cy="13" r=".6" fill="currentColor"/><circle cx="16.5" cy="13" r=".6" fill="currentColor"/></svg><div><h3>Китайские марки</h3><p>Geely, Haval, Chery, BYD, Voyah, Deepal, EXEED и другие</p></div></div>
@@ -351,13 +334,13 @@ dialog ul{padding-left:20px}
     <article class="sv wide rv" style="--d:.08s">
       <div class="pic"><img src="img/fact-discs.webp" alt="Тормозной диск с суппортом — ремонт тормозов" width="374" height="293" loading="lazy" decoding="async"></div>
       <h3>Тормоза</h3>
-      <div class="chips"><span>Ремонт тормозной системы</span><span>Ремонт тормозного суппорта</span><span class="y">Пескоструйная обработка суппорта</span><span class="y">Проточка тормозных дисков</span><span>Замена тормозных трубок</span><span>Ремонт ручного тормоза</span></div>
+      <div class="chips"><span>Ремонт тормозной системы</span><span>Ремонт тормозного суппорта</span><span>Пескоструйная обработка суппорта</span><span>Проточка тормозных дисков</span><span>Замена тормозных трубок</span><span>Ремонт ручного тормоза</span></div>
       <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
     </article>
     <article class="sv wide rv">
       <div class="pic"><img src="img/svc-engine.webp" alt="Поршень и шестерня ГРМ — ремонт двигателя" width="227" height="430" loading="lazy" decoding="async"></div>
       <h3>Двигатель</h3>
-      <div class="chips"><span>Компьютерная диагностика</span><span>Ремонт и замена двигателя</span><span>Замена ГРМ</span><span class="y">Эндоскопия двигателя</span><span>Раскоксовка</span><span>Компрессия дизельного двигателя</span><span>Ремонт стартеров</span><span>Ремонт генераторов</span></div>
+      <div class="chips"><span>Компьютерная диагностика</span><span>Ремонт и замена двигателя</span><span>Замена ГРМ</span><span>Эндоскопия двигателя</span><span>Раскоксовка</span><span>Компрессия дизельного двигателя</span><span>Ремонт стартеров</span><span>Ремонт генераторов</span></div>
       <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
     </article>
     <article class="sv wide rv" style="--d:.08s">
@@ -373,7 +356,7 @@ dialog ul{padding-left:20px}
     </article>
     <article class="sv rv" style="--d:.08s">
       <h3>Выхлоп и сварка</h3>
-      <div class="chips"><span>Ремонт выхлопной системы</span><span>Сварка выхлопа и глушителя</span><span class="y">Аргонная сварка алюминиевых поддонов</span><span>Удаление катализаторов</span></div>
+      <div class="chips"><span>Ремонт выхлопной системы</span><span>Сварка выхлопа и глушителя</span><span>Аргонная сварка алюминиевых поддонов</span><span>Удаление катализаторов</span></div>
       <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
     </article>
     <article class="sv rv" style="--d:.16s">
@@ -385,21 +368,19 @@ dialog ul{padding-left:20px}
   <div class="nch rv"><div><small>Нормочас</small><b>от 90<span>BYN</span></b></div><p>Стоимость вашего ремонта подскажем по телефону.</p><a class="btn btn-ac" href="tel:+375296500676"><svg><use href="#phone"/></svg>+375 29 650-06-76</a></div>
 </div></section>
 
-<!-- 5. Почему мы — только особенности из карточки -->
-<section id="pochemu" style="padding-top:0"><div class="wrap">
-  <h2 class="rv">Почему выбирают <em>нас</em></h2>
-  <div class="why">
-    <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5" stroke-linecap="round"/></svg><div><h3>Гарантия</h3><p>Условия подскажем по телефону</p></div></div>
-    <div class="rv" style="--d:.06s"><img class="card-img" src="img/fact-card.webp" alt="" width="393" height="381" loading="lazy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><div><h3>Оплата картой и переводом</h3><p>Можно и наличными, есть безналичный расчёт</p></div></div>
-    <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg><div><h3>Парковка</h3><p>Есть где оставить машину</p></div></div>
-    <div class="rv" style="--d:.06s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg><div><h3>Wi-Fi</h3><p>И туалет для клиентов</p></div></div>
-    <div class="rv" style="--d:.12s"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="10" r="2"/><circle cx="10" cy="6" r="2"/><circle cx="14" cy="6" r="2"/><circle cx="18" cy="10" r="2"/><path d="M12 11c-3 0-6 4.5-6 7 0 1.5 1.2 2 2.5 2 1.4 0 2.2-.8 3.5-.8s2.1.8 3.5.8c1.3 0 2.5-.5 2.5-2 0-2.5-3-7-6-7z"/></svg><div><h3>Можно с собакой</h3><p>Приезжайте вместе с питомцем</p></div></div>
+<!-- 5. Записаться -->
+<section id="zapis" style="padding-top:0"><div class="wrap"><div class="cta rv">
+  <div>
+    <h2>Записаться на ремонт</h2>
+    <a class="tel" href="tel:+375296500676">+375 29 650-06-76</a>
+    <div class="row"><a class="btn inv" href="tel:+375296500676">Позвонить</a><a class="btn" href="tel:+375336719903">+375 33 671-99-03</a></div>
   </div>
-</div></section>
+  <div class="tools"><img src="img/cta-tools.webp" alt="Инструменты автосервиса ЦТС-СЕРВИС" width="421" height="431" loading="lazy" decoding="async"></div>
+</div></div></section>
 
 <!-- 6. Как добраться -->
 <section id="kontakty" style="padding-top:0"><div class="wrap">
-  <h2 class="rv">Как <em>добраться</em></h2>
+  <h2 class="rv">Как добраться</h2>
   <div class="cnt">
     <dl class="info rv">
       <div><dt>Адрес</dt><dd>Минск, ул. Тимирязева, 9/6</dd></div>
@@ -419,7 +400,7 @@ dialog ul{padding-left:20px}
     <div class="brand"><div class="logo">ЦТС-СЕРВИС</div><p>Автосервис в Минске на ул. Тимирязева, 9/6. Вход слева от вывески.</p>
       <span class="stars" aria-label="Рейтинг 4,8 из 5"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><small>4,8 на Яндекс Картах</small></div>
     <div><h4>Контакты</h4><ul><li><a href="tel:+375296500676">+375 29 650-06-76</a></li><li><a href="tel:+375336719903">+375 33 671-99-03</a></li><li>ул. Тимирязева, 9/6</li><li>Пн–Пт 9:00–19:00</li><li>Сб–Вс выходной</li></ul></div>
-    <div><h4>Разделы</h4><ul><li><a href="#kak">Как работаем</a></li><li><a href="#otzyvy">Отзывы</a></li><li><a href="#uslugi">Услуги</a></li><li><a href="#pochemu">Почему мы</a></li><li><a href="#kontakty">Как добраться</a></li></ul></div>
+    <div><h4>Разделы</h4><ul><li><a href="#kak">Как работаем</a></li><li><a href="#otzyvy">Отзывы</a></li><li><a href="#uslugi">Услуги</a></li><li><a href="#kontakty">Как добраться</a></li></ul></div>
     <div><h4>Документы</h4><ul><li><button type="button" data-open="privacy">Политика конфиденциальности</button></li></ul></div>
   </div>
   <!-- реквизиты (компания, УНП) добавить при запуске -->
