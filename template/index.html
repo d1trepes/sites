@@ -111,11 +111,13 @@ section{padding:clamp(56px,8vw,112px) 0}
 .pin{width:18px;height:18px;color:var(--pin);flex:none}
 
 /* кнопки */
-.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:1px solid var(--line);transition:transform .2s,background .2s,border-color .2s,color .2s;white-space:nowrap}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:1px solid var(--line);transition:transform .2s,border-color .45s,color .45s;white-space:nowrap}
+.btn::before{content:"";position:absolute;z-index:-1;left:var(--x,50%);top:var(--y,50%);width:var(--s,300px);height:var(--s,300px);border-radius:50%;background:var(--fill,var(--ac));transform:translate(-50%,-50%) scale(0);transition:transform .55s var(--ease)}
+@media(hover:hover){.btn:hover::before{transform:translate(-50%,-50%) scale(1)}}
 .btn:active{transform:scale(.97)}
-.btn-ac{background:var(--ac);color:var(--on-ac);border-color:var(--ac)}
-.btn-ac:hover{filter:brightness(1.08)}
-.btn-gh:hover{border-color:var(--tx)}
+.btn-ac{background:var(--ac);color:var(--on-ac);border-color:var(--ac);--fill:var(--tx)}
+.btn-ac:hover{color:var(--bg);border-color:var(--tx)}
+.btn-gh{--fill:var(--ac)}.btn-gh:hover{color:var(--on-ac);border-color:var(--ac)}
 .btn-sm{height:44px;padding:0 20px;font-size:15px}
 
 /* шапка */
@@ -128,8 +130,8 @@ section{padding:clamp(56px,8vw,112px) 0}
 @media(max-width:960px){.nav{display:none}.hdr .btn{margin-left:auto}}
 
 /* первый экран */
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:112px 0 0;overflow:hidden}
-.hero .grid{display:grid;grid-template-columns:.9fr 1.25fr;align-items:center;gap:24px;position:relative;z-index:1}
+.hero{position:relative;min-height:min(100svh,860px);display:flex;flex-direction:column;justify-content:center;padding:96px 0 48px;overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:minmax(560px,1fr) 1.15fr;align-items:center;gap:24px;position:relative;z-index:1}
 .hero h1{font-size:clamp(36px,5vw,68px);max-width:12ch}
 .hero .lead{font-size:clamp(17px,1.5vw,19px);color:var(--mut);max-width:38ch;margin-top:22px}
 .hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
@@ -138,12 +140,10 @@ section{padding:clamp(56px,8vw,112px) 0}
 .trust span{font-size:14px;color:var(--mut);line-height:1.35}.trust .stars{color:var(--star)}
 .car{position:relative;aspect-ratio:1.45}
 .car::before{content:"";position:absolute;left:8%;right:4%;top:22%;bottom:12%;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--ac) 30%,transparent),transparent);filter:blur(30px);opacity:.55}
-.car::after{content:"";position:absolute;left:12%;right:10%;bottom:14%;height:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.75),transparent);animation:shadow 6s ease-in-out infinite}
-.car img{position:absolute;inset:-4% -6%;width:112%;height:108%;object-fit:contain;z-index:1;animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-10px)}}
-@keyframes shadow{50%{transform:scaleX(.92);opacity:.7}}
-.mark{position:absolute;left:0;right:0;bottom:-.14em;font:700 clamp(64px,15vw,230px)/.8 var(--f-head);letter-spacing:-.05em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px var(--line);text-transform:uppercase;user-select:none;text-align:center;z-index:0}
-@media(max-width:900px){.hero{min-height:auto;padding-bottom:56px}.hero .grid{grid-template-columns:1fr}.car{order:-1;margin:0 -8px;aspect-ratio:1.7}.hero .acts .btn{flex:1 1 100%}}
+.car::after{content:"";position:absolute;left:12%;right:10%;bottom:14%;height:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.75),transparent);}
+.car img{position:absolute;inset:-8% -14% -8% 0;width:114%;height:116%;object-fit:contain;object-position:right center;z-index:1}
+@media(max-width:1100px){.hero .grid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.hero{min-height:auto;padding-bottom:56px}.hero .grid{grid-template-columns:1fr}.car{order:-1;margin:0 -8px;aspect-ratio:1.7}.car img{inset:0;width:100%;height:100%;object-position:center}.hero .acts .btn{flex:1 1 100%}}
 
 /* факты */
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -158,11 +158,10 @@ section{padding:clamp(56px,8vw,112px) 0}
 
 /* бегущая строка */
 .brands{padding:clamp(40px,6vw,72px) 0 0}
-.brands h3{font:500 15px var(--f-body);color:var(--mut);margin-bottom:18px}
-.marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.marq div{display:flex;width:max-content;animation:marq 40s linear infinite}
+.marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);-webkit-mask:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent);mask:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent)}
+.marq div{display:flex;width:max-content;animation:marq 60s linear infinite;will-change:transform}
 .marq span{font:700 clamp(26px,3.6vw,46px)/1 var(--f-head);letter-spacing:-.02em;padding:22px 28px;white-space:nowrap}
-.marq span:nth-child(even){color:transparent;-webkit-text-stroke:1px var(--mut)}
+.marq span:nth-child(even){color:var(--bg);text-shadow:1px 0 var(--mut),-1px 0 var(--mut),0 1px var(--mut),0 -1px var(--mut),.7px .7px var(--mut),-.7px -.7px var(--mut),.7px -.7px var(--mut),-.7px .7px var(--mut)}
 @keyframes marq{to{transform:translateX(-50%)}}
 
 /* услуги */
@@ -247,8 +246,8 @@ section{padding:clamp(56px,8vw,112px) 0}
 .cta h2{margin:0 0 20px;font-size:clamp(30px,4.8vw,62px)}
 .cta .tel{display:inline-block;font:700 clamp(24px,3.6vw,46px)/1 var(--f-head);letter-spacing:-.03em;margin-bottom:28px}
 .cta .row{display:flex;flex-wrap:wrap;gap:12px}
-.cta .btn{border-color:currentColor;color:inherit}
-.cta .btn.inv{background:var(--on-ac);color:var(--ac);border-color:var(--on-ac)}
+.cta .btn{border-color:currentColor;color:inherit;--fill:var(--on-ac)}.cta .btn:hover{color:var(--ac)}
+.cta .btn.inv{background:var(--on-ac);color:var(--ac);border-color:var(--on-ac);--fill:#fff}.cta .btn.inv:hover{color:var(--on-ac)}
 .cta .tools{position:relative;justify-self:center;width:min(100%,420px)}
 .cta .tools img{width:100%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35));transform:rotate(-4deg);transition:transform .8s var(--ease)}
 .cta:hover .tools img{transform:rotate(0) scale(1.03)}
@@ -340,7 +339,6 @@ const hero = `<section class="hero" id="top">
     </div>
     ${S.img?.hero ? `<div class="car rv" style="--d:.15s"><img src="${esc(S.img.hero)}" alt="Автомобиль — ${esc(S.name)}, автосервис в Минске" fetchpriority="high"></div>` : ""}
   </div>
-  <div class="mark" aria-hidden="true">${esc(S.name)}</div>
 </section>`;
 
 /* факты */
@@ -349,8 +347,8 @@ const facts = S.facts?.length ? `<section style="padding-bottom:0"><div class="w
 </div></div></section>` : "";
 
 /* марки */
-const brands = S.brands?.length ? `<div class="brands"><div class="wrap"><h3 class="rv">${esc(S.brandsTitle)}</h3></div>
-  <div class="marq rv"><div>${[...S.brands, ...S.brands].map(b => `<span>${esc(b)}</span>`).join("")}</div></div></div>` : "";
+const brands = S.brands?.length ? `<div class="brands" aria-label="${esc(S.brandsTitle)}">
+  <div class="marq rv"><div>${[...S.brands, ...S.brands, ...S.brands, ...S.brands].map(b => `<span>${esc(b)}</span>`).join("")}</div></div></div>` : "";
 
 /* услуги */
 const svc = S.services?.length ? `<section id="uslugi"><div class="wrap">
@@ -359,7 +357,7 @@ const svc = S.services?.length ? `<section id="uslugi"><div class="wrap">
     ${g.img ? `<div class="pic"><img src="${esc(g.img)}" alt="${esc(g.title)}" loading="lazy" decoding="async"></div>` : ""}
     <h3>${esc(g.title)}</h3>
     <div class="chips">${g.items.map(it => `<span>${esc(it[0])}${it[1] ? `<b>${esc(it[1])}</b>` : ""}</span>`).join("")}</div>
-    <a class="btn btn-gh btn-sm" href="${priceHref}">Узнать цену</a>
+    <a class="btn btn-ac btn-sm" href="${priceHref}">Узнать цену</a>
   </article>`).join("")}</div>
 </div></section>` : "";
 
@@ -476,6 +474,13 @@ document.querySelectorAll("[data-open=privacy]").forEach(b => b.onclick = openP)
 dlg.querySelector("[data-close]").onclick = () => dlg.close();
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 if (location.hash === "#privacy") openP();
+
+/* кнопки: круг заливки растёт от места, где вошёл курсор */
+document.querySelectorAll(".btn").forEach(b => b.addEventListener("pointerenter", e => {
+  const r = b.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+  b.style.setProperty("--x", x + "px"); b.style.setProperty("--y", y + "px");
+  b.style.setProperty("--s", 2.2 * Math.hypot(Math.max(x, r.width - x), Math.max(y, r.height - y)) + "px");
+}));
 
 /* шапка с фоном, кнопки внизу на телефоне */
 const h = $(".hdr"), d = $(".dock");
