@@ -7,14 +7,13 @@
 
 ## Что готово
 - 2026-10-23: создан репозиторий sites, подключён доступ Claude на запись, созданы memory.md и clients.md.
+- 2026-10-23: включён GitHub Pages, https://d1trepes.github.io/sites/ открывается.
 
 ## Не готово
-- Демо-хостинг (GitHub Pages) не включён.
 - Шаблон template/ (index.html, tour.html) не создан.
 
 ## Решения
 - Цены: первые клиенты 300–350 BYN, дальше 400–500 BYN, всё включено на год.
 
 ## Дальше
-1. Включить GitHub Pages.
-2. Команда ШАБЛОН: сделать template/index.html и template/tour.html.
+1. Команда ШАБЛОН: сделать template/index.html и template/tour.html.
