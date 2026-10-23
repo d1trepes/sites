@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
+<!-- ДЕМО: убрать строку ниже при запуске -->
+<meta name="robots" content="noindex, nofollow">
+<title>АвтоСервисМастер — ремонт авто и шиномонтаж на ул. Сурганова, 50, Минск</title>
+<meta name="description" content="Автосервис ASM в Минске на ул. Сурганова, 50, корп. 2: компьютерная диагностика, ремонт двигателя, ходовой, автоэлектрики, DSG, шиномонтаж. Дизельные авто и коммерческий транспорт. Пн–Пт 9:00–19:00.">
+<meta name="theme-color" content="#FFC400">
+<link rel="icon" href="img/logo.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_BY">
+<meta property="og:site_name" content="АвтоСервисМастер">
+<meta property="og:title" content="АвтоСервисМастер — ремонт авто и шиномонтаж на ул. Сурганова, Минск">
+<meta property="og:description" content="Диагностика, двигатель, ходовая, электрика, DSG, шиномонтаж. Рейтинг 4,9 на Яндекс Картах.">
+<meta property="og:url" content="https://d1trepes.github.io/sites/avtoservismaster/">
+<meta property="og:image" content="https://d1trepes.github.io/sites/avtoservismaster/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="photos/hero-wheel.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Разметка для поисковиков: только данные из source.md -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "АвтоСервисМастер",
+  "alternateName": ["ASM", "Auto Service Master"],
+  "url": "https://d1trepes.github.io/sites/avtoservismaster/",
+  "image": "https://d1trepes.github.io/sites/avtoservismaster/img/og.jpg",
+  "logo": "https://d1trepes.github.io/sites/avtoservismaster/img/logo.png",
+  "telephone": "+375296159015",
+  "address": { "@type": "PostalAddress", "streetAddress": "ул. Сурганова, 50, корп. 2", "addressLocality": "Минск", "addressCountry": "BY" },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" }],
+  "paymentAccepted": "Наличные, карта",
+  "sameAs": ["https://yandex.by/maps/org/avtoservismaster/1314915574/"],
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "141", "bestRating": "5" },
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Шиномонтаж" }, "price": "70", "priceCurrency": "BYN" },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Диагностика подвески" }, "price": "30", "priceCurrency": "BYN" }
+  ]
+}
+</script>
+
+<style>
+/* ===== Цвета сайта: светлая тема, жёлтый ASM. Жёлтый — только фоном, текст всегда тёмный ===== */
+:root{--f-head:"Unbounded",system-ui,sans-serif;--f-body:"Onest",system-ui,sans-serif;--r:24px;--r-sm:16px;--wrap:1240px;--gut:16px;--ease:cubic-bezier(.2,.7,.2,1);
+  --bg:#f5f2ec;--bg2:#ece8df;--card:#ffffff;--card2:#f3f0e9;--line:#e2dccf;--tx:#151513;--mut:#625e55;
+  --ac:#FFC400;--ac-soft:#fff3c4;--on-ac:#151513;--star:#f5a400;--pin:#fc3f1d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+h1,h2,h3{font-family:var(--f-head);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+h2{font-size:clamp(28px,4.4vw,52px);margin-bottom:clamp(28px,4vw,48px);max-width:18ch}
+section{padding:clamp(56px,8vw,112px) 0}
+.stars{display:inline-flex;gap:2px;color:var(--star)}
+.stars svg{width:16px;height:16px}
+.pin{width:18px;height:18px;color:var(--pin);flex:none}
+.mark{background:linear-gradient(transparent 58%,var(--ac) 58%,var(--ac) 92%,transparent 92%);padding:0 .08em}
+
+/* кнопки */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:0;box-shadow:inset 0 0 0 1px var(--bd,var(--line));transition:transform .2s,box-shadow .3s,color .45s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.btn::before{content:"";position:absolute;z-index:-1;left:var(--x,50%);top:var(--y,50%);width:var(--s,300px);height:var(--s,300px);border-radius:50%;background:var(--fill,var(--ac));transform:translate(-50%,-50%) scale(0);transition:transform .55s var(--ease)}
+@media(hover:hover){.btn:hover::before{transform:translate(-50%,-50%) scale(1)}.btn:hover{box-shadow:none}}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-ac{background:var(--ac);color:var(--on-ac);--bd:transparent;--fill:var(--tx)}
+.btn-gh{--fill:var(--ac);background:var(--card)}
+@media(hover:hover){.btn-ac:hover{color:#fff}.btn-gh:hover{color:var(--on-ac)}}
+.btn-sm{height:44px;padding:0 20px;font-size:15px}
+
+/* шапка */
+.hdr{position:fixed;inset:0 0 auto;z-index:20;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.hdr.solid{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:12px;height:72px}
+.logo{display:flex;align-items:center;flex:none}
+.logo img{height:50px;width:auto}
+.nav{display:flex;gap:26px;margin:0 20px 0 auto;font-weight:500;font-size:15px}
+.nav a{color:var(--mut);transition:color .2s}.nav a:hover{color:var(--tx)}
+.burger{display:none;width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);position:relative;flex:none}
+.burger i,.burger i::before,.burger i::after{position:absolute;left:50%;top:50%;width:18px;height:2px;margin:-1px 0 0 -9px;background:var(--tx);border-radius:2px;transition:transform .3s,background .3s}
+.burger i::before,.burger i::after{content:"";left:0;top:0;margin:0}.burger i::before{transform:translateY(-6px)}.burger i::after{transform:translateY(6px)}
+.menu-open .burger i{background:transparent}.menu-open .burger i::before{transform:rotate(45deg)}.menu-open .burger i::after{transform:rotate(-45deg)}
+@media(max-width:1060px){
+  .burger{display:block;z-index:2}.hdr .wrap>.btn{margin-left:auto}
+  .nav{position:fixed;top:0;right:0;bottom:0;width:min(84vw,360px);flex-direction:column;gap:0;margin:0;padding:96px 24px 32px;background:var(--bg2);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .4s var(--ease);z-index:1}
+  .nav a{font:600 22px var(--f-head);color:var(--tx);padding:16px 0;border-bottom:1px solid var(--line)}
+  .menu-open .nav{transform:none}
+  .hdr::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:0}
+  .menu-open .hdr::after{opacity:1;visibility:visible}
+  .hdr.solid,.menu-open .hdr{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg)}
+  .logo,.hdr .btn{position:relative;z-index:2}
+}
+@media(max-width:400px){.logo img{height:42px}.hdr .btn-sm{padding:0 16px}}
+.lock,.menu-open{overflow:hidden}
+
+/* первый экран */
+.hero{position:relative;min-height:min(100svh,820px);display:flex;flex-direction:column;justify-content:center;padding:100px 0 clamp(48px,6vw,80px);overflow:hidden}
+.hero .grid{width:100%;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:32px}
+.hero h1{font-size:clamp(34px,4.8vw,64px);max-width:13ch}
+.hero .lead{font-size:clamp(17px,1.5vw,19px);color:var(--mut);max-width:40ch;margin-top:22px}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hours{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.hours span{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-size:15px}
+.hours span.on::before{content:"";width:8px;height:8px;border-radius:50%;background:#2fb344}
+.hours span.off{color:var(--mut)}
+.trust{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line);max-width:460px}
+.trust b{font:700 34px/1 var(--f-head);letter-spacing:-.03em}
+.trust span{font-size:14px;color:var(--mut);line-height:1.35}.trust .stars{color:var(--star)}
+.wheel{position:relative;aspect-ratio:1;width:min(100%,560px);justify-self:center}
+.wheel::before{content:"";position:absolute;inset:4% -4% 8% 12%;border-radius:50%;background:var(--ac)}
+.wheel::after{content:"";position:absolute;left:18%;right:18%;bottom:1%;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.28),transparent)}
+.wheel img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(-1.5deg)}}
+@media(max-width:900px){.hero{min-height:auto;padding:88px 0 48px}.hero .grid{grid-template-columns:1fr;gap:12px}.wheel{order:-1;width:min(76%,380px)}.hero .acts .btn{flex:1 1 100%}}
+
+/* отзывы */
+.rev{display:grid;grid-template-columns:360px 1fr;gap:12px;align-items:start}
+.rev>*{min-width:0}
+.rate{background:var(--ac);color:var(--on-ac);border-radius:var(--r);padding:30px;position:sticky;top:96px}
+.src{display:flex;align-items:center;gap:8px;font-weight:500;font-size:15px}
+.rate .big{display:flex;align-items:center;gap:16px;margin:22px 0 6px}
+.rate .big b{font:700 80px/1 var(--f-head);letter-spacing:-.05em}
+.rate .big .stars{color:var(--on-ac)}.rate .big .stars svg{width:20px;height:20px}
+.rate .sub{font-size:16px;margin-bottom:26px}
+.rate .btn{width:100%;background:var(--on-ac);color:#fff;--bd:transparent;--fill:#fff}
+@media(hover:hover){.rate .btn:hover{color:var(--on-ac)}}
+.quotes{columns:2;column-gap:12px}
+.q{break-inside:avoid;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin-bottom:12px}
+.q header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ava{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:700 16px var(--f-head);background:var(--ac);color:var(--on-ac);flex:none}
+.q header b{display:block;font-weight:600;line-height:1.2}
+.q header small{color:var(--mut);font-size:13px}
+.q .stars{margin-bottom:10px}
+.q p{font-size:16.5px;line-height:1.5}
+@media(max-width:1000px){.rev{grid-template-columns:1fr}.rate{position:static}}
+@media(max-width:700px){.quotes{columns:auto;display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding:0 var(--gut);margin:0 calc(var(--gut)*-1);padding:0 var(--gut) 6px;scrollbar-width:none}.quotes::-webkit-scrollbar{display:none}.q{flex:0 0 86%;scroll-snap-align:start;margin:0;opacity:1!important;transform:none!important}}
+.swipe{display:none;color:var(--mut);font-size:14px;margin-top:12px}
+@media(max-width:700px){.swipe{display:block}}
+
+/* что делаем */
+.hl{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
+.hl div{background:var(--ac);color:var(--on-ac);border-radius:var(--r-sm);padding:20px 22px;font:700 clamp(15px,1.4vw,18px)/1.25 var(--f-head);display:flex;align-items:center;gap:12px}
+.hl svg{width:26px;height:26px;flex:none}
+@media(max-width:860px){.hl{grid-template-columns:1fr 1fr}.hl div{padding:16px}}
+.svc{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.sv{grid-column:span 2;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;overflow:hidden;transition:border-color .3s}
+.sv.wide{grid-column:span 3}
+.sv:hover{border-color:var(--mut)}
+.sv .pic{height:210px;margin:-8px -8px 18px;display:grid;place-items:center;border-radius:var(--r-sm);background:radial-gradient(55% 60% at 50% 58%,var(--ac-soft),transparent)}
+.sv .pic img{max-height:190px;max-width:80%;object-fit:contain;transition:transform .6s var(--ease)}
+.sv:hover .pic img{transform:translateY(-6px) rotate(-2deg) scale(1.04)}
+.sv h3{font-size:21px;line-height:1.2;margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.chips span{border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:14.5px;line-height:1.2}
+.chips span.y{background:var(--ac);border-color:var(--ac);font-weight:600}
+.sv .btn{margin-top:auto;align-self:flex-start}
+@media(max-width:960px){.svc{grid-template-columns:1fr 1fr}.sv,.sv.wide{grid-column:auto}}
+@media(max-width:640px){.svc{grid-template-columns:1fr}.sv{padding:22px}.sv .pic{height:160px}.sv .pic img{max-height:140px}.sv .btn{align-self:stretch}}
+
+/* цены */
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pr{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:18px;min-height:230px}
+.pr:first-child{background:var(--ac);border-color:var(--ac)}
+.pr h3{font-size:clamp(19px,2vw,24px);line-height:1.25}
+.pr b{margin-top:auto;font:700 clamp(44px,5vw,64px)/1 var(--f-head);letter-spacing:-.04em}
+.pr b small{font-size:.42em;letter-spacing:0;margin-left:6px}
+.pr p{color:var(--mut);font-size:15px}.pr:first-child p{color:var(--on-ac)}
+.more{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px 20px 30px}
+.more span{font:700 clamp(17px,1.8vw,22px) var(--f-head)}
+@media(max-width:700px){.prices{grid-template-columns:1fr}.pr{min-height:0;padding:24px}.more{padding:20px}.more .btn{width:100%}}
+
+/* фото */
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.photos figure{position:relative;border-radius:var(--r);overflow:hidden;background:var(--card2);aspect-ratio:4/5}
+.photos img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.photos figure:hover img{transform:scale(1.04)}
+.photos figcaption{position:absolute;left:14px;bottom:14px;background:var(--card);border-radius:99px;padding:8px 14px;font-size:14px;font-weight:500}
+@media(max-width:520px){.photos{gap:8px}.photos figcaption{left:8px;right:8px;bottom:8px;font-size:12.5px;padding:6px 10px;text-align:center}}
+
+/* почему мы */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.why>div{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 28px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.why>div:first-child{background:var(--ac);border-color:var(--ac)}
+.why svg{width:34px;height:34px}
+.why h3{font-size:clamp(20px,2vw,26px);margin-top:28px}
+.why p{color:var(--mut);margin-top:8px;font-size:15.5px;max-width:26ch}.why>div:first-child p{color:var(--on-ac)}
+.why .card-img{position:absolute;right:-14px;top:-10px;width:150px;opacity:.95}
+@media(max-width:860px){.why{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.why>div{padding:18px;min-height:170px}.why h3{font-size:18px;margin-top:20px}.why p{font-size:14px}.why .card-img{display:none}}
+
+/* как записаться */
+.zap{display:grid;grid-template-columns:1.4fr .6fr;gap:32px;align-items:center}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.step{position:relative;padding:28px 0 0;border-top:1px solid var(--line)}
+.step::before{content:"";position:absolute;left:0;top:-1px;height:3px;width:100%;background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease)}
+.step.in::before{transform:none}
+.step:nth-child(2)::before{transition-delay:.25s}.step:nth-child(3)::before{transition-delay:.5s}
+.step i{counter-increment:s;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ac);font:700 14px var(--f-head);font-style:normal}
+.step i::before{content:counter(s)}
+.step h3{font-size:clamp(19px,2vw,24px);margin:16px 0 10px}
+.step p{color:var(--mut);max-width:30ch}
+.steps-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.zap .tools img{width:100%;transform:rotate(-4deg);transition:transform .8s var(--ease)}
+.zap:hover .tools img{transform:rotate(0) scale(1.03)}
+@media(max-width:900px){.zap{grid-template-columns:1fr}.zap .tools{width:60%;max-width:300px;justify-self:center;order:-1}}
+@media(max-width:760px){.steps{grid-template-columns:1fr;gap:24px}}
+
+/* контакты */
+.cnt{display:grid;grid-template-columns:1fr 1.3fr;gap:12px}
+.info{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:24px}
+.info dt{color:var(--mut);font-size:14px;margin-bottom:6px}
+.info dd{font-size:18px;font-weight:500}
+.info dd a{border-bottom:2px solid var(--ac)}
+.hrs{display:grid;grid-template-columns:auto 1fr;gap:4px 20px}
+.info .acts{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px}
+.map{position:relative;border-radius:var(--r);overflow:hidden;min-height:440px;background:var(--card);border:1px solid var(--line)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;opacity:0;transition:opacity .6s}
+.map.ok iframe{opacity:1}
+.map .ph{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:10px;color:var(--mut);font-size:15px;background:repeating-linear-gradient(135deg,var(--card) 0 14px,var(--card2) 14px 15px)}
+.map .ph .pin{width:36px;height:36px}
+.map .cover{position:absolute;inset:0;z-index:2;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.map .cover span{background:rgba(0,0,0,.7);color:#fff;font-size:14px;padding:9px 16px;border-radius:99px}
+@media(hover:none){.map.ok .cover{display:flex}}
+@media(max-width:860px){.cnt{grid-template-columns:1fr}.map{min-height:340px}.info{padding:24px}.info .btn{flex:1 1 100%}}
+
+/* подвал */
+.ftr{background:var(--bg2);border-top:1px solid var(--line);font-size:15px}
+.ftr .top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding:56px 0 44px}
+.ftr h4{font:500 13px var(--f-body);color:var(--mut);margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em}
+.ftr li{list-style:none;margin-bottom:9px}
+.ftr li button{text-align:left;padding:0;font-size:inherit;line-height:inherit}
+.ftr li a,.ftr li button{transition:box-shadow .2s}.ftr li a:hover,.ftr li button:hover{box-shadow:inset 0 -2px var(--ac)}
+.ftr .brand img{height:72px;width:auto;margin-bottom:14px}
+.ftr .brand p{color:var(--mut);max-width:32ch}
+.ftr .brand .stars{margin-top:16px}
+.ftr .brand small{display:block;color:var(--mut);margin-top:4px}
+.ftr .bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding:20px 0 28px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+@media(max-width:860px){.ftr .top{grid-template-columns:1fr 1fr}.ftr .brand{grid-column:1/-1}}
+.demo{background:var(--ac);color:var(--on-ac);text-align:center;font-size:13px;font-weight:500;padding:12px var(--gut)}
+
+/* политика */
+dialog{position:fixed;inset:0;margin:auto;width:min(720px,calc(100% - 24px));max-width:none;height:min(86dvh,860px);max-height:none;border:1px solid var(--line);border-radius:var(--r);background:var(--card);color:var(--tx);padding:0;overflow:hidden}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog .d-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px 14px 28px;border-bottom:1px solid var(--line);flex:none}
+dialog .d-top b{font:700 18px var(--f-head)}
+dialog .x{width:40px;height:40px;border-radius:50%;background:var(--card2);font-size:22px;line-height:1;flex:none}
+dialog .in-d{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:8px 28px 32px;overflow-wrap:anywhere}
+dialog h3{font:600 17px var(--f-body);margin:22px 0 8px}
+dialog p,dialog li{color:var(--mut);font-size:15px;margin-bottom:8px}
+dialog ul{padding-left:20px}
+@media(max-width:640px){dialog{width:100%;height:92dvh;margin:auto 0 0;border-radius:var(--r) var(--r) 0 0;border-bottom:0}dialog .in-d{padding:4px 20px 28px}}
+
+/* телефон */
+@media(max-width:640px){section{padding:48px 0}h2{margin-bottom:24px}main .btn{width:100%}.steps-cta .btn{width:100%}}
+
+/* лёгкое появление */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}.step::before{transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8l-5.3 2.9 1.2-5.9L1.4 7.7l6-.7z"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol>
+</svg>
+
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="#top" aria-label="АвтоСервисМастер — на главную"><img src="img/logo.png" alt="Логотип ASM Auto Service Master" width="402" height="356"></a>
+  <nav class="nav">
+    <a href="#otzyvy">Отзывы</a><a href="#uslugi">Услуги</a><a href="#ceny">Цены</a><a href="#pochemu">Почему мы</a><a href="#kontakty">Контакты</a>
+  </nav>
+  <a class="btn btn-ac btn-sm" href="tel:+375296159015">Позвонить</a>
+  <button class="burger" type="button" aria-label="Меню"><i></i></button>
+</div></header>
+
+<main>
+<!-- 1. Первый экран -->
+<section class="hero" id="top">
+  <div class="wrap grid">
+    <div>
+      <h1 class="rv">Ремонт авто и&nbsp;шиномонтаж на&nbsp;<span class="mark">Сурганова</span></h1>
+      <p class="lead rv" style="--d:.1s">Автосервис ASM в Минске: диагностика, двигатель, ходовая, электрика и коробки передач. Работаем с дизельными авто и коммерческим транспортом.</p>
+      <div class="acts rv" style="--d:.2s">
+        <a class="btn btn-ac" href="tel:+375296159015"><svg><use href="#phone"/></svg>Позвонить +375 29 615-90-15</a>
+        <a class="btn btn-gh" href="https://yandex.by/maps/org/avtoservismaster/1314915574/" target="_blank" rel="noopener">Как проехать</a>
+      </div>
+      <div class="hours rv" style="--d:.25s"><span class="on">Пн–Пт 9:00–19:00</span><span class="off">Сб–Вс выходной</span></div>
+      <div class="trust rv" style="--d:.3s"><b>4,9</b><div><span class="stars" aria-label="5 из 5"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span style="display:block;margin-top:4px">141 отзыв на Яндекс Картах</span></div></div>
+    </div>
+    <div class="wheel rv" style="--d:.15s"><img src="photos/hero-wheel.webp" alt="Колесо с жёлтым диском — шиномонтаж АвтоСервисМастер в Минске" width="512" height="512" fetchpriority="high"></div>
+  </div>
+</section>
+
+<!-- 2. Отзывы -->
+<section id="otzyvy" style="padding-top:clamp(24px,4vw,56px)"><div class="wrap">
+  <h2 class="rv">Что говорят клиенты</h2>
+  <div class="rev">
+    <div class="rate rv">
+      <div class="src"><svg class="pin" style="color:var(--on-ac)"><use href="#pin"/></svg>Яндекс Карты</div>
+      <div class="big"><b>4,9</b><span class="stars" aria-label="5 из 5"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
+      <div class="sub">141 отзыв</div>
+      <a class="btn btn-sm" href="https://yandex.by/maps/org/avtoservismaster/1314915574/reviews/" target="_blank" rel="noopener">Все отзывы на Яндекс Картах</a>
+    </div>
+    <div>
+      <div class="quotes">
+        <article class="q rv"><header><div class="ava">Д</div><div><b>Денис Зубков</b><small>30 августа</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Менял две передние пружины. Приехал к назначенному времени, сделали быстро, хотя машина 1996 года. Запчасти заказали сами, цену согласовали, после ремонта позвонили. Теперь обслуживаюсь здесь.</p></article>
+        <article class="q rv" style="--d:.08s"><header><div class="ava">Н</div><div><b>Наталия Н.</b><small>8 августа</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Приехала с перегревом — быстро помогли найти причину. За проверку и поиск неисправности цены адекватные.</p></article>
+        <article class="q rv"><header><div class="ava">J</div><div><b>Justas</b><small>17 ноября 2025</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Заранее позвонил, узнал цену замены шин и есть ли очередь — всё устроило, и расположение удобное. Шины поменяли минут за 30, мастер молодой, но опытный. Весной приеду снова.</p></article>
+        <article class="q rv" style="--d:.08s"><header><div class="ava">Д</div><div><b>Данил Андреевич</b><small>22 февраля</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>На Mercedes A-класса 22 лет сломалась ручка и не открывался капот. Мастера не отказались от мелкой работы — разобрались и сделали.</p></article>
+        <article class="q rv"><header><div class="ava">F</div><div><b>Владелец Ford Kuga</b><small>10 января 2025</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Ехал из Бреста в Россию, в дороге сломался ступичный подшипник. Приняли сразу, заказали деталь и поставили. Большое спасибо.</p></article>
+        <article class="q rv" style="--d:.08s"><header><div class="ava">Y</div><div><b>Yury Kozyrev</b><small>24 ноября 2025</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Отличный сервис и всегда хороший подход. Возим к ним все свои машины, на шиномонтаж всегда можно быстро попасть.</p></article>
+      </div>
+      <p class="swipe">Листайте вбок →</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 3. Что делаем -->
+<section id="uslugi" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Что мы делаем</h2>
+  <div class="hl">
+    <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 5.5 5 9.5a5 5 0 0 1-10 0C7 8.5 12 3 12 3z"/></svg>Дизельные авто</div>
+    <div class="rv" style="--d:.06s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h12v9H2zM14 10h4l4 3v3h-8z"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>Коммерческий транспорт</div>
+    <div class="rv" style="--d:.12s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="5" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><path d="M5 8v8M12 8v8M19 8v4H5"/></svg>Ремонт DSG</div>
+    <div class="rv" style="--d:.18s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5 21 21"/><circle cx="10" cy="10" r="2"/></svg>Эндоскопия двигателя</div>
+  </div>
+  <div class="svc">
+    <article class="sv rv">
+      <div class="pic"><img src="img/svc-engine.webp" alt="Поршень и шестерня ГРМ — ремонт двигателя" width="227" height="430" loading="lazy" decoding="async"></div>
+      <h3>Двигатель и диагностика</h3>
+      <div class="chips"><span>Компьютерная диагностика</span><span class="y">Эндоскопия двигателя</span><span>Ремонт двигателя</span><span>Ремонт ГБЦ</span><span>Замена ГРМ</span><span>Ремонт турбокомпрессора</span><span>Система охлаждения</span><span>Топливная система</span><span>Ремонт и чистка форсунок</span><span>Замена масла</span><span>Выхлопная система</span><span>Удаление катализаторов</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296159015">Узнать цену</a>
+    </article>
+    <article class="sv rv" style="--d:.08s">
+      <div class="pic"><img src="img/svc-chassis.webp" alt="Амортизатор и тормоз — ремонт ходовой части" width="323" height="427" loading="lazy" decoding="async"></div>
+      <h3>Ходовая и рулевое</h3>
+      <div class="chips"><span>Ремонт ходовой части</span><span>Амортизаторы</span><span>Тормозная система</span><span>Рулевые рейки</span><span>Гидроусилитель руля</span><span>Пневмосистема</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296159015">Узнать цену</a>
+    </article>
+    <article class="sv rv" style="--d:.16s">
+      <div class="pic"><img src="img/svc-diag.webp" alt="Диагностический сканер — ремонт автоэлектрики" width="466" height="382" loading="lazy" decoding="async"></div>
+      <h3>Электрика</h3>
+      <div class="chips"><span>Автоэлектрика</span><span>Автоэлектроника</span><span>Стартеры</span><span>Генераторы</span><span>Фары</span><span>Подушки безопасности</span><span>Установка доп. оборудования</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296159015">Узнать цену</a>
+    </article>
+    <article class="sv wide rv">
+      <h3>Трансмиссия</h3>
+      <div class="chips"><span class="y">Ремонт DSG</span><span>Ремонт РКПП</span><span>Сцепление</span><span>Карданные валы</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296159015">Узнать цену</a>
+    </article>
+    <article class="sv wide rv" style="--d:.08s">
+      <h3>Шиномонтаж и обслуживание</h3>
+      <div class="chips"><span>Шиномонтаж</span><span>Базовое сервисное обслуживание</span><span>Полное сервисное обслуживание</span><span>Предрейсовый техосмотр</span><span>Запчасти под заказ</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296159015">Узнать цену</a>
+    </article>
+  </div>
+</div></section>
+
+<!-- 4. Цены -->
+<section id="ceny" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Цены</h2>
+  <div class="prices">
+    <div class="pr rv"><h3>Шиномонтаж</h3><b>70<small>BYN</small></b></div>
+    <div class="pr rv" style="--d:.08s"><h3>Качественная диагностика подвески</h3><b>30<small>BYN</small></b><p>По предварительной записи</p></div>
+  </div>
+  <div class="more rv"><span>Остальное — по телефону</span><a class="btn btn-ac" href="tel:+375296159015"><svg><use href="#phone"/></svg>+375 29 615-90-15</a></div>
+</div></section>
+
+<!-- 5. Фото -->
+<section id="foto" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Наш сервис</h2>
+  <div class="photos">
+    <figure class="rv"><img src="photos/work-bmw.webp" alt="BMW 3 GT в боксе автосервиса АвтоСервисМастер на ул. Сурганова" width="603" height="731" loading="lazy" decoding="async"><figcaption>BMW 3 GT в боксе</figcaption></figure>
+    <figure class="rv" style="--d:.08s"><img src="photos/work-citroen-lift.webp" alt="Citroën на подъёмнике в автосервисе АвтоСервисМастер, Минск" width="592" height="768" loading="lazy" decoding="async"><figcaption>Citroën на подъёмнике</figcaption></figure>
+  </div>
+</div></section>
+
+<!-- 6. Почему мы — только особенности из карточки -->
+<section id="pochemu" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Почему выбирают нас</h2>
+  <div class="why">
+    <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5" stroke-linecap="round"/></svg><div class="t"><h3>Гарантия</h3><p>Условия подскажем по телефону</p></div></div>
+    <div class="rv" style="--d:.06s"><img class="card-img" src="img/fact-card.webp" alt="" width="393" height="381" loading="lazy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><div class="t"><h3>Оплата картой</h3><p>Или наличными</p></div></div>
+    <div class="rv" style="--d:.12s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg><div class="t"><h3>Парковка</h3><p>Есть места для людей с инвалидностью</p></div></div>
+    <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg><div class="t"><h3>Wi-Fi</h3><p>И туалет для клиентов</p></div></div>
+    <div class="rv" style="--d:.06s"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="10" r="2"/><circle cx="10" cy="6" r="2"/><circle cx="14" cy="6" r="2"/><circle cx="18" cy="10" r="2"/><path d="M12 11c-3 0-6 4.5-6 7 0 1.5 1.2 2 2.5 2 1.4 0 2.2-.8 3.5-.8s2.1.8 3.5.8c1.3 0 2.5-.5 2.5-2 0-2.5-3-7-6-7z"/></svg><div class="t"><h3>Можно с собакой</h3><p>Приезжайте вместе с питомцем</p></div></div>
+    <div class="rv" style="--d:.12s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5" fill="currentColor"/></svg><div class="t"><h3>Скидки</h3><p>Об актуальных акциях — по телефону</p></div></div>
+  </div>
+</div></section>
+
+<!-- 7. Как записаться -->
+<section id="zapis" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Как записаться</h2>
+  <div class="zap">
+    <div>
+      <div class="steps">
+        <div class="step rv"><i></i><h3>Позвоните</h3><p>Расскажите, что с машиной</p></div>
+        <div class="step rv" style="--d:.1s"><i></i><h3>Договоримся о времени</h3><p>Есть предварительная запись — подберём удобный день</p></div>
+        <div class="step rv" style="--d:.2s"><i></i><h3>Приезжайте</h3><p>ул. Сурганова, 50, корп. 2. Пн–Пт 9:00–19:00</p></div>
+      </div>
+      <div class="steps-cta rv"><a class="btn btn-ac" href="tel:+375296159015"><svg><use href="#phone"/></svg>Позвонить +375 29 615-90-15</a></div>
+    </div>
+    <div class="tools rv"><img src="img/cta-tools.webp" alt="Набор инструментов автосервиса" width="421" height="431" loading="lazy" decoding="async"></div>
+  </div>
+</div></section>
+
+<!-- 8. Контакты и карта -->
+<section id="kontakty" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Как нас найти</h2>
+  <div class="cnt">
+    <dl class="info rv">
+      <div><dt>Адрес</dt><dd>Минск, ул. Сурганова, 50, корп. 2</dd></div>
+      <div><dt>Телефон</dt><dd><a href="tel:+375296159015">+375 29 615-90-15</a></dd></div>
+      <div><dt>Часы работы</dt><dd class="hrs"><span>Пн–Пт</span><span>9:00–19:00</span><span>Сб–Вс</span><span>выходной</span></dd></div>
+      <div class="acts"><a class="btn btn-ac btn-sm" href="tel:+375296159015">Позвонить</a><a class="btn btn-gh btn-sm" href="https://yandex.by/maps/org/avtoservismaster/1314915574/" target="_blank" rel="noopener">Построить маршрут</a></div>
+    </dl>
+    <div class="map rv" style="--d:.1s" data-src="https://yandex.by/map-widget/v1/org/avtoservismaster/1314915574/?z=16"><div class="ph"><svg class="pin"><use href="#pin"/></svg>Загружаем карту…</div><button class="cover" type="button" aria-label="Включить карту"><span>Нажмите, чтобы двигать карту</span></button></div>
+  </div>
+</div></section>
+</main>
+
+<footer class="ftr"><div class="wrap">
+  <div class="top">
+    <div class="brand"><img src="img/logo.png" alt="ASM Auto Service Master" width="402" height="356" loading="lazy"><p>Автосервис и шиномонтаж в Минске на ул. Сурганова, 50, корп. 2.</p>
+      <span class="stars" aria-label="5 из 5"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><small>4,9 · 141 отзыв на Яндекс Картах</small></div>
+    <div><h4>Контакты</h4><ul><li><a href="tel:+375296159015">+375 29 615-90-15</a></li><li>ул. Сурганова, 50, корп. 2</li><li>Пн–Пт 9:00–19:00</li><li>Сб–Вс выходной</li></ul></div>
+    <div><h4>Разделы</h4><ul><li><a href="#otzyvy">Отзывы</a></li><li><a href="#uslugi">Услуги</a></li><li><a href="#ceny">Цены</a></li><li><a href="#pochemu">Почему мы</a></li><li><a href="#kontakty">Контакты</a></li></ul></div>
+    <div><h4>Документы</h4><ul><li><button type="button" data-open="privacy">Политика конфиденциальности</button></li><li><a href="https://yandex.by/maps/org/avtoservismaster/1314915574/" target="_blank" rel="noopener">Мы на Яндекс Картах</a></li></ul></div>
+  </div>
+  <!-- реквизиты (компания, УНП) добавить при запуске -->
+  <div class="bot"><span>© <span id="yr">2026</span> АвтоСервисМастер</span><span>Рейтинг и отзывы — Яндекс Карты</span></div>
+</div></footer>
+<!-- ДЕМО: убрать плашку при запуске -->
+<div class="demo">Демо-версия сайта. Подготовлена бесплатно, удалим по первой просьбе.</div>
+
+<dialog id="privacy" aria-label="Политика конфиденциальности">
+  <div class="d-top"><b>Политика конфиденциальности</b><button class="x" type="button" data-close aria-label="Закрыть">×</button></div>
+  <div class="in-d">
+  <p>Документ составлен в соответствии с Законом Республики Беларусь от 7 мая 2021 г. № 99-З «О защите персональных данных».</p>
+  <h3>Кто отвечает за сайт</h3><p>АвтоСервисМастер. Адрес: Минск, ул. Сурганова, 50, корп. 2. Телефон: +375 29 615-90-15.</p>
+  <h3>Какие данные мы собираем</h3><p>На сайте нет форм и регистрации: мы не просим ввести имя, телефон или другие персональные данные. Связаться с нами можно по телефону — в этом случае данные обрабатываются только для ответа на ваше обращение и записи на ремонт.</p>
+  <h3>Сторонние сервисы</h3><p>На сайте работают сервисы других компаний, которые могут сохранять файлы cookie и получать технические данные (IP-адрес, тип браузера):</p>
+  <ul><li>Яндекс Карты — карта с нашим адресом (ООО «Яндекс»);</li><li>Google Fonts — шрифты сайта (Google LLC).</li></ul>
+  <p>Их обработку регулируют политики этих компаний. Отключить cookie можно в настройках браузера — сайт продолжит работать.</p>
+  <h3>Ваши права</h3><p>Вы вправе получить информацию об обработке ваших данных, потребовать их изменения или удаления, отозвать согласие. Для этого обратитесь по контактам выше.</p>
+</div></dialog>
+
+<script>
+(function(){
+const $ = s => document.querySelector(s), root = document.documentElement;
+$("#yr").textContent = new Date().getFullYear();
+
+/* политика */
+const dlg = $("#privacy");
+const openP = () => { root.classList.add("lock"); dlg.showModal ? dlg.showModal() : dlg.setAttribute("open", ""); };
+dlg.addEventListener("close", () => root.classList.remove("lock"));
+document.querySelectorAll("[data-open=privacy]").forEach(b => b.onclick = openP);
+dlg.querySelector("[data-close]").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+if (location.hash === "#privacy") openP();
+
+/* кнопки: заливка растёт от курсора */
+document.querySelectorAll(".btn").forEach(b => b.addEventListener("pointerenter", e => {
+  const r = b.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+  b.style.setProperty("--x", x + "px"); b.style.setProperty("--y", y + "px");
+  b.style.setProperty("--s", 2.2 * Math.hypot(Math.max(x, r.width - x), Math.max(y, r.height - y)) + "px");
+}));
+
+/* меню и переходы к блокам */
+$(".burger").onclick = () => root.classList.toggle("menu-open");
+$(".hdr").addEventListener("click", e => { if (e.target === $(".hdr")) root.classList.remove("menu-open"); });
+addEventListener("keydown", e => { if (e.key === "Escape") root.classList.remove("menu-open"); });
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+  const id = a.getAttribute("href"); const t = id === "#top" ? document.body : $(id); if (!t) return;
+  e.preventDefault(); root.classList.remove("menu-open");
+  t.querySelectorAll(".rv").forEach(el => el.classList.add("in"));
+  const top = id === "#top" ? 0 : scrollY + t.getBoundingClientRect().top - 72;
+  scrollTo({ top: Math.max(0, top), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  history.replaceState(null, "", id);
+}));
+
+/* карта: грузится заранее, на телефоне включается касанием */
+const map = $(".map[data-src]");
+if (map) {
+  const load = () => { if (map.querySelector("iframe")) return;
+    const f = document.createElement("iframe"); f.src = map.dataset.src; f.title = "АвтоСервисМастер на карте"; f.allowFullscreen = true;
+    f.onload = () => setTimeout(() => map.classList.add("ok"), 150); map.appendChild(f); };
+  new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { load(); o.disconnect(); } }, { rootMargin: "1200px 0px" }).observe(map);
+  map.querySelector(".cover").onclick = e => e.currentTarget.remove();
+}
+
+/* шапка с фоном после прокрутки */
+const h = $(".hdr"), onScroll = () => h.classList.toggle("solid", scrollY > 20);
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+/* плавное появление */
+const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add("in"); io.unobserve(e.target); }), { rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
