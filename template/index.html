@@ -22,7 +22,7 @@
    Пустое поле или пустой список = блок не показывается.
    ===================================================================== */
 const SITE = {
-  theme: "гаражная",           // цветовая тема стиля A
+  theme: "гаражная",           // цветовая тема стиля A: "гаражная" | "светлая"
   demo:  true,                 // плашка демо-версии внизу
 
   name:    "Ганс Моторс",
@@ -94,7 +94,10 @@ const SITE = {
 
 <style>
 :root{--f-head:"Unbounded",system-ui,sans-serif;--f-body:"Onest",system-ui,sans-serif;--r:24px;--r-sm:16px;--wrap:1240px;--gut:16px;--ease:cubic-bezier(.2,.7,.2,1)}
-[data-theme="гаражная"]{--bg:#0d0e0d;--bg2:#141514;--card:#1a1b1a;--card2:#212220;--line:#2a2b29;--tx:#f1f2ec;--mut:#9a9c94;--ac:#c6f135;--on-ac:#0d0e0d;--star:#ffc531;--pin:#fc3f1d}
+[data-theme="гаражная"]{--bg:#0d0e0d;--bg2:#141514;--card:#1a1b1a;--card2:#212220;--line:#2a2b29;--tx:#f1f2ec;--mut:#9a9c94;--ac:#c6f135;--on-ac:#0d0e0d;--star:#ffc531;--pin:#fc3f1d;--shadow:none}
+[data-theme="светлая"]{--bg:#f5f1ea;--bg2:#ece7de;--card:#ffffff;--card2:#f3efe7;--line:#e3ddd1;--tx:#1b1a17;--mut:#68645b;--ac:#1f4fd1;--on-ac:#ffffff;--star:#f5a400;--pin:#fc3f1d;--shadow:0 1px 2px rgba(40,30,10,.05),0 10px 30px -12px rgba(40,30,10,.14)}
+.fact,.sv,.why div,.rate,.q,.info,.map{box-shadow:var(--shadow)}
+[data-theme="светлая"] .q{background:var(--card)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--tx);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -118,7 +121,7 @@ section{padding:clamp(56px,8vw,112px) 0}
 img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
 .btn-ac{background:var(--ac);color:var(--on-ac);--bd:transparent;--fill:var(--tx)}
 .btn-gh{--fill:var(--ac)}
-@media(hover:hover){.btn-ac:hover{color:var(--bg)}.btn-gh:hover{color:var(--on-ac)}.cta .btn:hover{color:var(--ac)}}
+@media(hover:hover){.btn-ac:hover{color:var(--bg)}.btn-gh:hover{color:var(--on-ac)}.cta .btn:hover{color:var(--ac)}.cta .btn.inv:hover{color:var(--bg)}.cta .btn:hover{color:var(--ac)}}
 .btn-sm{height:44px;padding:0 20px;font-size:15px}
 
 /* шапка */
@@ -270,7 +273,7 @@ img{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit
 .cta h2{margin:0 0 20px;font-size:clamp(30px,4.8vw,62px)}
 .cta .tel{display:inline-block;font:700 clamp(24px,3.6vw,46px)/1 var(--f-head);letter-spacing:-.03em;margin-bottom:28px}
 .cta .row{display:flex;flex-wrap:wrap;gap:12px}
-.cta .btn{--bd:var(--on-ac);color:inherit;--fill:var(--on-ac)}.cta .btn.inv{background:var(--on-ac);color:var(--ac);--bd:transparent;--fill:#fff}
+.cta .btn{--bd:var(--on-ac);color:inherit;--fill:var(--on-ac)}.cta .btn.inv{background:var(--on-ac);color:var(--ac);--bd:transparent;--fill:var(--tx)}
 .cta .tools{position:relative;justify-self:center;width:min(100%,420px)}
 .cta .tools::after{content:"";position:absolute;left:12%;right:12%;bottom:2%;height:10%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.35),transparent);z-index:0}
 .cta .tools img{position:relative;z-index:1;width:100%;transform:rotate(-4deg);transition:transform .8s var(--ease);pointer-events:none}
@@ -344,7 +347,7 @@ const stars = n => `<span class="stars" aria-label="${n} из 5">${STAR.repeat(n
 const PIN = '<svg class="pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>';
 const marks = y.marks ? `${y.marks} ${plural(y.marks,"оценка","оценки","оценок")}` : "";
 const rv = (i = 0) => `class="rv" style="--d:${(i * .08).toFixed(2)}s"`;
-document.documentElement.dataset.theme = S.theme;
+document.documentElement.dataset.theme = new URLSearchParams(location.search).get("theme") || S.theme;
 
 const nav = [
   S.services?.length && ["#uslugi","Услуги"], S.why?.length && ["#pochemu","Почему мы"],
