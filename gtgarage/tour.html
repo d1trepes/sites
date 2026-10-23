@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>GTgarage — тур по сайту</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+<script>
+/* =====================================================================
+   ТУР ДЛЯ ВИДЕО. Меняется только здесь.
+   sel — блок, к которому едем; zoom — что приближаем (необязательно);
+   t — заголовок плашки; d — зачем это владельцу и его клиентам.
+   Ссылки: tour.html — компьютер, tour.html?mobile — телефон.
+   Пробел — пауза, ← → — шаги, H — спрятать кнопки (для записи).
+   ===================================================================== */
+const TOUR = {
+  page: "index.html",
+  accent: "#E10600",
+  wait: 5200,          // сколько стоит каждая плашка, мс
+  steps: [
+    { sel: "#top",       zoom: "h1",          t: "Первый экран",               d: "Сразу видно, что вы чините: двигатели, АКПП и ходовую. Кнопка «Позвонить» — одно нажатие до звонка." },
+    { sel: "#top",       zoom: ".now",        t: "Открыто ли сейчас",          d: "Сайт сам показывает, работает ли сервис прямо сейчас. Клиент не звонит в закрытое время." },
+    { sel: "#top",       zoom: ".trust",      t: "Рейтинг 5,0",                d: "Оценка с Яндекс Карт на первом экране — человек с первых секунд вам доверяет." },
+    { sel: "#ceny",      zoom: ".pgrid",      t: "Все 24 цены",                d: "Цены по группам: ТО, ходовая, тормоза, двигатель. Клиент заранее понимает бюджет — меньше звонков «а сколько стоит»." , open: true },
+    { sel: ".pnote",     zoom: ".pnote",      t: "Честная оговорка",           d: "«Точную цену назовём после осмотра» — цены привлекают, но ни к чему вас не обязывают." },
+    { sel: "#otzyvy",    zoom: ".quotes",     t: "Отзывы ваших клиентов",      d: "Шесть отзывов с Яндекс Карт. Новые клиенты верят другим водителям больше, чем рекламе." },
+    { sel: "#uslugi",    zoom: ".svc",        t: "Все виды работ",             d: "Турбины, DSG, ГБЦ, рулевые рейки, ГРМ. Человек находит свою поломку и понимает: ему сюда." },
+    { sel: "#pochemu",   zoom: ".why",        t: "Почему вы",                  d: "Гарантия, запись, парковка, Wi-Fi и марки авто — ответы на вопросы, которые задают перед первым визитом." },
+    { sel: "#zapis",     zoom: ".steps",      t: "Как записаться",             d: "Три простых шага. Никаких форм — клиент просто звонит вам." },
+    { sel: "#kontakty",  zoom: ".cnt",        t: "Адрес и карта",              d: "Улица, часы и карта с маршрутом. Клиент легко находит сервис на Мележа." },
+    { sel: ".cta",       zoom: ".cta",        t: "Последний шаг — звонок",     d: "В конце крупный номер и кнопка. Всё на сайте ведёт к одному — к звонку вам." },
+    { sel: "#top",       zoom: null,          t: "Это ваш сайт",               d: "Ваши цены, отзывы, адрес и часы — всё из карточки GTgarage. Его можно запустить под вашим адресом." }
+  ]
+};
+</script>
+<style>
+:root{--ac:#E10600;--bg:#060607;--tx:#f3f3f1;--mut:#a3a3a8}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--tx);font:400 16px/1.5 "Onest",system-ui,sans-serif;overflow:hidden}
+body{background:radial-gradient(60% 50% at 70% 40%,rgba(225,6,0,.14),transparent),var(--bg)}
+.stage{position:fixed;inset:0;display:grid;place-items:center}
+.fit{position:relative;transform-origin:center;flex:none}
+.screen{position:relative;overflow:hidden;background:#0b0b0c;border-radius:14px;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 1px #2a2a2e}
+.zoom{position:absolute;inset:0;transform-origin:0 0;transition:transform 1.3s cubic-bezier(.65,0,.25,1)}
+.zoom iframe{width:100%;height:100%;border:0;display:block;background:#0b0b0c}
+.mobile .screen{border-radius:54px;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 0 12px #18181b,0 0 0 14px #303035}
+
+/* плашка */
+.cap{position:fixed;left:50%;bottom:clamp(20px,5vh,56px);width:min(620px,calc(100% - 32px));transform:translate(-50%,24px);opacity:0;transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1);z-index:5;
+  background:rgba(14,14,16,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid #2a2a2e;border-left:4px solid var(--ac);border-radius:18px;padding:20px 24px 22px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.cap.on{opacity:1;transform:translate(-50%,0)}
+.cap small{display:block;color:var(--ac);font:700 13px "Unbounded",sans-serif;letter-spacing:.04em;margin-bottom:6px}
+.cap b{display:block;font:700 clamp(19px,2.2vw,26px)/1.15 "Unbounded",sans-serif;letter-spacing:-.02em;margin-bottom:8px}
+.cap p{color:#d4d4d8;font-size:clamp(15px,1.4vw,18px);line-height:1.45}
+.mobile .cap{width:min(440px,calc(100% - 24px))}
+@media(min-width:900px){.mobile .cap{left:calc(50% + 250px);bottom:auto;top:50%;transform:translate(0,-30%);width:min(400px,calc(50% - 290px))}.mobile .cap.on{transform:translate(0,-50%)}}
+.desk .cap{left:auto;right:clamp(20px,3vw,48px);transform:translate(0,24px)}.desk .cap.on{transform:none}
+.desk .cap{width:min(440px,34vw)}
+
+/* полоса прогресса и кнопки */
+.bar{position:fixed;left:0;top:0;height:3px;background:var(--ac);width:0;z-index:6;transition:width .4s}
+.ctl{position:fixed;top:14px;right:14px;display:flex;gap:8px;z-index:7;transition:opacity .3s}
+.ctl button{height:38px;min-width:38px;padding:0 12px;border-radius:99px;border:1px solid #333;background:rgba(20,20,22,.85);color:var(--tx);font:500 14px "Onest",sans-serif;cursor:pointer}
+.ctl button:hover{border-color:var(--ac)}
+.hide .ctl{opacity:0;pointer-events:none}
+.ring{position:absolute;z-index:2;border:3px solid var(--ac);border-radius:18px;pointer-events:none;opacity:0;transition:opacity .5s, all 1.3s cubic-bezier(.65,0,.25,1);box-shadow:0 0 0 9999px rgba(0,0,0,.28)}
+.ring.on{opacity:1}
+</style>
+</head>
+<body>
+<div class="stage"><div class="fit"><div class="screen"><div class="zoom"><iframe title="Сайт GTgarage" scrolling="no"></iframe><div class="ring"></div></div></div></div></div>
+<div class="cap" aria-live="polite"><small></small><b></b><p></p></div>
+<div class="bar"></div>
+<div class="ctl"><button data-a="prev" aria-label="Назад">←</button><button data-a="play">Пауза</button><button data-a="next" aria-label="Дальше">→</button><button data-a="mode"></button><button data-a="hide" aria-label="Спрятать кнопки">H</button></div>
+
+<script>
+(function(){
+const T = TOUR, q = new URLSearchParams(location.search), mobile = q.has("mobile");
+const W = mobile ? 390 : 1440, H = mobile ? 844 : 900;
+document.body.classList.add(mobile ? "mobile" : "desk");
+document.documentElement.style.setProperty("--ac", T.accent);
+const $ = s => document.querySelector(s);
+const fit = $(".fit"), screen = $(".screen"), zoom = $(".zoom"), frame = $("iframe"), ring = $(".ring"), cap = $(".cap"), bar = $(".bar");
+screen.style.width = W + "px"; screen.style.height = H + "px";
+$("[data-a=mode]").textContent = mobile ? "Компьютер" : "Телефон";
+
+/* экран вписываем в окно */
+const resize = () => {
+  const pad = mobile ? 60 : 40;
+  const k = Math.min((innerWidth - pad) / W, (innerHeight - pad) / H, mobile ? 1.15 : 1);
+  fit.style.transform = `scale(${k})`; fit.style.width = W + "px"; fit.style.height = H + "px";
+};
+addEventListener("resize", resize); resize();
+
+let i = -1, timer = 0, playing = true, doc, win;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/* плавная прокрутка сайта внутри экрана */
+const scrollTo = y => new Promise(res => {
+  const from = win.scrollY, to = Math.max(0, Math.min(y, doc.documentElement.scrollHeight - H)), t0 = performance.now(), dur = Math.min(1600, 500 + Math.abs(to - from) * .35);
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const tick = now => { const p = Math.min(1, (now - t0) / dur); win.scrollTo(0, from + (to - from) * ease(p)); p < 1 ? requestAnimationFrame(tick) : res(); };
+  requestAnimationFrame(tick);
+});
+
+const show = async n => {
+  i = (n + T.steps.length) % T.steps.length; const s = T.steps[i];
+  clearTimeout(timer); cap.classList.remove("on"); ring.classList.remove("on");
+  zoom.style.transform = "none"; await sleep(mobile ? 500 : 650);
+  const sec = doc.querySelector(s.sel); if (!sec) return next();
+  sec.querySelectorAll(".rv").forEach(e => e.classList.add("in"));
+  if (s.open) doc.querySelectorAll(".pg").forEach((d, k) => { if (k < (mobile ? 2 : 99)) d.open = true; });
+  const head = 72, top = s.sel === "#top" ? 0 : win.scrollY + sec.getBoundingClientRect().top - head - 8;
+  await scrollTo(top); await sleep(250);
+  const el = s.zoom && (sec.matches(s.zoom) ? sec : sec.querySelector(s.zoom) || doc.querySelector(s.zoom));
+  if (el) {
+    let r = el.getBoundingClientRect();
+    if (r.bottom > H || r.top < head) { await scrollTo(win.scrollY + r.top - Math.max(head + 8, (H - r.height) / 2)); r = el.getBoundingClientRect(); }
+    const vt = Math.max(r.top, head), vb = Math.min(r.bottom, H), vh = vb - vt, p = 12;
+    const z = Math.max(1, Math.min(mobile ? 1.5 : 1.7, (W * .9) / (r.width + p * 2), (H * .8) / (vh + p * 2)));
+    let tx = W / 2 - (r.left + r.width / 2) * z, ty = H / 2 - (vt + vh / 2) * z;
+    tx = Math.min(0, Math.max(W - W * z, tx)); ty = Math.min(0, Math.max(H - H * z, ty));
+    Object.assign(ring.style, { left: r.left - p + "px", top: vt - p + "px", width: r.width + p * 2 + "px", height: vh + p * 2 + "px" });
+    zoom.style.transform = `translate(${tx}px,${ty}px) scale(${z})`;
+    setTimeout(() => ring.classList.add("on"), 500);
+  }
+  cap.querySelector("small").textContent = String(i + 1).padStart(2, "0") + " / " + String(T.steps.length).padStart(2, "0");
+  cap.querySelector("b").textContent = s.t; cap.querySelector("p").textContent = s.d;
+  setTimeout(() => cap.classList.add("on"), 700);
+  bar.style.width = ((i + 1) / T.steps.length * 100) + "%";
+  if (playing) timer = setTimeout(next, T.wait + 1300);
+};
+const next = () => show(i + 1), prev = () => show(i - 1);
+
+/* кнопки и клавиши */
+const toggle = () => { playing = !playing; $("[data-a=play]").textContent = playing ? "Пауза" : "Пуск"; playing ? next() : clearTimeout(timer); };
+document.querySelectorAll(".ctl button").forEach(b => b.onclick = () => ({
+  prev, next, play: toggle, hide: () => document.body.classList.toggle("hide"),
+  mode: () => { location.search = mobile ? "" : "?mobile"; }
+})[b.dataset.a]());
+addEventListener("keydown", e => {
+  if (e.key === " ") { e.preventDefault(); toggle(); } else if (e.key === "ArrowRight") next(); else if (e.key === "ArrowLeft") prev();
+  else if (e.key.toLowerCase() === "h" || e.key.toLowerCase() === "р") document.body.classList.toggle("hide");
+});
+
+/* старт после загрузки сайта */
+frame.addEventListener("load", async () => {
+  win = frame.contentWindow; doc = frame.contentDocument;
+  const st = doc.createElement("style");   // в туре прячем полосу прокрутки и плашку демо не трогаем
+  st.textContent = "html{scroll-behavior:auto!important;scrollbar-width:none}::-webkit-scrollbar{display:none}";
+  doc.head.appendChild(st);
+  await sleep(1500); show(0);
+});
+frame.src = T.page;
+})();
+</script>
+</body>
+</html>
