@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
+<!-- ДЕМО: убрать строку ниже при запуске -->
+<meta name="robots" content="noindex, nofollow">
+<title>ЦТС-СЕРВИС — ремонт подвески, тормозов и двигателя на ул. Тимирязева, Минск</title>
+<meta name="description" content="Автосервис ЦТС-СЕРВИС в Минске на ул. Тимирязева, 9/6: ремонт подвески и рулевого, тормозов и суппортов, двигателя, КПП и сцепления, кондиционера, выхлопа, аргонная сварка. Гибриды и китайские марки. Нормочас от 90 BYN. Пн–Пт 9:00–19:00.">
+<meta name="theme-color" content="#E10600">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23E10600'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'%3EЦ%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_BY">
+<meta property="og:site_name" content="ЦТС-СЕРВИС">
+<meta property="og:title" content="ЦТС-СЕРВИС — подвеска, тормоза и двигатель на ул. Тимирязева, Минск">
+<meta property="og:description" content="Ремонт подвески, тормозов, двигателя, КПП, кондиционера и выхлопа. Гибриды и китайские марки. 4,8 на Яндекс Картах.">
+<meta property="og:url" content="https://d1trepes.github.io/sites/cts-service/">
+<meta property="og:image" content="https://d1trepes.github.io/sites/cts-service/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="img/hero-caliper.webp" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Разметка для поисковиков: только данные из source.md -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "ЦТС-СЕРВИС",
+  "url": "https://d1trepes.github.io/sites/cts-service/",
+  "image": "https://d1trepes.github.io/sites/cts-service/img/og.jpg",
+  "telephone": ["+375296500676", "+375336719903"],
+  "address": { "@type": "PostalAddress", "streetAddress": "ул. Тимирязева, 9/6", "addressLocality": "Минск", "addressCountry": "BY" },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "19:00" }],
+  "paymentAccepted": "Наличные, банковская карта, банковский перевод, безналичный расчёт",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "22", "reviewCount": "16", "bestRating": "5" },
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Нормочас" }, "priceSpecification": { "@type": "PriceSpecification", "minPrice": "90", "priceCurrency": "BYN" } }
+  ]
+}
+</script>
+
+<style>
+/* ===== Цвета сайта: светлая тема, красный ЦТС #E10600. Красный текст — только крупный (заголовки, цифры), мелкий текст тёмный ===== */
+:root{--f-head:"Unbounded",system-ui,sans-serif;--f-body:"Onest",system-ui,sans-serif;--r:24px;--r-sm:16px;--wrap:1240px;--gut:16px;--ease:cubic-bezier(.2,.7,.2,1);
+  --bg:#f6f4f1;--bg2:#eeebe6;--card:#ffffff;--card2:#f3f1ed;--line:#e3dfd8;--tx:#151513;--mut:#5e5b55;
+  --ac:#E10600;--ac-soft:#fde3e1;--on-ac:#ffffff;--star:#f5a400;--pin:#E10600}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-user-drag:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+h1,h2,h3{font-family:var(--f-head);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+h2{font-size:clamp(28px,4.4vw,52px);margin-bottom:clamp(28px,4vw,48px);max-width:18ch}
+h2 em,h1 em{font-style:normal;color:var(--ac)}
+section{padding:clamp(56px,8vw,112px) 0}
+.stars{display:inline-flex;gap:2px;color:var(--star)}
+.stars svg{width:16px;height:16px}
+.pin{width:18px;height:18px;color:var(--pin);flex:none}
+
+/* кнопки */
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:0;box-shadow:inset 0 0 0 1px var(--bd,var(--line));transition:transform .2s,box-shadow .3s,color .45s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.btn::before{content:"";position:absolute;z-index:-1;left:var(--x,50%);top:var(--y,50%);width:var(--s,300px);height:var(--s,300px);border-radius:50%;background:var(--fill,var(--ac));transform:translate(-50%,-50%) scale(0);transition:transform .55s var(--ease)}
+@media(hover:hover){.btn:hover::before{transform:translate(-50%,-50%) scale(1)}.btn:hover{box-shadow:none}}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-ac{background:var(--ac);color:var(--on-ac);--bd:transparent;--fill:var(--tx)}
+.btn-gh{--fill:var(--ac);background:var(--card)}
+@media(hover:hover){.btn-gh:hover{color:var(--on-ac)}}
+.btn-sm{height:44px;padding:0 20px;font-size:15px}
+
+/* шапка */
+.hdr{position:fixed;inset:0 0 auto;z-index:20;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.hdr.solid{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:12px;height:72px}
+.logo{display:flex;align-items:center;flex:none;font:700 22px/1 var(--f-head);letter-spacing:-.01em;color:var(--ac)}
+.nav{display:flex;gap:26px;margin:0 20px 0 auto;font-weight:500;font-size:15px}
+.nav a{color:var(--mut);transition:color .2s}.nav a:hover{color:var(--tx)}
+.burger{display:none;width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);position:relative;flex:none}
+.burger i,.burger i::before,.burger i::after{position:absolute;left:50%;top:50%;width:18px;height:2px;margin:-1px 0 0 -9px;background:var(--tx);border-radius:2px;transition:transform .3s,background .3s}
+.burger i::before,.burger i::after{content:"";left:0;top:0;margin:0}.burger i::before{transform:translateY(-6px)}.burger i::after{transform:translateY(6px)}
+.menu-open .burger i{background:transparent}.menu-open .burger i::before{transform:rotate(45deg)}.menu-open .burger i::after{transform:rotate(-45deg)}
+@media(max-width:1060px){
+  .burger{display:block;z-index:2}.hdr .wrap>.btn{margin-left:auto}
+  .nav{position:fixed;top:0;right:0;bottom:0;width:min(84vw,360px);flex-direction:column;gap:0;margin:0;padding:96px 24px 32px;background:var(--bg2);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .4s var(--ease);z-index:1}
+  .nav a{font:600 22px var(--f-head);color:var(--tx);padding:16px 0;border-bottom:1px solid var(--line)}
+  .menu-open .nav{transform:none}
+  .hdr::after{content:"";position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:0}
+  .menu-open .hdr::after{opacity:1;visibility:visible}
+  .hdr.solid,.menu-open .hdr{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--bg)}
+  .logo,.hdr .btn{position:relative;z-index:2}
+}
+@media(max-width:400px){.logo{font-size:18px}.hdr .btn-sm{padding:0 16px}}
+.lock,.menu-open{overflow:hidden}
+
+/* первый экран */
+.hero{position:relative;min-height:min(100svh,820px);display:flex;flex-direction:column;justify-content:center;padding:100px 0 clamp(48px,6vw,80px);overflow:hidden}
+.hero .grid{width:100%;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:32px}
+.hero h1{font-size:clamp(32px,4.4vw,60px);max-width:15ch}
+.hero .lead{font-size:clamp(17px,1.5vw,19px);color:var(--mut);max-width:42ch;margin-top:22px}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hours{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.hours span{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-size:15px}
+.hours span.on::before{content:"";width:8px;height:8px;border-radius:50%;background:#2fb344}
+.hours span.off{color:var(--mut)}
+.trust{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid var(--line);max-width:460px}
+.trust b{font:700 34px/1 var(--f-head);letter-spacing:-.03em;color:var(--ac)}
+.trust span{font-size:14px;color:var(--mut);line-height:1.35}.trust .stars{color:var(--star)}
+.hpic{position:relative;aspect-ratio:1;width:min(100%,560px);justify-self:center}
+.hpic::before{content:"";position:absolute;inset:6% 0 6% 10%;border-radius:50%;background:var(--ac-soft)}
+.hpic::after{content:"";position:absolute;left:20%;right:16%;bottom:0;height:7%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.25),transparent)}
+.hpic img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(-1.5deg)}}
+@media(max-width:900px){.hero{min-height:auto;padding:88px 0 48px}.hero .grid{grid-template-columns:1fr;gap:12px}.hpic{order:-1;width:min(72%,360px)}.hero .acts .btn{flex:1 1 100%}}
+
+/* как мы работаем */
+.how{display:grid;grid-template-columns:1.4fr .6fr;gap:32px;align-items:center}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{position:relative;padding:28px 0 0;border-top:1px solid var(--line)}
+.step::before{content:"";position:absolute;left:0;top:-1px;height:3px;width:100%;background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease)}
+.step.in::before{transform:none}
+.step:nth-child(2)::before{transition-delay:.25s}.step:nth-child(3)::before{transition-delay:.5s}
+.step i{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ac);color:var(--on-ac)}
+.step i svg{width:22px;height:22px}
+.step h3{font-size:clamp(19px,2vw,24px);margin:16px 0 10px}
+.step p{color:var(--mut);max-width:30ch}
+.note{color:var(--mut);font-size:14px;margin-top:32px}
+.how .tools img{width:100%;transform:rotate(-4deg);transition:transform .8s var(--ease)}
+.how:hover .tools img{transform:rotate(0) scale(1.03)}
+@media(max-width:900px){.how{grid-template-columns:1fr}.how .tools{display:none}}
+@media(max-width:760px){.steps{grid-template-columns:1fr;gap:24px}}
+
+/* отзывы */
+.rev{display:grid;grid-template-columns:360px 1fr;gap:12px;align-items:start}
+.rev>*{min-width:0}
+.rate{background:var(--ac);color:var(--on-ac);border-radius:var(--r);padding:30px;position:sticky;top:96px}
+.src{display:flex;align-items:center;gap:8px;font-weight:500;font-size:15px}
+.rate .big{display:flex;align-items:center;gap:16px;margin:22px 0 6px}
+.rate .big b{font:700 80px/1 var(--f-head);letter-spacing:-.05em}
+.rate .big .stars{color:var(--on-ac)}.rate .big .stars svg{width:20px;height:20px}
+.rate .sub{font-size:16px}
+.quotes{columns:2;column-gap:12px}
+.q{break-inside:avoid;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin-bottom:12px}
+.q header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ava{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font:700 16px var(--f-head);background:var(--ac);color:var(--on-ac);flex:none}
+.q header b{display:block;font-weight:600;line-height:1.2}
+.q header small{color:var(--mut);font-size:13px}
+.q .stars{margin-bottom:10px}
+.q p{font-size:16.5px;line-height:1.5}
+@media(max-width:1000px){.rev{grid-template-columns:1fr}.rate{position:static}}
+@media(max-width:700px){.quotes{columns:auto;display:flex;gap:10px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding:0 var(--gut);margin:0 calc(var(--gut)*-1);padding:0 var(--gut) 6px;scrollbar-width:none}.quotes::-webkit-scrollbar{display:none}.q{flex:0 0 86%;scroll-snap-align:start;margin:0;opacity:1!important;transform:none!important}}
+.swipe{display:none;color:var(--mut);font-size:14px;margin-top:12px}
+@media(max-width:700px){.swipe{display:block}}
+
+/* услуги */
+.hl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.hl>div{background:var(--ac);color:var(--on-ac);border-radius:var(--r);padding:26px 28px;display:flex;gap:18px;align-items:flex-start}
+.hl svg{width:34px;height:34px;flex:none}
+.hl h3{font-size:clamp(19px,2vw,24px);line-height:1.2}
+.hl p{margin-top:8px;font-size:15.5px}
+@media(max-width:760px){.hl{grid-template-columns:1fr}.hl>div{padding:22px}}
+.svc{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.sv{grid-column:span 2;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;overflow:hidden;transition:border-color .3s}
+.sv.wide{grid-column:span 3}
+.sv:hover{border-color:var(--mut)}
+.sv .pic{height:210px;margin:-8px -8px 18px;display:grid;place-items:center;border-radius:var(--r-sm);background:radial-gradient(55% 60% at 50% 58%,var(--ac-soft),transparent)}
+.sv .pic img{max-height:190px;max-width:80%;object-fit:contain;transition:transform .6s var(--ease)}
+.sv:hover .pic img{transform:translateY(-6px) rotate(-2deg) scale(1.04)}
+.sv h3{font-size:21px;line-height:1.2;margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.chips span{border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:14.5px;line-height:1.2}
+.chips span.y{background:var(--ac);border-color:var(--ac);color:var(--on-ac);font-weight:600}
+.sv .btn{margin-top:auto;align-self:flex-start}
+@media(max-width:960px){.svc{grid-template-columns:1fr 1fr}.sv,.sv.wide{grid-column:auto}}
+@media(max-width:640px){.svc{grid-template-columns:1fr}.sv{padding:22px}.sv .pic{height:160px}.sv .pic img{max-height:140px}.sv .btn{align-self:stretch}}
+.nch{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 26px 32px}
+.nch small{display:block;color:var(--mut);font-size:15px;margin-bottom:6px}
+.nch b{font:700 clamp(36px,4.6vw,56px)/1 var(--f-head);letter-spacing:-.04em;color:var(--ac)}
+.nch b span{font-size:.45em;letter-spacing:0;margin-left:4px}
+.nch p{flex:1 1 220px;color:var(--mut)}
+@media(max-width:700px){.nch{padding:22px}.nch .btn{width:100%}}
+
+/* почему мы */
+.why{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.why>div{grid-column:span 2;position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 26px 28px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.why>div:nth-child(-n+2){grid-column:span 3}
+.why>div:first-child{background:var(--ac);border-color:var(--ac);color:var(--on-ac)}
+.why svg{width:34px;height:34px}
+.why h3{font-size:clamp(20px,2vw,26px);margin-top:28px}
+.why p{color:var(--mut);margin-top:8px;font-size:15.5px;max-width:30ch}.why>div:first-child p{color:var(--on-ac)}
+.why .card-img{position:absolute;right:-10px;top:-14px;width:170px;opacity:.95}
+@media(max-width:860px){.why{grid-template-columns:1fr 1fr}.why>div,.why>div:nth-child(-n+2){grid-column:auto}.why>div:first-child{grid-column:1/-1}}
+@media(max-width:520px){.why>div{padding:18px;min-height:160px}.why h3{font-size:18px;margin-top:20px}.why p{font-size:14px}.why .card-img{width:120px;right:-16px}}
+
+/* как добраться */
+.cnt{display:grid;grid-template-columns:1fr 1.3fr;gap:12px}
+.info{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px;display:flex;flex-direction:column;gap:24px}
+.info dt{color:var(--mut);font-size:14px;margin-bottom:6px}
+.info dd{font-size:18px;font-weight:500}
+.info dd a{border-bottom:2px solid var(--ac)}
+.info dd small{display:block;font-size:14px;color:var(--mut);font-weight:400}
+.entry{display:flex;align-items:center;gap:12px;background:var(--ac-soft);border-radius:var(--r-sm);padding:14px 16px;font-weight:600}
+.entry svg{width:26px;height:26px;color:var(--ac);flex:none}
+.hrs{display:grid;grid-template-columns:auto 1fr;gap:4px 20px}
+.info .acts{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px}
+.map{position:relative;border-radius:var(--r);overflow:hidden;min-height:460px;background:var(--card);border:1px solid var(--line)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;opacity:0;transition:opacity .6s}
+.map.ok iframe{opacity:1}
+.map .ph{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:10px;color:var(--mut);font-size:15px;background:repeating-linear-gradient(135deg,var(--card) 0 14px,var(--card2) 14px 15px)}
+.map .ph .pin{width:36px;height:36px}
+.map .cover{position:absolute;inset:0;z-index:2;display:none;align-items:flex-end;justify-content:center;padding:16px}
+.map .cover span{background:rgba(0,0,0,.7);color:#fff;font-size:14px;padding:9px 16px;border-radius:99px}
+@media(hover:none){.map.ok .cover{display:flex}}
+@media(max-width:860px){.cnt{grid-template-columns:1fr}.map{min-height:340px}.info{padding:24px}.info .btn{flex:1 1 100%}}
+
+/* подвал */
+.ftr{background:var(--bg2);border-top:1px solid var(--line);font-size:15px}
+.ftr .top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding:56px 0 44px}
+.ftr h4{font:500 13px var(--f-body);color:var(--mut);margin-bottom:14px;text-transform:uppercase;letter-spacing:.06em}
+.ftr li{list-style:none;margin-bottom:9px}
+.ftr li button{text-align:left;padding:0;font-size:inherit;line-height:inherit}
+.ftr li a,.ftr li button{transition:box-shadow .2s}.ftr li a:hover,.ftr li button:hover{box-shadow:inset 0 -2px var(--ac)}
+.ftr .brand .logo{font-size:26px;margin-bottom:14px}
+.ftr .brand p{color:var(--mut);max-width:32ch}
+.ftr .brand .stars{margin-top:16px}
+.ftr .brand small{display:block;color:var(--mut);margin-top:4px}
+.ftr .bot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding:20px 0 28px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+@media(max-width:860px){.ftr .top{grid-template-columns:1fr 1fr}.ftr .brand{grid-column:1/-1}}
+.demo{background:var(--tx);color:#fff;text-align:center;font-size:13px;font-weight:500;padding:12px var(--gut)}
+
+/* политика */
+dialog{position:fixed;inset:0;margin:auto;width:min(720px,calc(100% - 24px));max-width:none;height:min(86dvh,860px);max-height:none;border:1px solid var(--line);border-radius:var(--r);background:var(--card);color:var(--tx);padding:0;overflow:hidden}
+dialog[open]{display:flex;flex-direction:column}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog .d-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px 14px 28px;border-bottom:1px solid var(--line);flex:none}
+dialog .d-top b{font:700 18px var(--f-head)}
+dialog .x{width:40px;height:40px;border-radius:50%;background:var(--card2);font-size:22px;line-height:1;flex:none}
+dialog .in-d{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:8px 28px 32px;overflow-wrap:anywhere}
+dialog h3{font:600 17px var(--f-body);margin:22px 0 8px}
+dialog p,dialog li{color:var(--mut);font-size:15px;margin-bottom:8px}
+dialog ul{padding-left:20px}
+@media(max-width:640px){dialog{width:100%;height:92dvh;margin:auto 0 0;border-radius:var(--r) var(--r) 0 0;border-bottom:0}dialog .in-d{padding:4px 20px 28px}}
+
+/* телефон */
+@media(max-width:640px){section{padding:48px 0}h2{margin-bottom:24px}main .btn{width:100%}}
+
+/* лёгкое появление */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}.step::before{transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star" viewBox="0 0 20 20"><path fill="currentColor" d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8l-5.3 2.9 1.2-5.9L1.4 7.7l6-.7z"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></symbol>
+</svg>
+
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="#top" aria-label="ЦТС-СЕРВИС — на главную">ЦТС-СЕРВИС</a>
+  <nav class="nav">
+    <a href="#kak">Как работаем</a><a href="#otzyvy">Отзывы</a><a href="#uslugi">Услуги</a><a href="#pochemu">Почему мы</a><a href="#kontakty">Как добраться</a>
+  </nav>
+  <a class="btn btn-ac btn-sm" href="tel:+375296500676">Позвонить</a>
+  <button class="burger" type="button" aria-label="Меню"><i></i></button>
+</div></header>
+
+<main>
+<!-- 1. Первый экран -->
+<section class="hero" id="top">
+  <div class="wrap grid">
+    <div>
+      <h1 class="rv">Ремонт подвески, тормозов и&nbsp;двигателя на&nbsp;<em>Тимирязева</em></h1>
+      <p class="lead rv" style="--d:.1s">Автосервис ЦТС-СЕРВИС в Минске, ул. Тимирязева, 9/6. Ремонтируем и гибриды, и китайские марки.</p>
+      <div class="acts rv" style="--d:.2s">
+        <a class="btn btn-ac" href="tel:+375296500676"><svg><use href="#phone"/></svg>Позвонить +375 29 650-06-76</a>
+        <a class="btn btn-gh" href="#kontakty">Как добраться</a>
+      </div>
+      <div class="hours rv" style="--d:.25s"><span class="on">Пн–Пт 9:00–19:00</span><span class="off">Сб–Вс выходной</span></div>
+      <div class="trust rv" style="--d:.3s"><b>4,8</b><div><span class="stars" aria-label="Рейтинг 4,8 из 5"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><span style="display:block;margin-top:4px">на Яндекс Картах</span></div></div>
+    </div>
+    <div class="hpic rv" style="--d:.15s"><img src="img/hero-caliper.webp" alt="Красный тормозной суппорт с диском — ремонт тормозов в ЦТС-СЕРВИС, Минск" width="694" height="720" fetchpriority="high"></div>
+  </div>
+</section>
+
+<!-- 2. Как мы работаем — из отзывов клиентов -->
+<section id="kak" style="padding-top:clamp(24px,4vw,56px)"><div class="wrap">
+  <h2 class="rv">Как мы <em>работаем</em></h2>
+  <div class="how">
+    <div>
+      <div class="steps">
+        <div class="step rv"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></svg></i><h3>Фото и цена до ремонта</h3><p>Нашли неисправность — присылаем фото, стоимость и варианты замены. Делаем то, о чём договорились.</p></div>
+        <div class="step rv" style="--d:.1s"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></i><h3>Показываем снятые детали</h3><p>Старые запчасти можно увидеть своими глазами. Мастер пришлёт и фотоотчёт.</p></div>
+        <div class="step rv" style="--d:.2s"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 3h10l1 9H6zM5 12h14v4H5zM8 16v5M16 16v5"/></svg></i><h3>Чехлы на сиденья</h3><p>Перед работой надеваем одноразовые чехлы — салон остаётся чистым.</p></div>
+      </div>
+      <p class="note rv">Так о нас пишут клиенты в отзывах на Яндекс Картах.</p>
+    </div>
+    <div class="tools rv"><img src="img/cta-tools.webp" alt="Набор инструментов автосервиса" width="421" height="431" loading="lazy" decoding="async"></div>
+  </div>
+</div></section>
+
+<!-- 3. Отзывы -->
+<section id="otzyvy" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Что говорят <em>клиенты</em></h2>
+  <div class="rev">
+    <div class="rate rv">
+      <div class="src"><svg class="pin" style="color:var(--on-ac)"><use href="#pin"/></svg>Яндекс Карты</div>
+      <div class="big"><b>4,8</b><span class="stars" aria-label="Рейтинг 4,8 из 5"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span></div>
+      <div class="sub">22 оценки, 16 отзывов</div>
+    </div>
+    <div>
+      <div class="quotes">
+        <article class="q rv"><header><div class="ava">P</div><div><b>Pavlik P.</b><small>5 ноября 2025</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Обращаюсь не первый раз. На BMW E70 гудел подшипник ступицы — заменили быстро и за адекватные деньги. Отдельное спасибо мастеру Андрею.</p></article>
+        <article class="q rv" style="--d:.08s"><header><div class="ava">В</div><div><b>Виктор Е.</b><small>5 октября</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Приехал по совету коллеги чинить подвеску. Заодно нашли подтёки антифриза. Присылали фото и цену, показали испорченные детали. Теперь езжу только сюда.</p></article>
+        <article class="q rv"><header><div class="ava">A</div><div><b>Artem Strezh</b><small>9 октября 2025</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Уже не первый год делаю здесь подвеску и тормоза. Мастер Андрей подскажет, что нужно, и пришлёт фотоотчёт. Цены доступные, делают быстро.</p></article>
+        <article class="q rv" style="--d:.08s"><header><div class="ava">Е</div><div><b>Елена М.</b><small>28 сентября</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>На BMW вырвало задний рычаг, привезли на эвакуаторе. Отремонтировали быстро, цены очень адекватные.</p></article>
+        <article class="q rv"><header><div class="ava">М</div><div><b>Максим К.</b><small>5 октября</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Приехал на плановое ТО и диагностику подвески — нашли, что дело в амортизаторах. Приятно, что на сиденье надевают одноразовые чехлы.</p></article>
+        <article class="q rv" style="--d:.08s"><header><div class="ava">D</div><div><b>dimien</b><small>28 ноября 2025</small></div></header><span class="stars"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span>
+          <p>Толково консультируют, сроки держат, цены радуют. Машина на гарантии у дилера, но колодки и диски меняю только здесь.</p></article>
+      </div>
+      <p class="swipe">Листайте вбок →</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- 4. Услуги (цены в карточке — заглушки, не публикуем; только нормочас) -->
+<section id="uslugi" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Что мы <em>ремонтируем</em></h2>
+  <div class="hl">
+    <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><div><h3>Гибриды и электромобили</h3><p>Ремонт гибридов, замена масла в редукторе электромобиля</p></div></div>
+    <div class="rv" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M3 13l2-5a2 2 0 0 1 2-1.4h10A2 2 0 0 1 19 8l2 5v5h-3v-2H6v2H3z"/><path d="M3 13h18"/><circle cx="7.5" cy="13" r=".6" fill="currentColor"/><circle cx="16.5" cy="13" r=".6" fill="currentColor"/></svg><div><h3>Китайские марки</h3><p>Geely, Haval, Chery, BYD, Voyah, Deepal, EXEED и другие</p></div></div>
+  </div>
+  <div class="svc">
+    <article class="sv wide rv">
+      <div class="pic"><img src="img/svc-chassis.webp" alt="Амортизатор со ступицей — ремонт подвески в Минске" width="323" height="427" loading="lazy" decoding="async"></div>
+      <h3>Подвеска и рулевое</h3>
+      <div class="chips"><span>Диагностика подвески</span><span>Ремонт подвески любой сложности</span><span>Ремонт ходовой части</span><span>Ремонт рулевого управления</span><span>Ремонт рулевых реек</span><span>Ремонт гидроусилителя руля</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
+    </article>
+    <article class="sv wide rv" style="--d:.08s">
+      <div class="pic"><img src="img/fact-discs.webp" alt="Тормозной диск с суппортом — ремонт тормозов" width="374" height="293" loading="lazy" decoding="async"></div>
+      <h3>Тормоза</h3>
+      <div class="chips"><span>Ремонт тормозной системы</span><span>Ремонт тормозного суппорта</span><span class="y">Пескоструйная обработка суппорта</span><span class="y">Проточка тормозных дисков</span><span>Замена тормозных трубок</span><span>Ремонт ручного тормоза</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
+    </article>
+    <article class="sv wide rv">
+      <div class="pic"><img src="img/svc-engine.webp" alt="Поршень и шестерня ГРМ — ремонт двигателя" width="227" height="430" loading="lazy" decoding="async"></div>
+      <h3>Двигатель</h3>
+      <div class="chips"><span>Компьютерная диагностика</span><span>Ремонт и замена двигателя</span><span>Замена ГРМ</span><span class="y">Эндоскопия двигателя</span><span>Раскоксовка</span><span>Компрессия дизельного двигателя</span><span>Ремонт стартеров</span><span>Ремонт генераторов</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
+    </article>
+    <article class="sv wide rv" style="--d:.08s">
+      <div class="pic"><img src="img/svc-diag.webp" alt="Сканер и компрессор кондиционера — ремонт системы охлаждения и кондиционера" width="466" height="382" loading="lazy" decoding="async"></div>
+      <h3>Охлаждение и кондиционер</h3>
+      <div class="chips"><span>Диагностика и ремонт системы охлаждения</span><span>Промывка радиатора печки</span><span>Заправка и ремонт автокондиционера</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
+    </article>
+    <article class="sv rv">
+      <h3>Трансмиссия и сцепление</h3>
+      <div class="chips"><span>Ремонт АКПП</span><span>Ремонт КПП</span><span>Ремонт трансмиссии</span><span>Замена и ремонт сцепления</span><span>Карданные валы</span><span>Ремонт моста</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
+    </article>
+    <article class="sv rv" style="--d:.08s">
+      <h3>Выхлоп и сварка</h3>
+      <div class="chips"><span>Ремонт выхлопной системы</span><span>Сварка выхлопа и глушителя</span><span class="y">Аргонная сварка алюминиевых поддонов</span><span>Удаление катализаторов</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
+    </article>
+    <article class="sv rv" style="--d:.16s">
+      <h3>Обслуживание</h3>
+      <div class="chips"><span>ТО и полное сервисное обслуживание</span><span>Замена масла в двигателе, КПП и редукторе</span><span>Регулировка света фар</span><span>Ремонт коммерческого транспорта</span></div>
+      <a class="btn btn-ac btn-sm" href="tel:+375296500676">Узнать цену</a>
+    </article>
+  </div>
+  <div class="nch rv"><div><small>Нормочас</small><b>от 90<span>BYN</span></b></div><p>Стоимость вашего ремонта подскажем по телефону.</p><a class="btn btn-ac" href="tel:+375296500676"><svg><use href="#phone"/></svg>+375 29 650-06-76</a></div>
+</div></section>
+
+<!-- 5. Почему мы — только особенности из карточки -->
+<section id="pochemu" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Почему выбирают <em>нас</em></h2>
+  <div class="why">
+    <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.3 8 11 4.6-1.7 8-6 8-11V5z"/><path d="m8.5 12 2.5 2.5 4.5-5" stroke-linecap="round"/></svg><div><h3>Гарантия</h3><p>Условия подскажем по телефону</p></div></div>
+    <div class="rv" style="--d:.06s"><img class="card-img" src="img/fact-card.webp" alt="" width="393" height="381" loading="lazy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><div><h3>Оплата картой и переводом</h3><p>Можно и наличными, есть безналичный расчёт</p></div></div>
+    <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg><div><h3>Парковка</h3><p>Есть где оставить машину</p></div></div>
+    <div class="rv" style="--d:.06s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg><div><h3>Wi-Fi</h3><p>И туалет для клиентов</p></div></div>
+    <div class="rv" style="--d:.12s"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="10" r="2"/><circle cx="10" cy="6" r="2"/><circle cx="14" cy="6" r="2"/><circle cx="18" cy="10" r="2"/><path d="M12 11c-3 0-6 4.5-6 7 0 1.5 1.2 2 2.5 2 1.4 0 2.2-.8 3.5-.8s2.1.8 3.5.8c1.3 0 2.5-.5 2.5-2 0-2.5-3-7-6-7z"/></svg><div><h3>Можно с собакой</h3><p>Приезжайте вместе с питомцем</p></div></div>
+  </div>
+</div></section>
+
+<!-- 6. Как добраться -->
+<section id="kontakty" style="padding-top:0"><div class="wrap">
+  <h2 class="rv">Как <em>добраться</em></h2>
+  <div class="cnt">
+    <dl class="info rv">
+      <div><dt>Адрес</dt><dd>Минск, ул. Тимирязева, 9/6</dd></div>
+      <div class="entry"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Вход слева от вывески</div>
+      <div><dt>Телефоны</dt><dd><a href="tel:+375296500676">+375 29 650-06-76</a> <small>A1</small></dd><dd style="margin-top:8px"><a href="tel:+375336719903">+375 33 671-99-03</a> <small>МТС</small></dd></div>
+      <div><dt>Часы работы</dt><dd class="hrs"><span>Пн–Пт</span><span>9:00–19:00</span><span>Сб–Вс</span><span>выходной</span></dd></div>
+      <div class="acts"><a class="btn btn-ac btn-sm" href="tel:+375296500676">Позвонить</a><a class="btn btn-gh btn-sm" href="https://yandex.by/maps/?text=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A2%D0%B8%D0%BC%D0%B8%D1%80%D1%8F%D0%B7%D0%B5%D0%B2%D0%B0%2C%209%2F6" target="_blank" rel="noopener">Построить маршрут</a></div>
+    </dl>
+    <!-- ДЕМО: когда будет ссылка на карточку в Яндекс Картах — поставить виджет организации -->
+    <div class="map rv" style="--d:.1s" data-src="https://yandex.by/map-widget/v1/?text=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A2%D0%B8%D0%BC%D0%B8%D1%80%D1%8F%D0%B7%D0%B5%D0%B2%D0%B0%2C%209%2F6&amp;z=16"><div class="ph"><svg class="pin"><use href="#pin"/></svg>Загружаем карту…</div><button class="cover" type="button" aria-label="Включить карту"><span>Нажмите, чтобы двигать карту</span></button></div>
+  </div>
+</div></section>
+</main>
+
+<footer class="ftr"><div class="wrap">
+  <div class="top">
+    <div class="brand"><div class="logo">ЦТС-СЕРВИС</div><p>Автосервис в Минске на ул. Тимирязева, 9/6. Вход слева от вывески.</p>
+      <span class="stars" aria-label="Рейтинг 4,8 из 5"><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg><svg><use href="#star"/></svg></span><small>4,8 на Яндекс Картах</small></div>
+    <div><h4>Контакты</h4><ul><li><a href="tel:+375296500676">+375 29 650-06-76</a></li><li><a href="tel:+375336719903">+375 33 671-99-03</a></li><li>ул. Тимирязева, 9/6</li><li>Пн–Пт 9:00–19:00</li><li>Сб–Вс выходной</li></ul></div>
+    <div><h4>Разделы</h4><ul><li><a href="#kak">Как работаем</a></li><li><a href="#otzyvy">Отзывы</a></li><li><a href="#uslugi">Услуги</a></li><li><a href="#pochemu">Почему мы</a></li><li><a href="#kontakty">Как добраться</a></li></ul></div>
+    <div><h4>Документы</h4><ul><li><button type="button" data-open="privacy">Политика конфиденциальности</button></li></ul></div>
+  </div>
+  <!-- реквизиты (компания, УНП) добавить при запуске -->
+  <div class="bot"><span>© <span id="yr">2026</span> ЦТС-СЕРВИС</span><span>Рейтинг и отзывы — Яндекс Карты</span></div>
+</div></footer>
+<!-- ДЕМО: убрать плашку при запуске -->
+<div class="demo">Демо-версия сайта. Подготовлена бесплатно, удалим по первой просьбе.</div>
+
+<dialog id="privacy" aria-label="Политика конфиденциальности">
+  <div class="d-top"><b>Политика конфиденциальности</b><button class="x" type="button" data-close aria-label="Закрыть">×</button></div>
+  <div class="in-d">
+  <p>Документ составлен в соответствии с Законом Республики Беларусь от 7 мая 2021 г. № 99-З «О защите персональных данных».</p>
+  <h3>Кто отвечает за сайт</h3><p>ЦТС-СЕРВИС. Адрес: Минск, ул. Тимирязева, 9/6. Телефоны: +375 29 650-06-76, +375 33 671-99-03.</p>
+  <h3>Какие данные мы собираем</h3><p>На сайте нет форм и регистрации: мы не просим ввести имя, телефон или другие персональные данные. Связаться с нами можно по телефону — в этом случае данные обрабатываются только для ответа на ваше обращение и записи на ремонт.</p>
+  <h3>Сторонние сервисы</h3><p>На сайте работают сервисы других компаний, которые могут сохранять файлы cookie и получать технические данные (IP-адрес, тип браузера):</p>
+  <ul><li>Яндекс Карты — карта с нашим адресом (ООО «Яндекс»);</li><li>Google Fonts — шрифты сайта (Google LLC).</li></ul>
+  <p>Их обработку регулируют политики этих компаний. Отключить cookie можно в настройках браузера — сайт продолжит работать.</p>
+  <h3>Ваши права</h3><p>Вы вправе получить информацию об обработке ваших данных, потребовать их изменения или удаления, отозвать согласие. Для этого обратитесь по контактам выше.</p>
+</div></dialog>
+
+<script>
+(function(){
+const $ = s => document.querySelector(s), root = document.documentElement;
+$("#yr").textContent = new Date().getFullYear();
+
+/* политика */
+const dlg = $("#privacy");
+const openP = () => { root.classList.add("lock"); dlg.showModal ? dlg.showModal() : dlg.setAttribute("open", ""); };
+dlg.addEventListener("close", () => root.classList.remove("lock"));
+document.querySelectorAll("[data-open=privacy]").forEach(b => b.onclick = openP);
+dlg.querySelector("[data-close]").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+if (location.hash === "#privacy") openP();
+
+/* кнопки: заливка растёт от курсора */
+document.querySelectorAll(".btn").forEach(b => b.addEventListener("pointerenter", e => {
+  const r = b.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+  b.style.setProperty("--x", x + "px"); b.style.setProperty("--y", y + "px");
+  b.style.setProperty("--s", 2.2 * Math.hypot(Math.max(x, r.width - x), Math.max(y, r.height - y)) + "px");
+}));
+
+/* меню и переходы к блокам */
+$(".burger").onclick = () => root.classList.toggle("menu-open");
+$(".hdr").addEventListener("click", e => { if (e.target === $(".hdr")) root.classList.remove("menu-open"); });
+addEventListener("keydown", e => { if (e.key === "Escape") root.classList.remove("menu-open"); });
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+  const id = a.getAttribute("href"); const t = id === "#top" ? document.body : $(id); if (!t) return;
+  e.preventDefault(); root.classList.remove("menu-open");
+  t.querySelectorAll(".rv").forEach(el => el.classList.add("in"));
+  const top = id === "#top" ? 0 : scrollY + t.getBoundingClientRect().top - 72;
+  scrollTo({ top: Math.max(0, top), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  history.replaceState(null, "", id);
+}));
+
+/* карта: грузится заранее, на телефоне включается касанием */
+const map = $(".map[data-src]");
+if (map) {
+  const load = () => { if (map.querySelector("iframe")) return;
+    const f = document.createElement("iframe"); f.src = map.dataset.src; f.title = "ЦТС-СЕРВИС на карте"; f.allowFullscreen = true;
+    f.onload = () => setTimeout(() => map.classList.add("ok"), 150); map.appendChild(f); };
+  new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { load(); o.disconnect(); } }, { rootMargin: "1200px 0px" }).observe(map);
+  map.querySelector(".cover").onclick = e => e.currentTarget.remove();
+}
+
+/* шапка с фоном после прокрутки */
+const h = $(".hdr"), onScroll = () => h.classList.toggle("solid", scrollY > 20);
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+/* плавное появление */
+const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add("in"); io.unobserve(e.target); }), { rootMargin: "0px 0px -8% 0px" });
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
