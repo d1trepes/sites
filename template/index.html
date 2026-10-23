@@ -498,7 +498,8 @@ const privacy = `<dialog id="privacy" aria-label="Политика конфид�
 </div></dialog>`;
 
 
-$("#app").outerHTML = hdr + `<main>${hero}${facts}${brands}${svc}${why}${rev}${steps}${cnt}${cta}</main>` + ftr + privacy;
+const light = document.documentElement.dataset.theme === "светлая";
+$("#app").outerHTML = (hdr + `<main>${hero}${facts}${brands}${svc}${why}${rev}${steps}${cnt}${cta}</main>` + ftr + privacy).replace(/src="img\/(?!light\/)/g, light ? 'src="img/light/' : 'src="img/');
 
 /* разметка для поисковиков — только из данных выше */
 const ld = { "@context": "https://schema.org", "@type": "AutoRepair", name: S.name, telephone: S.phone,
@@ -528,7 +529,10 @@ document.querySelectorAll(".btn").forEach(b => b.addEventListener("pointerenter"
 
 /* переключатель темы (запоминается в этом браузере) */
 $(".tg").onclick = () => { const t = root.dataset.theme === "светлая" ? "гаражная" : "светлая";
-  root.dataset.theme = t; try { localStorage.setItem("theme", t); } catch (e) {} };
+  root.dataset.theme = t; try { localStorage.setItem("theme", t); } catch (e) {}
+  // картинки: для светлой темы — светлые версии из img/light/
+  document.querySelectorAll('img[src^="img/"]').forEach(i => { const u = i.getAttribute("src");
+    i.src = t === "светлая" ? u.replace(/^img\/(?!light\/)/, "img/light/") : u.replace(/^img\/light\//, "img/"); }); };
 
 /* меню и переходы к блокам */
 $(".burger").onclick = () => root.classList.toggle("menu-open");
