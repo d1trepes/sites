@@ -65,14 +65,12 @@ section{padding:clamp(56px,8vw,112px) 0}
 .pin{width:18px;height:18px;color:var(--pin);flex:none}
 
 /* кнопки */
-.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:0;box-shadow:inset 0 0 0 1px var(--bd,var(--line));transition:transform .2s,box-shadow .3s,color .45s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
-.btn::before{content:"";position:absolute;z-index:-1;left:var(--x,50%);top:var(--y,50%);width:var(--s,300px);height:var(--s,300px);border-radius:50%;background:var(--fill,var(--ac));transform:translate(-50%,-50%) scale(0);transition:transform .55s var(--ease)}
-@media(hover:hover){.btn:hover::before{transform:translate(-50%,-50%) scale(1)}.btn:hover{box-shadow:none}}
-.btn:active{transform:scale(.97)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:0;box-shadow:inset 0 0 0 1px var(--bd,var(--line));transition:background .2s,box-shadow .2s,color .2s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:scale(.98)}
 .btn svg{width:18px;height:18px;flex:none}
-.btn-ac{background:var(--ac);color:var(--on-ac);--bd:transparent;--fill:var(--tx)}
-.btn-gh{--fill:var(--ac);background:var(--card)}
-@media(hover:hover){.btn-gh:hover{color:var(--on-ac)}}
+.btn-ac{background:var(--ac);color:var(--on-ac);--bd:transparent}
+.btn-gh{background:var(--card)}
+@media(hover:hover){.btn-ac:hover{background:#b80500}.btn-gh:hover{--bd:var(--tx)}}
 .btn-sm{height:44px;padding:0 20px;font-size:15px}
 
 /* шапка */
@@ -178,12 +176,12 @@ section{padding:clamp(56px,8vw,112px) 0}
 .cta h2{margin:0 0 20px;font-size:clamp(30px,4.4vw,56px)}
 .cta .tel{display:inline-block;font:700 clamp(24px,3.4vw,42px)/1 var(--f-head);letter-spacing:-.03em;margin-bottom:28px}
 .cta .row{display:flex;flex-wrap:wrap;gap:12px}
-.cta .btn{--bd:var(--on-ac);color:inherit;--fill:var(--on-ac)}
-.cta .btn.inv{background:var(--on-ac);color:var(--ac);--bd:transparent;--fill:var(--tx)}
-@media(hover:hover){.cta .btn:hover{color:var(--ac)}.cta .btn.inv:hover{color:#fff}}
-.cta .tools{justify-self:center;width:min(100%,380px)}
-.cta .tools img{width:100%}
-@media(max-width:860px){.cta{grid-template-columns:1fr}.cta .tools{width:min(70%,280px);order:-1}}
+.cta .btn{--bd:var(--on-ac);color:var(--on-ac)}
+.cta .btn.inv{background:var(--on-ac);color:var(--ac);--bd:transparent}
+@media(hover:hover){.cta .btn:hover{background:rgba(0,0,0,.12)}.cta .btn.inv:hover{background:#f1efeb}}
+.cta .tools{background:var(--bg);border-radius:var(--r);padding:24px;align-self:stretch;display:grid;place-items:center}
+.cta .tools img{width:100%;max-width:300px;height:auto}
+@media(max-width:860px){.cta{grid-template-columns:1fr}.cta .tools{display:none}}
 @media(max-width:640px){.cta .row{flex-direction:column}.cta .btn{width:100%}}
 
 /* как добраться */
@@ -434,13 +432,6 @@ document.querySelectorAll("[data-open=privacy]").forEach(b => b.onclick = openP)
 dlg.querySelector("[data-close]").onclick = () => dlg.close();
 dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
 if (location.hash === "#privacy") openP();
-
-/* кнопки: заливка растёт от курсора */
-document.querySelectorAll(".btn").forEach(b => b.addEventListener("pointerenter", e => {
-  const r = b.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
-  b.style.setProperty("--x", x + "px"); b.style.setProperty("--y", y + "px");
-  b.style.setProperty("--s", 2.2 * Math.hypot(Math.max(x, r.width - x), Math.max(y, r.height - y)) + "px");
-}));
 
 /* меню и переходы к блокам */
 $(".burger").onclick = () => root.classList.toggle("menu-open");
