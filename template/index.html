@@ -45,7 +45,7 @@ const SITE = {
   facts: [
     { img: "img/fact-car.webp",   text: "Легковые, коммерческие и отечественные авто" },
     { img: "img/fact-moto.webp",  text: "Мотоциклы и квадроциклы" },
-    { img: "img/fact-parts.webp", text: "Запчасти под заказ" },
+    { img: "img/fact-discs.webp", text: "Запчасти под заказ" },
     { img: "img/fact-card.webp",  text: "Оплата наличными и картой" }
   ],
 
@@ -111,13 +111,13 @@ section{padding:clamp(56px,8vw,112px) 0}
 .pin{width:18px;height:18px;color:var(--pin);flex:none}
 
 /* кнопки */
-.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:1px solid var(--line);transition:transform .2s,border-color .45s,color .45s;white-space:nowrap}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:0;box-shadow:inset 0 0 0 1px var(--bd,var(--line));transition:transform .2s,box-shadow .3s,color .45s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
 .btn::before{content:"";position:absolute;z-index:-1;left:var(--x,50%);top:var(--y,50%);width:var(--s,300px);height:var(--s,300px);border-radius:50%;background:var(--fill,var(--ac));transform:translate(-50%,-50%) scale(0);transition:transform .55s var(--ease)}
-@media(hover:hover){.btn:hover::before{transform:translate(-50%,-50%) scale(1)}}
+@media(hover:hover){.btn:hover::before{transform:translate(-50%,-50%) scale(1)}.btn:hover{box-shadow:none}}
 .btn:active{transform:scale(.97)}
-.btn-ac{background:var(--ac);color:var(--on-ac);border-color:var(--ac);--fill:var(--tx)}
-.btn-ac:hover{color:var(--bg);border-color:var(--tx)}
-.btn-gh{--fill:var(--ac)}.btn-gh:hover{color:var(--on-ac);border-color:var(--ac)}
+.btn-ac{background:var(--ac);color:var(--on-ac);--bd:transparent;--fill:var(--tx)}
+.btn-ac:hover{color:var(--bg)}
+.btn-gh{--fill:var(--ac)}.btn-gh:hover{color:var(--on-ac)}
 .btn-sm{height:44px;padding:0 20px;font-size:15px}
 
 /* шапка */
@@ -127,7 +127,17 @@ section{padding:clamp(56px,8vw,112px) 0}
 .logo{font:700 16px var(--f-head);text-transform:uppercase}
 .nav{display:flex;gap:26px;margin-left:auto;font-weight:500;font-size:15px}
 .nav a{color:var(--mut);transition:color .2s}.nav a:hover{color:var(--tx)}
-@media(max-width:960px){.nav{display:none}.hdr .btn{margin-left:auto}}
+.burger{display:none;width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line);position:relative;flex:none}
+.burger i,.burger i::before,.burger i::after{position:absolute;left:50%;top:50%;width:18px;height:2px;margin:-1px 0 0 -9px;background:var(--tx);border-radius:2px;transition:transform .3s,background .3s}
+.burger i::before,.burger i::after{content:"";left:0;margin:0}.burger i::before{transform:translateY(-6px)}.burger i::after{transform:translateY(6px)}
+.menu-open .burger i{background:transparent}.menu-open .burger i::before{transform:rotate(45deg)}.menu-open .burger i::after{transform:rotate(-45deg)}
+@media(max-width:960px){
+  .burger{display:block}.hdr .btn{margin-left:auto}
+  .nav{display:flex;position:fixed;inset:72px 0 auto;flex-direction:column;gap:0;margin:0;padding:8px var(--gut) 20px;background:var(--bg);border-bottom:1px solid var(--line);transform:translateY(-12px);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s}
+  .nav a{font:600 22px var(--f-head);color:var(--tx);padding:14px 0;border-bottom:1px solid var(--line)}
+  .menu-open .nav{transform:none;opacity:1;visibility:visible}
+  .menu-open .hdr{background:var(--bg);border-color:var(--line)}
+}
 
 /* первый экран */
 .hero{position:relative;min-height:min(100svh,860px);display:flex;flex-direction:column;justify-content:center;padding:96px 0 48px;overflow:hidden}
@@ -246,8 +256,8 @@ section{padding:clamp(56px,8vw,112px) 0}
 .cta h2{margin:0 0 20px;font-size:clamp(30px,4.8vw,62px)}
 .cta .tel{display:inline-block;font:700 clamp(24px,3.6vw,46px)/1 var(--f-head);letter-spacing:-.03em;margin-bottom:28px}
 .cta .row{display:flex;flex-wrap:wrap;gap:12px}
-.cta .btn{border-color:currentColor;color:inherit;--fill:var(--on-ac)}.cta .btn:hover{color:var(--ac)}
-.cta .btn.inv{background:var(--on-ac);color:var(--ac);border-color:var(--on-ac);--fill:#fff}.cta .btn.inv:hover{color:var(--on-ac)}
+.cta .btn{--bd:var(--on-ac);color:inherit;--fill:var(--on-ac)}.cta .btn:hover{color:var(--ac)}
+.cta .btn.inv{background:var(--on-ac);color:var(--ac);--bd:transparent;--fill:#fff}.cta .btn.inv:hover{color:var(--on-ac)}
 .cta .tools{position:relative;justify-self:center;width:min(100%,420px)}
 .cta .tools img{width:100%;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35));transform:rotate(-4deg);transition:transform .8s var(--ease)}
 .cta:hover .tools img{transform:rotate(0) scale(1.03)}
@@ -323,6 +333,7 @@ const hdr = `<header class="hdr"><div class="wrap">
   <a class="logo" href="#top">${esc(S.name)}</a>
   <nav class="nav">${nav.map(n => `<a href="${n[0]}">${n[1]}</a>`).join("")}</nav>
   <a class="btn btn-ac btn-sm" href="${tel}">Позвонить</a>
+  <button class="burger" type="button" aria-label="Меню"><i></i></button>
 </div></header>`;
 
 /* первый экран */
@@ -480,6 +491,20 @@ document.querySelectorAll(".btn").forEach(b => b.addEventListener("pointerenter"
   const r = b.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
   b.style.setProperty("--x", x + "px"); b.style.setProperty("--y", y + "px");
   b.style.setProperty("--s", 2.2 * Math.hypot(Math.max(x, r.width - x), Math.max(y, r.height - y)) + "px");
+}));
+
+/* меню и переходы к блокам */
+const root = document.documentElement;
+$(".burger").onclick = () => root.classList.toggle("menu-open");
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+  const id = a.getAttribute("href"); if (id === "#") return;
+  const t = id === "#top" ? document.body : $(id); if (!t) return;
+  e.preventDefault(); root.classList.remove("menu-open");
+  const head = 72, r = (t.querySelector(".wrap") || t).getBoundingClientRect(), free = innerHeight - head;
+  const top = id === "#top" ? 0 : scrollY + r.top - head - Math.max(16, (free - r.height) / 2);
+  t.querySelectorAll(".rv").forEach(el => el.classList.add("in"));
+  scrollTo({ top: Math.max(0, top), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  history.replaceState(null, "", id);
 }));
 
 /* шапка с фоном, кнопки внизу на телефоне */
