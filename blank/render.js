@@ -133,7 +133,7 @@ const BLOCKS = {
     if (!b.items?.length && !y.rating) return "";
     return sec(b, "otzyvy", `
   ${h2(b, "Что говорят клиенты")}
-  <div class="rev">
+  <div class="rev${y.rating ? "" : " norate"}">
     ${y.rating ? `<div class="rate rv">
       <div class="src">${PIN}Яндекс Карты</div>
       <div class="big"><b>${esc(y.rating)}</b>${stars(5)}</div>

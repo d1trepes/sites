@@ -510,3 +510,6 @@ section.notitle{padding-top:clamp(8px,2vw,24px)!important}
 /* бегущая строка: чередуем жирный текст и чистую обводку букв (без капсул) */
 .marq span:nth-child(even){border:0;border-radius:0;padding:10px 26px;font-weight:700;color:var(--bg);-webkit-text-stroke:0;
   text-shadow:1px 0 var(--mut),-1px 0 var(--mut),0 1px var(--mut),0 -1px var(--mut),.7px .7px var(--mut),-.7px -.7px var(--mut),.7px -.7px var(--mut),-.7px .7px var(--mut)}
+/* отзывы без рейтинга — на всю ширину */
+.rev.norate{grid-template-columns:1fr}
+@media(min-width:1001px){.rev.norate .quotes{columns:3}}
