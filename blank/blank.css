@@ -471,3 +471,30 @@ section.notitle{padding-top:clamp(8px,2vw,24px)!important}
 @media(min-width:901px){.car.w{width:115%}}
 /* карточка услуг на всю ширину: метки шире, картинка справа */
 @media(min-width:561px){.svc.side .sv[style*="--span:6"]{grid-template-columns:1fr 260px}}
+
+/* ======================= правки 24.10 (поздний вечер) ======================= */
+/* карточки услуг: кнопка сразу под метками, без огромного зазора */
+.svc .sv{align-content:start}
+.svc.side .sv{grid-template-rows:auto auto auto}
+.svc.side .sv>.btn{margin-top:8px;align-self:start}
+.svc.side .pic{grid-row:2/4!important;align-self:center}
+.svc.side .sv>.btn{grid-column:1/2}
+.svc.tiles .sv>.btn{margin-top:4px}
+@media(max-width:560px){.svc.side .pic{grid-row:auto!important}}
+/* контакты: кнопки сразу под данными, карта по высоте карточки */
+.info{gap:18px}
+.info .acts{margin-top:6px}
+.map{min-height:360px}
+/* список услуг: плашка «Сколько стоит» в пустых ячейках последнего ряда */
+.bnr.in-grid{grid-column:span 2;margin-top:0;padding:22px 26px;background:var(--card)}
+.bnr.in-grid b{font-size:clamp(17px,1.6vw,20px)}
+@media(max-width:960px){.bnr.in-grid{grid-column:1/-1}}
+/* бегущая строка: чередуем жирный текст и текст в обводке-капсуле */
+.marq{-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marq>div{align-items:center;padding:18px 0}
+.marq span{padding:10px 26px;margin:0 6px}
+.marq span:nth-child(even){color:var(--tx);-webkit-text-stroke:0;border:1.5px solid var(--line);border-radius:99px;font-weight:500;padding:14px 30px}
+/* круг-акцент за картинкой первого экрана */
+.car.circ{isolation:isolate}
+.car.circ::before{content:"";position:absolute;z-index:0;width:82%;aspect-ratio:1;border-radius:50%;background:var(--ac);right:-4%;top:50%;transform:translateY(-50%)}
+.car.circ img{z-index:1}

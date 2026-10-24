@@ -102,7 +102,7 @@ const BLOCKS = {
       ${S.schedule?.length ? `<div class="now rv"${d(.25)} data-schedule='${esc(JSON.stringify(S.schedule))}' hidden><i></i><span></span></div>` : ""}
       ${y.rating ? `<div class="trust rv"${d(.3)}><b>${esc(y.rating)}</b><div>${stars(5)}<span style="display:block;margin-top:4px">${rating(c) ? rating(c) + " на Яндекс Картах" : "на Яндекс Картах"}</span></div></div>` : ""}
     </div>
-    ${b.img ? `<div class="car${b.imgSize ? " " + esc(b.imgSize) : ""} rv"${d(.15)}><img src="${esc(b.img)}" alt="${esc(b.imgAlt || S.name)}" fetchpriority="high"></div>` : ""}
+    ${b.img ? `<div class="car${b.imgSize ? " " + esc(b.imgSize) : ""}${b.shape === "circle" ? " circ" : ""} rv"${d(.15)}><img src="${esc(b.img)}" alt="${esc(b.imgAlt || S.name)}" fetchpriority="high"></div>` : ""}
   </div>
 </section>`;
   },
@@ -158,7 +158,9 @@ const BLOCKS = {
       : `<div class="hlr rv">${b.highlight.label ? `<b>${esc(b.highlight.label)}</b>` : ""}${b.highlight.items.map(h => `<span>${icon(h.icon)}${esc(h.t)}</span>`).join("")}</div>`) : "";
     let grid;
     if (st === "list") {
-      grid = `<div class="svl">${b.items.map((g, i) => `<div class="sl${g.wide ? " w2" : ""} rv"${d((i % 3) * .04)}>${icon(g.icon)}<h3>${esc(g.title)}</h3></div>`).join("")}</div>`;
+      const used = b.items.reduce((n, g) => n + (g.wide ? 2 : 1), 0) % 3;   // занято ячеек в последнем ряду
+      const fill = b.banner && !b.banner.price && used === 1;                 // 2 пустые ячейки — плашка встаёт туда
+      grid = `<div class="svl">${b.items.map((g, i) => `<div class="sl${g.wide ? " w2" : ""} rv"${d((i % 3) * .04)}>${icon(g.icon)}<h3>${esc(g.title)}</h3></div>`).join("")}${fill ? "@@BANNER@@" : ""}</div>`;
     } else {
       const span = g => g.full ? 6 : g.wide ? 3 : 6 / cols;
       grid = `<div class="svc ${st}">${b.items.map((g, i) => `<article class="sv rv" style="--span:${span(g)}${i % cols ? `;--d:${(i % cols) * .08}s` : ""}">
@@ -174,7 +176,7 @@ const BLOCKS = {
       : `<div class="bnr rv"><div><b>${esc(bn.title)}</b>${bn.text ? `<p>${esc(bn.text)}</p>` : ""}</div><a class="btn btn-ac" href="${c.tel}">${PHONE}${esc(bn.button || "Позвонить")}</a></div>`;
     return sec(b, "uslugi", `
   ${h2(b, "Услуги")}${kick(b)}
-  ${hl}${grid}${banner}`);
+  ${hl}${grid.includes("@@BANNER@@") ? grid.replace("@@BANNER@@", banner.replace('class="bnr rv"', 'class="bnr in-grid rv"')) : grid + banner}`);
   },
 
   /* Почему мы: карточка «с какими авто» (brands) + карточки с иконками */
