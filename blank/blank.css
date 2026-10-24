@@ -517,3 +517,6 @@ section.notitle{padding-top:clamp(8px,2vw,24px)!important}
 @media(min-width:901px){.hero .grid:has(.car.w){grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}.car.w{width:108%}}
 /* широкая карточка услуги: картинка на всю высоту справа, без пустоты над кнопкой */
 @media(min-width:561px){.svc.side .sv[style*="--span:6"]:has(.pic){grid-template-rows:auto auto auto}.svc.side .sv[style*="--span:6"]:has(.pic)>h3{grid-row:1;grid-column:1}.svc.side .sv[style*="--span:6"]:has(.pic) .chips{grid-row:2;grid-column:1}.svc.side .sv[style*="--span:6"]:has(.pic)>.btn{grid-row:3;grid-column:1}.svc.side .sv[style*="--span:6"] .pic{grid-row:1/4!important;grid-column:2}.svc.side .sv[style*="--span:6"] .pic img{max-height:170px;width:auto}}
+
+/* Одна группа цен — на всю ширину */
+.pgrid:has(> .pg:only-child){columns:1}
