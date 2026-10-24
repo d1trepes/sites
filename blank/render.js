@@ -96,7 +96,7 @@ const BLOCKS = {
       <h1 class="rv">${title}</h1>
       ${b.lead ? `<p class="lead rv"${d(.1)}>${esc(b.lead)}</p>` : ""}
       <div class="acts rv"${d(.2)}>
-        <a class="btn btn-ac" href="${c.tel}">${PHONE}Позвонить ${esc(S.phone)}</a>
+        <a class="btn btn-ac" href="${c.tel}">${esc(b.button || "Позвонить")}</a>
         <a class="btn btn-gh" href="${esc(c.route)}" target="_blank" rel="noopener">Как проехать</a>
       </div>
       ${S.schedule?.length ? `<div class="now rv"${d(.25)} data-schedule='${esc(JSON.stringify(S.schedule))}' hidden><i></i><span></span></div>` : ""}
@@ -117,14 +117,14 @@ const BLOCKS = {
     <summary><h3>${esc(g.g)}</h3><small>${g.items.length > 1 ? `от ${minP(g)} BYN` : `${g.items[0][1]} BYN`}</small><span class="chev" aria-hidden="true">${CHEV}</span></summary>
     <ul>${g.items.map(it => `<li><span>${esc(it[0])}${it[2] ? `<small>${esc(it[2])}</small>` : ""}</span><b>${esc(it[1])}<em>BYN</em></b></li>`).join("")}</ul>
   </details>`).join("")}</div>
-  ${b.note ? `<div class="pnote rv"><p>${esc(b.note)}</p><a class="btn btn-ac btn-sm" href="${c.tel}">Позвонить и записаться</a></div>` : ""}
+  ${b.note ? `<div class="pnote rv"><p>${esc(b.note)}</p><a class="btn btn-ac btn-sm" href="${c.tel}">${esc(b.button || "Записаться")}</a></div>` : ""}
 </div></section>`;
     }
     if (!b.items?.length) return "";
     return sec(b, "ceny", `
   ${h2(b, "Цены")}${kick(b)}
   <div class="prices">${b.items.map((p, i) => `<div class="pcard rv"${d(i * .08)}><div><h3>${esc(p.t)}</h3>${p.note ? `<p>${esc(p.note)}</p>` : ""}</div><b>${esc(p.price)}<small>BYN</small></b></div>`).join("")}</div>
-  ${b.note ? `<div class="more rv"><span>${esc(b.note)}</span><a class="btn btn-ac" href="${c.tel}">${PHONE}${esc(c.S.phone)}</a></div>` : ""}`);
+  ${b.note ? `<div class="more rv"><span>${esc(b.note)}</span><a class="btn btn-ac" href="${c.tel}">${esc(b.button || "Узнать цену")}</a></div>` : ""}`);
   },
 
   /* Отзывы: карточка рейтинга + пересказы отзывов */
@@ -172,8 +172,8 @@ const BLOCKS = {
     }
     const bn = b.banner;
     const banner = !bn ? "" : bn.price
-      ? `<div class="nch rv"><b>${esc(bn.title)} <i>${esc(bn.price)}<span>BYN</span></i></b>${bn.text ? `<p>${esc(bn.text)}</p>` : ""}<a class="btn btn-ac" href="${c.tel}">${PHONE}${esc(bn.button || c.S.phone)}</a></div>`
-      : `<div class="bnr rv"><div><b>${esc(bn.title)}</b>${bn.text ? `<p>${esc(bn.text)}</p>` : ""}</div><a class="btn btn-ac" href="${c.tel}">${PHONE}${esc(bn.button || "Позвонить")}</a></div>`;
+      ? `<div class="nch rv"><b>${esc(bn.title)} <i>${esc(bn.price)}<span>BYN</span></i></b>${bn.text ? `<p>${esc(bn.text)}</p>` : ""}<a class="btn btn-ac" href="${c.tel}">${esc(bn.button || "Узнать стоимость")}</a></div>`
+      : `<div class="bnr rv"><div><b>${esc(bn.title)}</b>${bn.text ? `<p>${esc(bn.text)}</p>` : ""}</div><a class="btn btn-ac" href="${c.tel}">${esc(bn.button || "Узнать стоимость")}</a></div>`;
     return sec(b, "uslugi", `
   ${h2(b, "Услуги")}${kick(b)}
   ${hl}${grid.includes("@@BANNER@@") ? grid.replace("@@BANNER@@", banner.replace('class="bnr rv"', 'class="bnr in-grid rv"')) : grid + banner}`);
@@ -243,12 +243,12 @@ const BLOCKS = {
     if (b.style === "panel") return sec(b, "zapis", `
   <div class="zap rv">
     <div><h2>${esc(b.title || "Как записаться")}</h2>${list}
-      <div class="steps-cta"><a class="btn btn-wh" href="${c.tel}">${PHONE}Позвонить ${esc(S.phone)}</a></div></div>
+      <div class="steps-cta"><a class="btn btn-wh" href="${c.tel}">${esc(b.button || "Записаться")}</a></div></div>
     ${b.img ? `<div class="tools"><img src="${esc(b.img)}" alt="Инструменты автосервиса ${esc(S.name)}" loading="lazy" decoding="async"></div>` : ""}
   </div>`);
     return sec(b, "zapis", `
   ${h2(b, "Как записаться")}${list}
-  <div class="steps-cta rv"><a class="btn btn-ac" href="${c.tel}">${PHONE}Позвонить ${esc(S.phone)}</a>${msg}</div>`);
+  <div class="steps-cta rv"><a class="btn btn-ac" href="${c.tel}">${esc(b.button || "Записаться")}</a>${msg}</div>`);
   },
 
   /* Контакты и карта */
@@ -273,17 +273,18 @@ const BLOCKS = {
   </div>`);
   },
 
-  /* Финальный цветной призыв. second: "map" (по умолчанию) или "phone2" */
+  /* Кнопки звонка везде одинаковые: «Позвонить», без номера и иконки. Номер — текстом в контактах и в cta. */
+  /* КНОПКИ: везде без номера и иконки. Основная — глагол под смысл блока (поле button, по умолчанию свой текст у блока),
+     вторая — только «Как проехать» / «Построить маршрут». Номер телефона — текстом (контакты, крупно в cta). */
+  /* Финальный цветной призыв */
   cta(b, c) {
-    const { S } = c, p2 = c.phones[1];
-    const second = b.second === "phone2" && p2
-      ? `<a class="btn" href="tel:${digits(p2.phone)}">${esc(p2.phone)}</a>`
-      : `<a class="btn" href="${esc(c.route)}" target="_blank" rel="noopener">Открыть на карте</a>`;
+    const { S } = c;
+    const second = `<a class="btn" href="${esc(c.route)}" target="_blank" rel="noopener">Построить маршрут</a>`;
     return `<section id="${esc(b.id || "zapisatsya")}" style="padding-top:0"><div class="wrap"><div class="cta rv">
   <div>
     <h2>${esc(b.title || "Записаться на ремонт")}</h2>
     <a class="tel" href="${c.tel}">${esc(S.phone)}</a>
-    <div class="row"><a class="btn inv" href="${c.tel}">${PHONE}Позвонить</a>${second}</div>
+    <div class="row"><a class="btn inv" href="${c.tel}">${esc(b.button || "Позвонить")}</a>${second}</div>
   </div>
   ${b.img ? `<div class="tools"><img src="${esc(b.img)}" alt="Инструменты автосервиса ${esc(S.name)}" loading="lazy"></div>` : ""}
 </div></div></section>`;
