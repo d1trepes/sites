@@ -162,7 +162,8 @@ try {
     const dirs = fs.readdirSync(ROOT).filter(d => fs.existsSync(path.join(ROOT, d, "anketa.json")));
     let bad = 0;
     for (const d of dirs) { try { buildDemo(d); } catch (e) { bad++; console.error("✗ " + e.message); } }
+    require("./table.js").run();
     if (bad) process.exit(1);
   } else if (args[1] === "--launch") buildLaunch(args[0], args[2] || "");
-  else buildDemo(args[0]);
+  else { buildDemo(args[0]); require("./table.js").run(); }
 } catch (e) { console.error("✗ " + e.message); process.exit(1); }
