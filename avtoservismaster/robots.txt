@@ -1,6 +1,3 @@
 User-agent: *
-Disallow: /tour.html
 Allow: /
-
-# ДЕМО: при запуске заменить адрес на домен клиента
 Sitemap: https://d1trepes.github.io/sites/avtoservismaster/sitemap.xml

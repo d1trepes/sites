@@ -1,4 +1,4 @@
-# Перекраска салатовых 3D-картинок шаблона в ярко-красный. Запуск: python3 tools/recolor-red.py ПАПКА-КУДА template/img/*.webp
+# Перекраска салатовых 3D-картинок шаблона в ярко-красный. Запуск: python3 tools/recolor-red.py ПАПКА-КУДА blank/img/ИМЯ.webp
 import sys,os,colorsys,numpy as np
 from PIL import Image
 # салатовые пиксели -> чистый ярко-красный, яркость сохраняем

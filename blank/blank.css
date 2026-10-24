@@ -279,3 +279,159 @@ dialog ul{padding-left:20px}
 /* «С какими авто»: такая же карточка, как остальные (иконка, заголовок, серый текст) + картинка справа */
 .why .brands>div{display:flex;flex-direction:column}
 .why .brands h3{font-size:22px;line-height:1.15;margin-bottom:12px}
+
+/* ======================= варианты блоков (этап 2) ======================= */
+.btn{gap:10px}.btn .bi{width:18px;height:18px;flex:none}
+.btn-gh{background:var(--card)}
+.btn-wh{background:#fff;color:color-mix(in srgb,var(--ac) 55%,#000);--bd:transparent;--fill:#0b0b0c}
+@media(hover:hover){.btn-wh:hover{color:#fff}}
+.kick{color:var(--mut);font-size:17px;max-width:56ch;margin:-24px 0 36px}
+@media(max-width:640px){.kick{margin:-12px 0 24px;font-size:15.5px}}
+section.notitle{padding-top:clamp(8px,2vw,24px)!important}
+
+/* логотип */
+.logo{display:flex;align-items:center;gap:9px}
+.logo i{width:12px;height:12px;border-radius:3px;background:var(--ac);transform:rotate(45deg);flex:none}
+.logo.ac{color:var(--ac-tx)}
+
+/* первый экран: выделение маркером (для жёлтого и других светлых цветов) */
+.hero h1 mark{background:linear-gradient(transparent 58%,var(--ac) 58%,var(--ac) 92%,transparent 92%);color:inherit;padding:0 .08em}
+/* размер картинки первого экрана: s — узкая высокая, m — квадратная */
+.car.s,.car.m{aspect-ratio:auto;justify-self:center}
+.car.s{width:min(100%,400px)}.car.m{width:min(100%,560px)}
+.car.s img,.car.m img{position:relative;height:auto}
+.car.s::after,.car.m::after{display:none}
+@media(max-width:900px){.car.s{width:min(42%,200px)}.car.m{width:min(72%,360px)}}
+
+/* отзывы: подсказка листать на телефоне */
+.rev>*{min-width:0}
+.q p em{font-style:normal;font-weight:600}
+.swipe{display:none;color:var(--mut);font-size:14px;margin-top:12px}
+@media(max-width:700px){.swipe{display:block}}
+
+/* услуги: общая сетка на 6 частей; --span задаёт ширину карточки */
+.svc{grid-template-columns:repeat(6,1fr)}
+.svc .sv{grid-column:span var(--span,3)}
+@media(max-width:1180px){.svc.tiles .sv{grid-column:span 3}.svc.tiles .sv[style*="--span:6"]{grid-column:1/-1}}
+@media(max-width:960px){.svc{grid-template-columns:1fr}.svc .sv,.svc.tiles .sv{grid-column:auto!important}}
+.sv>.btn{grid-column:1/-1;justify-self:start;margin-top:4px}
+/* tiles: картинка сверху в светлой подложке, кнопка внизу */
+.svc.tiles .sv{display:flex;flex-direction:column}
+.svc.tiles .pic{height:210px;margin:-8px -8px 20px;display:grid;place-items:center;border-radius:var(--r-sm);background:var(--card2)}
+.svc.tiles .pic img{max-height:180px;max-width:80%;width:auto}
+.svc.tiles .sv h3{white-space:normal;margin-bottom:16px}
+.svc.tiles .sv>.btn{margin-top:auto;padding-top:0;align-self:flex-start}
+.svc.tiles .chips{margin-bottom:20px}
+@media(max-width:640px){.svc.tiles .pic{height:160px}.svc.tiles .pic img{max-height:140px}.svc.tiles .sv>.btn{align-self:stretch}}
+/* list: иконка + название */
+.svl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sl{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:22px;display:flex;align-items:center;gap:16px}
+.sl svg{width:30px;height:30px;flex:none;color:var(--ac-tx)}
+.sl h3{font:600 17px/1.3 var(--f-body);letter-spacing:0}
+.sl.w2{grid-column:span 2}
+@media(max-width:960px){.svl{grid-template-columns:1fr 1fr}.sl.w2{grid-column:auto}}
+@media(max-width:600px){.svl{grid-template-columns:1fr;gap:8px}.sl{padding:16px 18px}}
+/* выделения над услугами: карточки (hlc) или строка меток (hlr) */
+.hlc{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.hlc>div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;display:flex;gap:18px;align-items:flex-start}
+.hlc svg{width:34px;height:34px;flex:none;color:var(--ac-tx)}
+.hlc h3{font-size:clamp(19px,2vw,24px);line-height:1.2}
+.hlc p{margin-top:8px;font-size:15.5px;color:var(--mut)}
+.hlr{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:24px}
+.hlr b{font-weight:600;margin-right:6px}
+.hlr span{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-size:15px;font-weight:500}
+.hlr svg{width:18px;height:18px;flex:none;color:var(--ac-tx)}
+@media(max-width:760px){.hlc{grid-template-columns:1fr}.hlc>div{padding:22px}}
+@media(max-width:640px){.hlr b{flex:1 1 100%}}
+/* плашка под услугами: с ценой (nch, по центру) или строкой (bnr) */
+.nch{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(28px,4vw,44px) 24px}
+.nch b{font:700 clamp(36px,4.6vw,56px)/1 var(--f-head);letter-spacing:-.04em}
+.nch b i{font-style:normal;white-space:nowrap;color:var(--ac-tx)}
+.nch b span{font-size:.42em;letter-spacing:0;margin-left:6px}
+.nch p{color:var(--mut);font-size:17px}
+.nch .btn{margin-top:8px}
+.bnr{margin-top:12px;background:var(--card2);border:1px solid var(--line);border-radius:var(--r);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px 32px}
+.bnr div{max-width:600px}
+.bnr b{display:block;font:700 clamp(19px,2vw,24px)/1.2 var(--f-head);margin-bottom:8px;text-wrap:balance}
+.bnr p{color:var(--mut)}
+@media(max-width:960px){.bnr{flex-direction:column;align-items:flex-start}}
+@media(max-width:700px){.nch b{font-size:34px}.nch .btn,.bnr .btn{width:100%}.bnr{padding:22px}}
+
+/* почему мы без широкой карточки: три равные */
+.why.eq{grid-template-columns:repeat(3,1fr)}
+.why .ic{color:var(--ac-tx)}
+@media(max-width:960px){.why.eq{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.why.eq{grid-template-columns:1fr}}
+
+/* цены крупными карточками */
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:18px;min-height:230px}
+.pcard h3{font-size:clamp(19px,2vw,24px);line-height:1.25}
+.pcard b{margin-top:auto;font:700 clamp(44px,5vw,64px)/1 var(--f-head);letter-spacing:-.04em}
+.pcard b small{font-size:.42em;letter-spacing:0;margin-left:6px}
+.pcard p{color:var(--mut);font-size:15px}
+.more{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px 20px 30px}
+.more span{font:600 clamp(17px,1.8vw,20px) var(--f-body)}
+@media(max-width:700px){.prices{grid-template-columns:1fr}.pcard{min-height:0;padding:24px}.more{padding:20px}.more .btn{width:100%}}
+
+/* акции */
+.promo{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.promo>div{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;align-items:flex-start}
+.promo .big{font:700 clamp(40px,4.4vw,56px)/1 var(--f-head);letter-spacing:-.04em;color:var(--ac-tx)}
+.promo h3{font-size:18px;line-height:1.25;margin:24px 0 8px}
+.promo p{color:var(--mut);font-size:15px}
+.note{color:var(--mut);font-size:14px;margin-top:14px}
+@media(max-width:860px){.promo{grid-template-columns:1fr}.promo>div{padding:24px}}
+
+/* фото сервиса */
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.photos figure{position:relative;border-radius:var(--r);overflow:hidden;background:var(--card2);aspect-ratio:4/5}
+.photos img{width:100%;height:100%;object-fit:cover}
+.photos figcaption{position:absolute;left:14px;bottom:14px;background:var(--card);border-radius:99px;padding:8px 14px;font-size:14px;font-weight:500}
+@media(max-width:520px){.photos{gap:8px}.photos figcaption{left:8px;right:8px;bottom:8px;font-size:12.5px;padding:6px 10px;text-align:center}}
+
+/* до и после */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ba{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:var(--card2);--p:50%;touch-action:pan-y}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba .after{clip-path:inset(0 0 0 var(--p))}
+.ba .line{position:absolute;top:0;bottom:0;left:var(--p);width:2px;margin-left:-1px;background:#fff;pointer-events:none}
+.ba .line::after{content:"‹ ›";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--ac);color:var(--on-ac);display:grid;place-items:center;font:700 18px/1 var(--f-body);letter-spacing:4px}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba .tag{position:absolute;top:12px;background:rgba(0,0,0,.65);color:#fff;font-size:13px;font-weight:600;padding:6px 12px;border-radius:99px;pointer-events:none}
+.ba .tag.l{left:12px}.ba .tag.r{right:12px}
+.ba-grid figcaption{color:var(--mut);font-size:14px;margin-top:10px}
+@media(max-width:760px){.ba-grid{grid-template-columns:1fr}}
+
+/* как записаться — цветная панель */
+.zap{background:var(--ac);color:var(--on-ac);border-radius:calc(var(--r) + 8px);padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1.5fr .5fr;gap:32px;align-items:center;overflow:hidden}
+.zap h2{margin-bottom:clamp(24px,3vw,40px)}
+.zap .step{border-top-color:color-mix(in srgb,var(--on-ac) 35%,transparent)}
+.zap .step::before{display:none}
+.zap .step i{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--on-ac);color:var(--ac)}
+.zap .step i::before{content:counter(s)}
+.zap .step p{color:color-mix(in srgb,var(--on-ac) 85%,transparent)}
+.zap .steps-cta{margin-top:36px}
+.zap .tools{background:color-mix(in srgb,var(--on-ac) 12%,transparent);border-radius:var(--r);padding:20px;align-self:stretch;display:grid;place-items:center}
+.zap .tools img{width:100%;max-width:260px;height:auto}
+@media(max-width:960px){.zap{grid-template-columns:1fr}.zap .tools{display:none}}
+
+/* контакты */
+.info .acts{margin-top:auto;display:flex;flex-wrap:wrap;gap:10px}
+.info dd small{color:var(--mut);font-size:14px;font-weight:400;margin-left:4px}
+.entry{display:flex;align-items:center;gap:12px;min-height:56px;background:var(--card2);border-radius:var(--r-sm);padding:0 18px;font-weight:600;line-height:1.2}
+.entry svg{width:26px;height:26px;color:var(--ac-tx);flex:none}
+@media(max-width:860px){.info .acts .btn{flex:1 1 100%}}
+
+/* светлая тема: картинка в финальном призыве — на светлой подложке, без наклона */
+[data-theme="светлая"]{--star:#f5a400}
+[data-theme="светлая"] .cta .tools{background:var(--bg);border-radius:var(--r);padding:24px;align-self:stretch;display:grid;place-items:center;width:auto}
+[data-theme="светлая"] .cta .tools img{transform:none;filter:none;max-width:300px}
+[data-theme="светлая"] .car::after{background:radial-gradient(closest-side,rgba(0,0,0,.22),transparent)}
+@media(max-width:860px){[data-theme="светлая"] .cta .tools{display:none}}
+
+/* исправления после сравнения со старыми сайтами */
+.svc.tiles .sv{align-items:stretch}
+[data-theme="светлая"] .q{background:var(--card)}
+[data-theme="светлая"] .cta .tools{width:100%}
+[data-theme="светлая"] .cta .tools img{width:100%;height:auto}

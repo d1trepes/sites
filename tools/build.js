@@ -10,7 +10,7 @@
 const fs = require("fs"), path = require("path"), crypto = require("crypto");
 const ROOT = path.join(__dirname, "..");
 const BLANK = path.join(ROOT, "blank");
-const { render } = require(path.join(BLANK, "render.js"));
+const { render, strip } = require(path.join(BLANK, "render.js"));
 const DEMO_BASE = "https://d1trepes.github.io/sites/";
 
 const esc = v => String(v ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -25,7 +25,7 @@ function check(S, dir) {
   if (!S.blocks.some(b => b.type === "hero")) throw new Error(`${dir}: нет блока hero (первый экран)`);
   // все картинки из анкеты должны лежать в папке
   const imgs = [];
-  JSON.stringify(S, (k, v) => { if (typeof v === "string" && /\.(webp|png|jpe?g|svg)$/i.test(v) && !/^https?:/.test(v)) imgs.push(v); return v; });
+  JSON.stringify(strip(S), (k, v) => { if (typeof v === "string" && /\.(webp|png|jpe?g|svg)$/i.test(v) && !/^https?:/.test(v)) imgs.push(v); return v; });
   const lost = imgs.filter(p => !fs.existsSync(path.join(ROOT, dir, p)));
   if (lost.length) throw new Error(`${dir}: нет картинок: ${lost.join(", ")}`);
 }
@@ -36,7 +36,8 @@ function jsonld(S, url, ogImg) {
   const ld = {
     "@context": "https://schema.org", "@type": "AutoRepair",
     name: S.name, url, image: ogImg || undefined,
-    telephone: S.phone.replace(/[^\d+]/g, ""),
+    telephone: S.phones?.length ? [S.phone, ...S.phones.map(p => p.phone)].map(p => p.replace(/[^\d+]/g, "")) : S.phone.replace(/[^\d+]/g, ""),
+    paymentAccepted: S.payment || undefined,
     address: { "@type": "PostalAddress", streetAddress: S.address.replace(/^Минск,\s*/, ""), addressLocality: S.city || "Минск", addressCountry: "BY" },
     openingHoursSpecification: (S.schedule || []).map(s => ({ "@type": "OpeningHoursSpecification", dayOfWeek: s.d.map(n => DAYS[n - 1]), opens: hm(s.from), closes: hm(s.to) })),
     priceRange: prices.length ? `${Math.min(...prices)}–${Math.max(...prices)} BYN` : undefined,
@@ -54,9 +55,10 @@ function page(S, { url, css, js, demo }) {
   // ?v=… — чтобы Telegram/Viber показали новую обложку, а не старую из своей памяти
   const ogImg = fs.existsSync(ogF) ? url + "img/og.jpg?v=" + hash(ogF) : "";
   const ac = S.accent || "#E10600";
-  const style = `--ac:${ac};--ac-tx:${S.accentText || ac};--pin:${ac};--on-ac:${S.onAccent || "#ffffff"}`;
+  const cols = Object.entries(S.colors || {}).map(([k, v]) => `;--${k}:${v}`).join("");
+  const style = `--ac:${ac};--ac-tx:${S.accentText || ac};--pin:${ac};--on-ac:${S.onAccent || "#ffffff"}${cols}`;
   const theme = S.theme || "тёмная";
-  const bg = theme === "светлая" ? "#f5f1ea" : "#0b0b0c";
+  const bg = S.colors?.bg || (theme === "светлая" ? "#f5f1ea" : "#0b0b0c");
   return `<!doctype html>
 <html lang="ru" data-theme="${esc(theme)}" style="${style}">
 <head>

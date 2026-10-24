@@ -64,6 +64,9 @@ if (map) {
   map.querySelector(".cover").onclick = e => e.currentTarget.remove();
 }
 
+/* до и после: ползунок */
+$$(".ba input").forEach(r => r.addEventListener("input", () => r.parentElement.style.setProperty("--p", r.value + "%")));
+
 /* кнопки: круг заливки растёт от места, где вошёл курсор */
 $$(".btn").forEach(b => b.addEventListener("pointerenter", e => {
   const r = b.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;

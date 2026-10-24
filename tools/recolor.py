@@ -1,5 +1,5 @@
 # Перекраска салатовых 3D-картинок шаблона в любой цвет.
-# Запуск: python3 tools/recolor.py "#FFC400" ПАПКА-КУДА template/img/*.webp
+# Запуск: python3 tools/recolor.py "#FFC400" ПАПКА-КУДА blank/img/ИМЯ.webp
 # Цвет — параметром (hex). Яркость и тени объекта сохраняются, тёмные части не трогаем.
 import sys, os, numpy as np
 from PIL import Image

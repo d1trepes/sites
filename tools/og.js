@@ -17,14 +17,16 @@ function html(S, dir) {
   const hero = S.blocks.find(b => b.type === "hero") || {};
   const light = S.theme === "светлая";
   const ac = S.accent || "#E10600", acTx = S.accentText || ac, onAc = S.onAccent || "#fff";
-  const bg = light ? "#f5f1ea" : "#0b0b0c", card = light ? "#ffffff" : "#16161a", line = light ? "#e2dcd2" : "#26262b";
-  const tx = light ? "#141414" : "#f3f3f1", mut = light ? "#5f5f66" : "#9d9da3";
+  const C = S.colors || {};
+  const bg = C.bg || (light ? "#f5f1ea" : "#0b0b0c"), card = C.card || (light ? "#ffffff" : "#16161a"), line = C.line || (light ? "#e2dcd2" : "#26262b");
+  const tx = C.tx || (light ? "#141414" : "#f3f3f1"), mut = C.mut || (light ? "#5f5f66" : "#9d9da3");
   const title = esc(hero.ogTitle || hero.title || S.name);
-  const t = hero.accent ? title.replace(esc(hero.accent), `<em>${esc(hero.accent)}</em>`) : title;
+  const tag = hero.accentStyle === "mark" ? "mark" : "em";
+  const t = hero.accent ? title.replace(esc(hero.accent), `<${tag}>${esc(hero.accent)}</${tag}>`) : title;
   const L = S.logo || {};
   const logoTxt = L.text || S.name;
   const logo = L.img ? `<img class="lg" src="${esc(L.img)}">`
-    : (L.accent && logoTxt.startsWith(L.accent) ? `<b>${esc(L.accent)}</b>${esc(logoTxt.slice(L.accent.length))}` : esc(logoTxt));
+    : (L.mark === "diamond" ? "<i></i>" : "") + (L.accent && logoTxt.startsWith(L.accent) ? `<b>${esc(L.accent)}</b>${esc(logoTxt.slice(L.accent.length))}` : esc(logoTxt));
   const y = S.yandex || {};
   const img = hero.img ? `file://${path.join(ROOT, dir, hero.img)}` : "";
   return `<!doctype html><html><head><meta charset="utf-8">
@@ -33,7 +35,8 @@ function html(S, dir) {
 *{margin:0;padding:0;box-sizing:border-box}
 body{width:1200px;height:630px;background:${bg};color:${tx};font-family:Onest,sans-serif;overflow:hidden;position:relative}
 .l{position:absolute;left:64px;top:56px;bottom:56px;width:600px;display:flex;flex-direction:column}
-.logo{font:700 30px Unbounded;letter-spacing:-.02em}.logo b{color:${ac}}.lg{height:52px;width:auto}
+.logo{font:700 30px Unbounded;letter-spacing:-.02em;display:flex;align-items:center;gap:12px${L.color === "accent" ? ";color:" + acTx : ""}}.logo b{color:${ac}}.logo i{width:15px;height:15px;border-radius:4px;background:${ac};transform:rotate(45deg)}.lg{height:72px;width:auto}
+h1 mark{background:linear-gradient(transparent 58%,${ac} 58%,${ac} 92%,transparent 92%);color:inherit;padding:0 .08em}
 h1{font:700 56px/1.06 Unbounded;letter-spacing:-.03em;margin-top:auto;text-wrap:balance}
 h1 em{font-style:normal;color:${acTx}}
 .row{display:flex;align-items:center;gap:14px;margin-top:36px}
@@ -49,7 +52,7 @@ h1 em{font-style:normal;color:${acTx}}
   <h1>${t}</h1>
   <div class="row">
     <span class="tel">${esc(S.phone)}</span>
-    ${y.rating ? `<span class="rt"><i>★</i><b>${esc(y.rating)}</b>${y.marks ? `${y.marks} ${plural(y.marks, "оценка", "оценки", "оценок")}` : ""}</span>` : ""}
+    ${y.rating ? `<span class="rt"><i>★</i><b>${esc(y.rating)}</b>${y.marks ? `${y.marks} ${plural(y.marks, "оценка", "оценки", "оценок")}` : y.reviews ? `${y.reviews} ${plural(y.reviews, "отзыв", "отзыва", "отзывов")}` : ""}</span>` : ""}
   </div>
   <div class="adr">${esc(S.address)}</div>
 </div>
@@ -71,7 +74,8 @@ async function one(b, dir) {
   const p = await b.newPage({ viewport: { width: 1200, height: 630 } });
   const tmp = path.join(ROOT, dir, ".og.html");
   fs.writeFileSync(tmp, html(S, dir));
-  await p.goto("file://" + tmp, { waitUntil: "networkidle" }).catch(() => {});
+  await p.goto("file://" + tmp, { waitUntil: "load", timeout: 30000 }).catch(() => {});
+  await p.waitForTimeout(300);
   await p.evaluate(() => document.fonts.ready);
   fs.mkdirSync(path.join(ROOT, dir, "img"), { recursive: true });
   await p.screenshot({ path: path.join(ROOT, dir, "img/og.jpg"), type: "jpeg", quality: 88 });
@@ -83,8 +87,9 @@ async function one(b, dir) {
   const a = process.argv[2];
   if (!a) { console.error("Укажи папку: node tools/og.js ИМЯ-ПАПКИ  (или --all)"); process.exit(1); }
   const dirs = a === "--all" ? fs.readdirSync(ROOT).filter(d => fs.existsSync(path.join(ROOT, d, "anketa.json"))) : [a];
-  const b = await browser();
-  try { for (const d of dirs) await one(b, d); }
-  catch (e) { console.error("✗ " + e.message); process.exitCode = 1; }
-  await b.close();
+  for (const d of dirs) {           // свой браузер на каждую обложку — так надёжнее
+    const b = await browser();
+    try { await one(b, d); } catch (e) { console.error(`✗ ${d}: ${e.message}`); process.exitCode = 1; }
+    await b.close();
+  }
 })().catch(e => { console.error("✗ " + e.message); process.exit(1); });
