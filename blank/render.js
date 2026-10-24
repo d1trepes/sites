@@ -123,7 +123,7 @@ const BLOCKS = {
     if (!b.items?.length) return "";
     return sec(b, "ceny", `
   ${h2(b, "Цены")}${kick(b)}
-  <div class="prices">${b.items.map((p, i) => `<div class="pcard rv"${d(i * .08)}><h3>${esc(p.t)}</h3><b>${esc(p.price)}<small>BYN</small></b>${p.note ? `<p>${esc(p.note)}</p>` : ""}</div>`).join("")}</div>
+  <div class="prices">${b.items.map((p, i) => `<div class="pcard rv"${d(i * .08)}><div><h3>${esc(p.t)}</h3>${p.note ? `<p>${esc(p.note)}</p>` : ""}</div><b>${esc(p.price)}<small>BYN</small></b></div>`).join("")}</div>
   ${b.note ? `<div class="more rv"><span>${esc(b.note)}</span><a class="btn btn-ac" href="${c.tel}">${PHONE}${esc(c.S.phone)}</a></div>` : ""}`);
   },
 
@@ -191,10 +191,17 @@ const BLOCKS = {
 
   /* Свободный блок: заголовок (можно без) + 1–4 карточки с иконками */
   cards(b, c) {
-    if (!b.items?.length) return "";
+    if ((b.items?.length || 0) < 2) return "";   // одна карточка смотрится одиноко — блок не показываем
     return sec(b, "blok", `
   ${h2(b)}${kick(b)}
   <div class="cards c${Math.min(b.items.length, 4)}">${b.items.map((w, i) => `<div class="rv"${d(i * .06)}>${w.icon ? `<span class="ic">${icon(w.icon)}</span>` : ""}<h3>${esc(w.t)}</h3>${w.text ? `<p>${esc(w.text)}</p>` : ""}</div>`).join("")}</div>`, b.title ? "" : "notitle");
+  },
+
+  /* Бегущая строка: марки, виды техники */
+  marquee(b, c) {
+    if (!b.items?.length) return "";
+    const row = [...b.items, ...b.items, ...b.items, ...b.items].map(t => `<span>${esc(t)}</span>`).join("");
+    return `<section id="${esc(b.id || "marki")}" class="sec-marq" style="padding-top:0">${b.label ? `<div class="wrap"><p class="marq-l rv">${esc(b.label)}</p></div>` : ""}<div class="marq rv" aria-label="${esc(b.items.join(", "))}"><div>${row}</div></div></section>`;
   },
 
   /* Акции: крупная цифра + заголовок + условие */
@@ -283,7 +290,7 @@ const BLOCKS = {
 
 /* пункты меню по умолчанию; у блока можно задать menu: "…" или menu: "" (не показывать) */
 const MENU = { prices: "Цены", reviews: "Отзывы", services: "Услуги", why: "Почему мы", promo: "Акции", photos: "Фото", contacts: "Контакты" };
-const IDS = { prices: "ceny", reviews: "otzyvy", services: "uslugi", why: "pochemu", steps: "zapis", contacts: "kontakty", cards: "blok", promo: "akcii", photos: "foto", beforeafter: "do-posle", cta: "zapisatsya" };
+const IDS = { prices: "ceny", reviews: "otzyvy", services: "uslugi", why: "pochemu", steps: "zapis", contacts: "kontakty", cards: "blok", promo: "akcii", photos: "foto", marquee: "marki", beforeafter: "do-posle", cta: "zapisatsya" };
 
 /* выключенное ("off": true) — убрать везде: блоки, карточки, пункты */
 const strip = v => Array.isArray(v) ? v.filter(x => !(x && x.off)).map(strip)

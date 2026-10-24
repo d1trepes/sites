@@ -435,3 +435,39 @@ section.notitle{padding-top:clamp(8px,2vw,24px)!important}
 [data-theme="светлая"] .q{background:var(--card)}
 [data-theme="светлая"] .cta .tools{width:100%}
 [data-theme="светлая"] .cta .tools img{width:100%;height:auto}
+
+/* ======================= правки 24.10 (вечер) ======================= */
+/* первый экран — ровно на высоту экрана, следующий блок не выглядывает */
+@media(min-width:901px){.hero{min-height:100svh}}
+/* широкая картинка (машина): крупнее и с выходом к краю */
+.car.w{aspect-ratio:auto;width:118%;max-width:none;justify-self:start}
+.car.w img{position:relative;height:auto}
+.car.w::after{bottom:-2%}
+@media(max-width:900px){.car.w{width:100%}}
+
+/* картинка с инструментами — без подложки, крупно, как в тёмной теме */
+.zap{grid-template-columns:1.4fr .6fr}
+.zap .tools,[data-theme="светлая"] .cta .tools{background:none;padding:0;border-radius:0;align-self:center;justify-self:center;width:min(100%,420px)}
+.zap .tools img,[data-theme="светлая"] .cta .tools img{width:100%;max-width:none;height:auto;transform:rotate(-4deg);filter:drop-shadow(0 22px 26px rgba(0,0,0,.35))}
+@media(max-width:860px){[data-theme="светлая"] .cta .tools{display:block;width:70%;order:-1;margin-bottom:-8px}}
+
+/* цены карточками: название и пояснение сверху, цена всегда внизу на одной линии */
+.pcard{min-height:200px;justify-content:space-between}
+.pcard p{margin-top:8px}
+.pcard b{margin-top:0;font-size:clamp(40px,4vw,52px)}
+
+/* бегущая строка */
+.sec-marq{padding-bottom:clamp(40px,6vw,80px)}
+.marq-l{color:var(--mut);font-size:15px;margin-bottom:14px}
+.marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);-webkit-mask:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent);mask:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent)}
+.marq>div{display:flex;width:max-content;animation:marq 60s linear infinite;will-change:transform}
+.marq span{font:700 clamp(26px,3.6vw,46px)/1 var(--f-head);letter-spacing:-.02em;padding:22px 28px;white-space:nowrap}
+.marq span:nth-child(even){color:transparent;-webkit-text-stroke:1px var(--mut)}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq>div{animation:none}}
+.cta .tools{width:min(100%,360px)}
+.cta{padding-top:clamp(40px,6vw,72px);padding-bottom:clamp(40px,6vw,72px)}
+@media(min-width:901px){.hero .grid:has(.car.w){grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}}
+.car.w{width:115%}
+/* карточка услуг на всю ширину: метки шире, картинка справа */
+.svc.side .sv[style*="--span:6"]{grid-template-columns:1fr 260px}

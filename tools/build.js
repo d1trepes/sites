@@ -30,6 +30,19 @@ function check(S, dir) {
   if (lost.length) throw new Error(`${dir}: нет картинок: ${lost.join(", ")}`);
 }
 
+/* подсказки по качеству: блоки, которые выглядят плохо */
+function warn(S, dir) {
+  const w = [], on = strip(S).blocks;
+  for (const b of on) {
+    if (b.type === "cards" && (b.items || []).length < 2) w.push("cards: меньше 2 карточек — блок не показан. Добавь карточки из данных или убери блок");
+    if (b.type === "why" && (b.items || []).length + (b.brands ? 1 : 0) < 3) w.push("why: меньше 3 карточек — смотрится пусто");
+    if (b.type === "hero" && b.title && b.title.length > 60) w.push("hero: заголовок длинный (>60 знаков) — будет больше 3 строк");
+    if (b.type === "services" && b.style === "tiles" && (b.cols || 2) === 3) w.push("services: плитки в 3 колонки дают пустоты — лучше style: side");
+  }
+  if (on.length < 6) w.push(`всего ${on.length} блоков — сайт выглядит пустым, нужно 7+ (см. blank/БЛОКИ.md)`);
+  w.forEach(x => console.log(`  ⚠ ${dir}: ${x}`));
+}
+
 function jsonld(S, url, ogImg) {
   const y = S.yandex || {};
   const prices = S.blocks.filter(b => b.type === "prices").flatMap(b => b.groups || []).flatMap(g => g.items.map(i => +i[1])).filter(n => n > 0);
@@ -108,6 +121,7 @@ function load(dir) {
   catch (e) { throw new Error(`${dir}/anketa.json: ошибка в записи (${e.message})`); }
   S._dir = path.join(ROOT, dir);
   check(S, dir);
+  warn(S, dir);
   return S;
 }
 

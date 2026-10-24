@@ -42,7 +42,8 @@
       "accent": "мототехники",
       "lead": "Ремонт, диагностика и шиномонтаж в Минске, ул. Франциска Скорины, 52, корп. 10.",
       "img": "img/hero-car.webp",
-      "imgAlt": "Автомобиль — ремонт авто в автосервисе Ганс Моторс, Минск"
+      "imgAlt": "Автомобиль — ремонт авто в автосервисе Ганс Моторс, Минск",
+      "imgSize": "w"
     },
     {
       "type": "cards",
@@ -70,52 +71,27 @@
       ]
     },
     {
+      "type": "marquee",
+      "label": "Мототехника, с которой работаем",
+      "items": [
+        "BMW",
+        "Harley-Davidson",
+        "Honda",
+        "Kawasaki",
+        "KTM",
+        "Triumph",
+        "Yamaha",
+        "Indian",
+        "Avantis",
+        "Aprilia",
+        "Ducati",
+        "Suzuki",
+        "Buell"
+      ]
+    },
+    {
       "type": "services",
       "title": "Что мы делаем",
-      "highlight": {
-        "label": "Мототехника, с которой работаем:",
-        "items": [
-          {
-            "t": "BMW"
-          },
-          {
-            "t": "Harley-Davidson"
-          },
-          {
-            "t": "Honda"
-          },
-          {
-            "t": "Kawasaki"
-          },
-          {
-            "t": "KTM"
-          },
-          {
-            "t": "Triumph"
-          },
-          {
-            "t": "Yamaha"
-          },
-          {
-            "t": "Indian"
-          },
-          {
-            "t": "Avantis"
-          },
-          {
-            "t": "Aprilia"
-          },
-          {
-            "t": "Ducati"
-          },
-          {
-            "t": "Suzuki"
-          },
-          {
-            "t": "Buell"
-          }
-        ]
-      },
       "items": [
         {
           "title": "Двигатель и трансмиссия",
