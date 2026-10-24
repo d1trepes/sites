@@ -25,7 +25,9 @@ if (!dir) { console.error("Укажи папку: node tools/check.js ИМЯ-П�
     const p = await b.newPage({ viewport: { width: w, height: h }, isMobile: mob, hasTouch: mob });
     await p.goto(url, { waitUntil: "load", timeout: 30000 }).catch(() => {});
     await p.waitForTimeout(500);
-    const r = await p.evaluate(() => {
+    await p.evaluate(() => Promise.all([...document.images].map(i => { i.loading = "eager"; i.decoding = "sync"; return (i.complete ? Promise.resolve() : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 5000); })).then(() => i.decode().catch(() => {})); })));
+    await p.waitForTimeout(800);
+    const r =await p.evaluate(() => {
       document.querySelectorAll(".rv").forEach(e => e.classList.add("in"));
       const W = document.documentElement.clientWidth, H = innerHeight;
       const over = [...document.querySelectorAll("main *")].filter(e => {

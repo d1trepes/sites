@@ -203,7 +203,7 @@ const BLOCKS = {
   marquee(b, c) {
     if (!b.items?.length) return "";
     const row = [...b.items, ...b.items, ...b.items, ...b.items].map(t => `<span>${esc(t)}</span>`).join("");
-    return `<section id="${esc(b.id || "marki")}" class="sec-marq" style="padding-top:0">${b.label ? `<div class="wrap"><p class="marq-l rv">${esc(b.label)}</p></div>` : ""}<div class="marq rv" aria-label="${esc(b.items.join(", "))}"><div>${row}</div></div></section>`;
+    return `<section id="${esc(b.id || "marki")}" class="sec-marq" style="padding-top:0"><div class="marq rv" aria-label="${esc(b.items.join(", "))}"><div>${row}</div></div></section>`;
   },
 
   /* Акции: крупная цифра + заголовок + условие */
