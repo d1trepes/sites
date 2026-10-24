@@ -498,3 +498,15 @@ section.notitle{padding-top:clamp(8px,2vw,24px)!important}
 .car.circ{isolation:isolate}
 .car.circ::before{content:"";position:absolute;z-index:0;width:82%;aspect-ratio:1;border-radius:50%;background:var(--ac);right:-4%;top:50%;transform:translateY(-50%)}
 .car.circ img{z-index:1}
+
+/* ======================= финальные правки 24.10 ======================= */
+/* услуги (картинка сбоку): кнопки в ряду на одной линии, метки сразу под заголовком */
+.svc.side .sv{grid-template-rows:auto 1fr auto}
+.svc.side .chips{align-self:start}
+.svc.side .pic{grid-row:2/3!important}
+.svc.side .sv>.btn{grid-row:3;margin-top:20px}
+/* карточка без картинки — метки на всю ширину */
+.svc .sv:not(:has(.pic)) .chips{grid-column:1/-1}
+/* бегущая строка: чередуем жирный текст и чистую обводку букв (без капсул) */
+.marq span:nth-child(even){border:0;border-radius:0;padding:10px 26px;font-weight:700;color:var(--bg);-webkit-text-stroke:0;
+  text-shadow:1px 0 var(--mut),-1px 0 var(--mut),0 1px var(--mut),0 -1px var(--mut),.7px .7px var(--mut),-.7px -.7px var(--mut),.7px -.7px var(--mut),-.7px .7px var(--mut)}
