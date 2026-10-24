@@ -468,6 +468,6 @@ section.notitle{padding-top:clamp(8px,2vw,24px)!important}
 .cta .tools{width:min(100%,360px)}
 .cta{padding-top:clamp(40px,6vw,72px);padding-bottom:clamp(40px,6vw,72px)}
 @media(min-width:901px){.hero .grid:has(.car.w){grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}}
-.car.w{width:115%}
+@media(min-width:901px){.car.w{width:115%}}
 /* карточка услуг на всю ширину: метки шире, картинка справа */
-.svc.side .sv[style*="--span:6"]{grid-template-columns:1fr 260px}
+@media(min-width:561px){.svc.side .sv[style*="--span:6"]{grid-template-columns:1fr 260px}}
