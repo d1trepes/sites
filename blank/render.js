@@ -59,7 +59,7 @@ function ctx(S) {
     S, y, phones, route,
     tel: "tel:" + digits(S.phone),
     viber: S.viber ? "viber://chat?number=" + encodeURIComponent(digits(S.viber)) : "",
-    tg: S.telegram ? "https://t.me/" + encodeURIComponent(S.telegram) : "",
+    tg: S.telegram ? "https://t.me/" + encodeURI(S.telegram.replace(/^@/, "")) : "",
     street: S.address.replace(/^Минск,\s*/, ""),
     marks: y.marks ? `${y.marks} ${plural(y.marks, "оценка", "оценки", "оценок")}` : "",
     revs: y.reviews ? `${y.reviews} ${plural(y.reviews, "отзыв", "отзыва", "отзывов")}` : "",
@@ -110,7 +110,7 @@ const BLOCKS = {
   /* Цены: группами (groups) или крупными карточками (items) */
   prices(b, c) {
     if (b.groups?.length) {
-      const minP = g => Math.min(...g.items.map(i => i[1]));
+      const minP = g => Math.min(...g.items.map(i => parseFloat(String(i[1]).replace(/[^\d.,]/g, "").replace(",", ".")) || Infinity));
       return `<section id="${esc(b.id || "ceny")}" class="sec-prices"><div class="wrap">
   <div class="ph2"><div>${h2(b, "Цены")}${b.sub !== "" ? `<p class="rv"${d(.08)}>${esc(b.sub ?? "Цены в белорусских рублях.")}</p>` : ""}</div></div>
   <div class="pgrid">${b.groups.map((g, i) => `<details class="pg rv"${d((i % 2) * .06)} open>
