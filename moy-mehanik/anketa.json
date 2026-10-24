@@ -39,7 +39,9 @@
   "yandex": {
     "url": "https://yandex.by/maps/org/moy_mekhanik/220123975529/",
     "slug": "moy_mekhanik",
-    "id": "220123975529"
+    "id": "220123975529",
+    "rating": "5,0",
+    "marks": 112
   },
   "seo": {
     "title": "Мой Механик — СТО на пр-те Машерова, Минск: ремонт, ТО, диагностика",
