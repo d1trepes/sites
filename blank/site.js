@@ -64,6 +64,13 @@ if (map) {
   map.querySelector(".cover").onclick = e => e.currentTarget.remove();
 }
 
+/* кнопки: круг заливки растёт от места, где вошёл курсор */
+$$(".btn").forEach(b => b.addEventListener("pointerenter", e => {
+  const r = b.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+  b.style.setProperty("--x", x + "px"); b.style.setProperty("--y", y + "px");
+  b.style.setProperty("--s", 2.2 * Math.hypot(Math.max(x, r.width - x), Math.max(y, r.height - y)) + "px");
+}));
+
 /* шапка с фоном после прокрутки */
 const onScroll = () => hdr.classList.toggle("solid", scrollY > 20);
 addEventListener("scroll", onScroll, { passive: true }); onScroll();

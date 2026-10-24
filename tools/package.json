@@ -1,0 +1,9 @@
+{
+  "name": "sites-tools",
+  "private": true,
+  "description": "Обложки для ссылок (og.js) и снимки экрана для проверки",
+  "dependencies": {
+    "@sparticuz/chromium": "*",
+    "playwright-core": "*"
+  }
+}

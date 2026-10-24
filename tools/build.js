@@ -50,7 +50,9 @@ function jsonld(S, url, ogImg) {
 
 function page(S, { url, css, js, demo }) {
   const seo = S.seo, hero = S.blocks.find(b => b.type === "hero");
-  const ogImg = fs.existsSync(path.join(S._dir, "img/og.jpg")) ? url + "img/og.jpg" : "";
+  const ogF = path.join(S._dir, "img/og.jpg");
+  // ?v=… — чтобы Telegram/Viber показали новую обложку, а не старую из своей памяти
+  const ogImg = fs.existsSync(ogF) ? url + "img/og.jpg?v=" + hash(ogF) : "";
   const ac = S.accent || "#E10600";
   const style = `--ac:${ac};--ac-tx:${S.accentText || ac};--pin:${ac};--on-ac:${S.onAccent || "#ffffff"}`;
   const theme = S.theme || "тёмная";

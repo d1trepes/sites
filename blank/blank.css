@@ -22,12 +22,21 @@ section{padding:clamp(56px,8vw,112px) 0}
 
 /* кнопки */
 .btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:0;box-shadow:inset 0 0 0 1px var(--bd,var(--line));transition:transform .2s,box-shadow .3s,color .45s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
-.btn{transition:transform .2s,background-color .25s,color .25s,box-shadow .25s}
+.btn{border-radius:28px;transition:transform .2s,color .45s var(--ease),box-shadow .3s,border-radius .45s var(--ease)}
 .btn:active{transform:scale(.97)}
 .btn-ac{background:var(--ac);color:var(--on-ac);--bd:transparent;--fill:var(--tx)}
 .btn-gh{--fill:var(--ac)}
-@media(hover:hover){.btn-ac:hover{background:color-mix(in srgb,var(--ac) 86%,#000)}.btn-gh:hover{box-shadow:inset 0 0 0 1px var(--tx)}.cta .btn:hover{background:rgba(255,255,255,.12)}.cta .btn.inv:hover{background:#f1f1f1}}
-.btn-sm{height:44px;padding:0 20px;font-size:15px}
+/* наведение: круг заливки растёт от курсора, кнопка становится прямоугольной */
+.btn::before{content:"";position:absolute;z-index:-1;left:var(--x,50%);top:var(--y,50%);width:var(--s,320px);height:var(--s,320px);border-radius:50%;background:var(--fill);transform:translate(-50%,-50%) scale(0);transition:transform .6s var(--ease)}
+@media(hover:hover){
+  .btn:hover{border-radius:var(--r-btn-hover,0px);box-shadow:none}
+  .btn:hover::before{transform:translate(-50%,-50%) scale(1)}
+  .btn-ac:hover{color:var(--bg)}
+  .btn-gh:hover{color:var(--on-ac)}
+  .cta .btn:hover{color:var(--ac-on-inv,var(--ac))}
+  .cta .btn.inv:hover{color:#fff}
+}
+.btn-sm{height:44px;padding:0 20px;font-size:15px;border-radius:22px}
 
 /* шапка */
 .hdr{position:fixed;inset:0 0 auto;z-index:20;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
@@ -262,3 +271,10 @@ dialog ul{padding-left:20px}
 .logo-img{height:40px;width:auto}
 @media(max-width:640px){.logo-img{height:32px}}
 .anote{display:block;color:var(--mut);font-size:14px;font-weight:400;margin-top:4px}
+
+/* картинки в карточках: лёгкое движение при наведении на карточку (только мышь) */
+.sv .pic img,.why .brands img{transition:transform .8s var(--ease)}
+@media(hover:hover){.sv:hover .pic img,.why .brands:hover img{transform:scale(1.06) rotate(-3deg)}}
+
+/* «С какими авто работаем»: спокойнее, не кричит */
+.why .brands h3{font:500 clamp(17px,1.4vw,19px)/1.45 var(--f-body);letter-spacing:0;color:var(--tx)}
