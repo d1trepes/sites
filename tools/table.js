@@ -28,7 +28,7 @@ function rows() {
       return {
         folder: d.name,
         name: A.name || C.name,
-        phones: phones.join(", "),
+        phones: phones.map(p => op(p) ? `${p} (${op(p)})` : p).join(", "),
         address: A.address || C.address || "",
         rating: y.rating ? `${y.rating}${y.reviews ? ` · ${y.reviews} отз.` : ""}` : (C.rating || ""),
         yandex: y.url || C.yandex || "",
@@ -44,6 +44,18 @@ function rows() {
       };
     }).filter(Boolean)
     .sort((a, b) => STATUSES.indexOf(a.status) - STATUSES.indexOf(b.status) || a.name.localeCompare(b.name, "ru"));
+}
+
+// Оператор по коду белорусского номера: 29 (1,3,6,9) и 44 — A1; 29 (2,5,7,8) и 33 — МТС; 25 — life:); 17 и др. — городской
+function op(p) {
+  const d = p.replace(/\D/g, "").replace(/^375/, "").replace(/^80/, "");
+  const c = d.slice(0, 2), n = d[2];
+  if (c === "44") return "A1";
+  if (c === "33") return "МТС";
+  if (c === "25") return "life:)";
+  if (c === "29") return "1369".includes(n) ? "A1" : "2578".includes(n) ? "МТС" : "";
+  if (d.length === 9) return "городской";
+  return "";
 }
 
 const COLS = [["name", "Название"], ["status", "Статус"], ["next", "Следующий шаг"], ["phones", "Телефон"], ["address", "Адрес"],
@@ -67,7 +79,7 @@ function page(R) {
   const tr = R.map(r => `<tr data-s="${esc(r.status)}">
   <td><b>${esc(r.name)}</b><small>${esc(r.address.replace(/^Минск,\s*/, ""))}</small></td>
   <td><span class="st st-${STATUSES.indexOf(r.status)}">${esc(r.status)}</span>${r.next ? `<small>${esc(r.next)}</small>` : ""}</td>
-  <td>${r.phones.split(", ").filter(Boolean).map(p => `<a href="tel:${p.replace(/[^\d+]/g, "")}">${esc(p)}</a>`).join("<br>")}</td>
+  <td>${r.phones.split(", ").filter(Boolean).map(p => `<a href="tel:${p.replace(/\s*\(.*\)$/, "").replace(/[^\d+]/g, "")}">${esc(p)}</a>`).join("<br>")}</td>
   <td>${esc(r.rating)}</td>
   <td>${r.demo ? `<a href="${esc(r.demo)}" target="_blank" rel="noopener">демо</a>` : "—"}${r.yandex ? ` · <a href="${esc(r.yandex)}" target="_blank" rel="noopener">карты</a>` : ""}</td>
   <td>${esc(r.last || r.created)}${r.price ? `<small>${esc(r.price)}</small>` : ""}${r.domain ? `<small>${esc(r.domain)}</small>` : ""}</td>
