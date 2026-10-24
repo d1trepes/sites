@@ -135,7 +135,7 @@ const BLOCKS = {
     return sec(b, "pochemu", `
   ${h2(b, "Почему мы")}
   <div class="why">
-    ${br ? `<div class="brands rv"><div><small>${esc(br.label || "С какими авто работаем")}</small><h3>${esc(br.text)}</h3></div>${br.img ? `<img src="${esc(br.img)}" alt="${esc(br.imgAlt || br.text)}" loading="lazy" decoding="async">` : ""}</div>` : ""}
+    ${br ? `<div class="brands rv"><div><span class="ic">${icon("car")}</span><h3>${esc(br.label || "С какими авто")}</h3><p>${esc(br.text)}</p></div>${br.img ? `<img src="${esc(br.img)}" alt="${esc(br.imgAlt || br.text)}" loading="lazy" decoding="async">` : ""}</div>` : ""}
     ${(b.items || []).map((w, i) => `<div class="rv"${d((i + 1) * .08)}><span class="ic">${icon(w.icon)}</span><h3>${esc(w.t)}</h3><p>${esc(w.text)}</p></div>`).join("")}
   </div>`);
   },

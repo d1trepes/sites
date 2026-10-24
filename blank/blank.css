@@ -22,14 +22,14 @@ section{padding:clamp(56px,8vw,112px) 0}
 
 /* кнопки */
 .btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:99px;font:600 16px var(--f-body);border:0;box-shadow:inset 0 0 0 1px var(--bd,var(--line));transition:transform .2s,box-shadow .3s,color .45s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
-.btn{border-radius:28px;transition:transform .2s,color .45s var(--ease),box-shadow .3s,border-radius .45s var(--ease)}
+.btn{border-radius:28px;transition:transform .2s,color .45s var(--ease),box-shadow .3s}
 .btn:active{transform:scale(.97)}
 .btn-ac{background:var(--ac);color:var(--on-ac);--bd:transparent;--fill:var(--tx)}
 .btn-gh{--fill:var(--ac)}
-/* наведение: круг заливки растёт от курсора, кнопка становится прямоугольной */
+/* наведение: круг заливки растёт от курсора, кнопка остаётся скруглённой */
 .btn::before{content:"";position:absolute;z-index:-1;left:var(--x,50%);top:var(--y,50%);width:var(--s,320px);height:var(--s,320px);border-radius:50%;background:var(--fill);transform:translate(-50%,-50%) scale(0);transition:transform .6s var(--ease)}
 @media(hover:hover){
-  .btn:hover{border-radius:var(--r-btn-hover,0px);box-shadow:none}
+  .btn:hover{box-shadow:none}
   .btn:hover::before{transform:translate(-50%,-50%) scale(1)}
   .btn-ac:hover{color:var(--bg)}
   .btn-gh:hover{color:var(--on-ac)}
@@ -276,5 +276,6 @@ dialog ul{padding-left:20px}
 .sv .pic img,.why .brands img{transition:transform .8s var(--ease)}
 @media(hover:hover){.sv:hover .pic img,.why .brands:hover img{transform:scale(1.06) rotate(-3deg)}}
 
-/* «С какими авто работаем»: спокойнее, не кричит */
-.why .brands h3{font:500 clamp(17px,1.4vw,19px)/1.45 var(--f-body);letter-spacing:0;color:var(--tx)}
+/* «С какими авто»: такая же карточка, как остальные (иконка, заголовок, серый текст) + картинка справа */
+.why .brands>div{display:flex;flex-direction:column}
+.why .brands h3{font-size:22px;line-height:1.15;margin-bottom:12px}
