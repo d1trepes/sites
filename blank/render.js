@@ -109,7 +109,7 @@ const BLOCKS = {
       ${S.schedule?.length ? `<div class="now rv"${d(.25)} data-schedule='${esc(JSON.stringify(S.schedule))}' hidden><i></i><span></span></div>` : ""}
       ${y.rating ? `<div class="trust rv"${d(.3)}><b>${esc(y.rating)}</b><div>${stars(5)}<span style="display:block;margin-top:4px">${rating(c) ? rating(c) + " на Яндекс Картах" : "на Яндекс Картах"}</span></div></div>` : ""}
     </div>
-    ${b.img ? `<div class="car${b.imgSize ? " " + esc(b.imgSize) : ""}${b.shape === "circle" ? " circ" : ""}${b.decor ? " ring" : ""} rv"${d(.15)}><img src="${esc(b.img)}" alt="${esc(b.imgAlt || S.name)}" fetchpriority="high"></div>` : ""}
+    ${b.img ? `<div class="car${b.imgSize ? " " + esc(b.imgSize) : ""}${b.shape === "circle" ? " circ" : ""} rv"${d(.15)}><img src="${esc(b.img)}" alt="${esc(b.imgAlt || S.name)}" fetchpriority="high"></div>` : ""}
   </div>
 </section>`;
   },
