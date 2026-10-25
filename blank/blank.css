@@ -630,11 +630,6 @@ h2 em{font-style:normal;color:var(--ac-tx)}
   .cnt:not(:has(.hrs)) .info .acts{margin:0 0 0 auto}
   .cnt:not(:has(.hrs)) .map{min-height:380px}
 }
-/* карточка услуги без картинки и с небольшим числом меток: обычные метки, но в две колонки на всю ширину карточки */
-@media(min-width:961px){
-  .svc.side .sv:not(:has(.pic)):not(:has(.chips span:nth-child(7))) .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-}
-
 /* ---------- МАСТЕРСКАЯ: компактнее заголовок и первый экран, акцент — подчёркивание ---------- */
 [data-style="мастерская"] .hero h1{font-size:clamp(36px,4.5vw,66px);line-height:1}
 [data-style="мастерская"] h2{font-size:clamp(30px,4vw,52px)}
