@@ -68,7 +68,7 @@
     {
       "type": "services",
       "style": "tiles",
-      "title": "Что мы ремонтируем",
+      "title": "Что мы *ремонтируем*",
       "button": "Узнать цену",
       "cols": 2,
       "items": [

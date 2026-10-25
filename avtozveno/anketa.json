@@ -2,8 +2,7 @@
   "style": "плакат",
   "name": "Автозвено",
   "logo": {
-    "text": "Автозвено",
-    "mark": "diamond"
+    "text": "Автозвено"
   },
   "theme": "тёмная",
   "accent": "#1E6BFF",
@@ -225,7 +224,7 @@
     {
       "type": "steps",
       "style": "panel",
-      "img": "img/cta-tools.webp",
+      "img": "img/cta-phone-1e6bff.webp",
       "items": [
         {
           "t": "Позвоните",

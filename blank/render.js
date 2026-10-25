@@ -72,13 +72,15 @@ const logo = S => {
   const L = S.logo || {};
   if (L.img) return `<img src="${esc(L.img)}" alt="${esc(S.name)}" class="logo-img">`;
   const t = L.text || S.name, a = L.accent;
-  return (L.mark === "diamond" ? "<i></i>" : "") + (a && t.startsWith(a) ? `<b>${esc(a)}</b>${esc(t.slice(a.length))}` : esc(t));
+  return (a && t.startsWith(a) ? `<b>${esc(a)}</b>${esc(t.slice(a.length))}` : esc(t));
 };
 const d = i => i ? ` style="--d:${+i.toFixed(2)}s"` : "";
 const sec = (b, id, inner, cls = "") =>
   `<section id="${esc(b.id || id)}"${cls ? ` class="${cls}"` : ""} style="padding-top:0"><div class="wrap">${inner}</div></section>`;
-const h2 = (b, def) => (b.title ?? def) ? `<h2 class="rv">${esc(b.title ?? def)}</h2>` : "";
-const kick = b => b.sub ? `<p class="kick rv">${esc(b.sub)}</p>` : "";
+/* заголовок блока: *слово* — акцентом (цветом или подчёркиванием, по стилю сайта) */
+const h2 = (b, def) => (b.title ?? def) ? `<h2 class="rv">${rich(b.title ?? def)}</h2>` : "";
+/* подписи-пояснения под заголовками и блоками не выводим (решение 25.10) — поле sub игнорируется */
+const kick = () => "";
 /* *слово* в тексте — выделить жирным */
 const rich = t => esc(t).replace(/\*([^*]+)\*/g, "<em>$1</em>");
 
@@ -116,7 +118,7 @@ const BLOCKS = {
     if (b.groups?.length) {
       const minP = g => Math.min(...g.items.map(i => parseFloat(String(i[1]).replace(/[^\d.,]/g, "").replace(",", ".")) || Infinity));
       return `<section id="${esc(b.id || "ceny")}" class="sec-prices"><div class="wrap">
-  <div class="ph2"><div>${h2(b, "Цены")}${b.sub !== "" ? `<p class="rv"${d(.08)}>${esc(b.sub ?? "Цены в белорусских рублях.")}</p>` : ""}</div></div>
+  <div class="ph2">${h2(b, "Цены")}</div>
   <div class="pgrid">${b.groups.map((g, i) => `<details class="pg rv"${d((i % 2) * .06)} open>
     <summary><h3>${esc(g.g)}</h3><small>${g.items.length > 1 ? `от ${minP(g)} BYN` : `${g.items[0][1]} BYN`}</small><span class="chev" aria-hidden="true">${CHEV}</span></summary>
     <ul>${g.items.map(it => `<li><span>${esc(it[0])}${it[2] ? `<small>${esc(it[2])}</small>` : ""}</span><b>${esc(it[1])}<em>BYN</em></b></li>`).join("")}</ul>
@@ -147,8 +149,7 @@ const BLOCKS = {
     <div><div class="quotes">${(b.items || []).map((r, i) => `<article class="q rv"${d((i % 2) * .08)}>
       <header><div class="ava">${esc([...r.name][0].toUpperCase())}</div><div><b>${esc(r.name)}</b><small>${esc(r.date || "")}</small></div></header>
       ${stars(r.stars || 5)}<p>${rich(r.text)}</p>
-    </article>`).join("")}</div>
-    ${(b.items || []).length > 1 ? '<p class="swipe">Листайте вбок →</p>' : ""}</div>
+    </article>`).join("")}</div></div>
   </div>`);
   },
 
@@ -215,8 +216,7 @@ const BLOCKS = {
     if (!b.items?.length) return "";
     return sec(b, "akcii", `
   ${h2(b, "Акции")}
-  <div class="promo">${b.items.map((p, i) => `<div class="rv"${d(i * .08)}><span class="big">${esc(p.big)}</span><h3>${esc(p.t)}</h3>${p.text ? `<p>${esc(p.text)}</p>` : ""}</div>`).join("")}</div>
-  <p class="note rv">${esc(b.note ?? "Уточняйте актуальность по телефону.")}</p>`);
+  <div class="promo">${b.items.map((p, i) => `<div class="rv"${d(i * .08)}><span class="big">${esc(p.big)}</span><h3>${esc(p.t)}</h3>${p.text ? `<p>${esc(p.text)}</p>` : ""}</div>`).join("")}</div>`);
   },
 
   /* Фото сервиса с подписями */
@@ -231,7 +231,7 @@ const BLOCKS = {
   beforeafter(b, c) {
     if (!b.items?.length) return "";
     return sec(b, "do-posle", `
-  ${h2(b, "До и после ремонта")}<p class="kick rv">${esc(b.sub || "Двигайте ползунок, чтобы сравнить.")}</p>
+  ${h2(b, "До и после ремонта")}
   <div class="ba-grid">${b.items.map((p, i) => `<figure class="rv"${d(i * .08)}>
     <div class="ba"><img src="${esc(p.before)}" alt="До ремонта" loading="lazy" decoding="async"><img class="after" src="${esc(p.after)}" alt="После ремонта в ${esc(c.S.name)}" loading="lazy" decoding="async"><span class="line"></span><span class="tag l">До</span><span class="tag r">После</span><input type="range" min="0" max="100" value="50" aria-label="Сравнить до и после"></div>
     ${p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ""}
@@ -246,7 +246,7 @@ const BLOCKS = {
     const msg = `${c.viber ? `<a class="btn btn-gh" href="${c.viber}">Viber</a>` : ""}${c.tg ? `<a class="btn btn-gh" href="${c.tg}">Telegram</a>` : ""}`;
     if (b.style === "panel") return sec(b, "zapis", `
   <div class="zap rv">
-    <div><h2>${esc(b.title || "Как записаться")}</h2>${list}
+    <div><h2>${rich(b.title || "Как записаться")}</h2>${list}
       <div class="steps-cta"><a class="btn btn-wh" href="${c.tel}">${esc(b.button || "Записаться")}</a></div></div>
     ${b.img ? `<div class="tools"><img src="${esc(b.img)}" alt="Инструменты автосервиса ${esc(S.name)}" loading="lazy" decoding="async"></div>` : ""}
   </div>`);
@@ -286,7 +286,7 @@ const BLOCKS = {
     const second = `<a class="btn" href="${esc(c.route)}" target="_blank" rel="noopener">Построить маршрут</a>`;
     return `<section id="${esc(b.id || "zapisatsya")}" style="padding-top:0"><div class="wrap"><div class="cta rv">
   <div>
-    <h2>${esc(b.title || "Записаться на ремонт")}</h2>
+    <h2>${rich(b.title || "Записаться на ремонт")}</h2>
     <a class="tel" href="${c.tel}">${esc(S.phone)}</a>
     <div class="row"><a class="btn inv" href="${c.tel}">${esc(b.button || "Позвонить")}</a>${second}</div>
   </div>

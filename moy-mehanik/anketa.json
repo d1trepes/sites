@@ -320,7 +320,7 @@
     },
     {
       "type": "promo",
-      "title": "Специальные предложения",
+      "title": "Специальные *предложения*",
       "items": [
         {
           "big": "0 BYN",
@@ -381,7 +381,7 @@
     },
     {
       "type": "cta",
-      "img": "img/cta-tools.webp"
+      "img": "img/cta-key-ff7a00.webp"
     }
   ],
   "legal": {
