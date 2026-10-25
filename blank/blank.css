@@ -668,7 +668,8 @@ h2 em{font-style:normal;color:var(--ac-tx)}
 /* ---------- ПЛАКАТ: спокойные карточки, отступ после цветного экрана, акцент — подчёркивание, узор на первом экране ---------- */
 [data-style="плакат"]{--r:14px;--r-sm:10px}
 [data-style="плакат"] .hero{margin-bottom:clamp(40px,6vw,88px)}
-[data-style="плакат"] .hero h1 em,[data-style="плакат"] .hero h1 mark{background:var(--on-ac);color:var(--ac);padding:0 .12em;margin:0 -.04em;border-radius:.1em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-decoration:none}
+[data-style="плакат"] .hero h1 em,[data-style="плакат"] .hero h1 mark{background:linear-gradient(var(--on-ac),var(--on-ac)) 0 85%/100% 80% no-repeat;color:var(--ac);padding:0 .12em;margin:0 -.04em;border-radius:.1em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-decoration:none}
+[data-style="плакат"] .hero h1{line-height:1.1}
 [data-style="плакат"] .cards .ic,[data-style="плакат"] .why .ic{border-radius:10px}
 /* узор: без колец — сетка крупных точек справа за картинкой и мелких слева внизу */
 [data-style="плакат"] .hero::before{outline:0;box-shadow:none;border-radius:0;transform:none;top:0;bottom:0;right:0;left:auto;width:min(58vw,820px);aspect-ratio:auto;background-image:radial-gradient(color-mix(in srgb,var(--on-ac) 32%,transparent) 2.6px,transparent 2.9px);background-size:34px 34px;-webkit-mask:radial-gradient(ellipse 70% 75% at 70% 45%,#000 20%,transparent 72%);mask:radial-gradient(ellipse 70% 75% at 70% 45%,#000 20%,transparent 72%)}
