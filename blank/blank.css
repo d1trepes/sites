@@ -700,3 +700,8 @@ h2 em{font-style:normal;color:inherit}
 @media(max-width:960px){.zap{grid-template-columns:1fr}.zap .tools{display:none}}
 @media(max-width:900px){.car.s,.car.m{max-height:none;width:100%;display:flex;justify-content:center}.car.s img,.car.m img{max-height:220px;width:auto;max-width:100%}}
 @media(max-width:900px){.car.circ::before,[data-style="мастерская"] .hero .car.circ::before{width:auto;height:82%;right:calc(50% - 135px);top:46%}}
+/* плакат: точки только в двух углах первого экрана, растворяются к центру (25.10) */
+[data-style="плакат"] .hero::before,[data-style="плакат"] .hero::after{content:"";display:block;position:absolute;pointer-events:none;z-index:0;width:min(38vw,360px);height:min(38vw,360px);background-image:radial-gradient(color-mix(in srgb,var(--on-ac) 30%,transparent) 1.8px,transparent 2.1px);background-size:20px 20px;inset:auto;transform:none;border-radius:0;box-shadow:none;outline:0}
+[data-style="плакат"] .hero::before{top:0;right:0;left:auto;bottom:auto;-webkit-mask:radial-gradient(circle at 100% 0,#000 0,#000 25%,transparent 70%);mask:radial-gradient(circle at 100% 0,#000 0,#000 25%,transparent 70%)}
+[data-style="плакат"] .hero::after{bottom:0;left:0;top:auto;right:auto;-webkit-mask:radial-gradient(circle at 0 100%,#000 0,#000 25%,transparent 70%);mask:radial-gradient(circle at 0 100%,#000 0,#000 25%,transparent 70%)}
+@media(max-width:900px){[data-style="плакат"] .hero::before,[data-style="плакат"] .hero::after{width:170px;height:170px}}
