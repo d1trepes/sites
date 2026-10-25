@@ -559,7 +559,7 @@ section.notitle{padding-top:clamp(8px,2vw,24px)!important}
   [data-style="мастерская"] .hero .car.w{width:108%}
   [data-style="мастерская"] .hero .car:not(.w){aspect-ratio:auto;height:min(46vh,420px);width:100%;justify-self:center}
   [data-style="мастерская"] .hero .car:not(.w) img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-  [data-style="мастерская"] .hero .car.circ::before{width:auto;height:96%;right:8%}
+  [data-style="мастерская"] .hero .car.circ::before{width:auto;height:70%;right:-2%;top:40%}
 }
 [data-style="мастерская"] .ic{border-radius:4px}
 [data-style="мастерская"] .sl{border-left:3px solid var(--ac)}
