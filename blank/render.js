@@ -92,7 +92,7 @@ const BLOCKS = {
     const { S, y } = c;
     const tag = b.accentStyle === "mark" ? "mark" : "em";
     const title = b.accent ? esc(b.title).replace(esc(b.accent), `<${tag}>${esc(b.accent)}</${tag}>`) : esc(b.title);
-    return `<section class="hero" id="top">
+    return `<section class="hero${b.dots === false ? " nodots" : ""}" id="top">
   <div class="wrap grid">
     <div class="htop">
       ${b.badge ? `<p class="hbadge rv">${b.badge.icon ? icon(b.badge.icon) : "<i></i>"}<span>${esc(b.badge.t || b.badge)}</span></p>` : ""}
