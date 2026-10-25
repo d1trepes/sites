@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru" data-theme="тёмная" style="--ac:#FF7A00;--ac-tx:#FF7A00;--pin:#FF7A00;--on-ac:#111">
+<html lang="ru" data-theme="тёмная" data-style="мастерская" style="--ac:#FF7A00;--ac-tx:#FF7A00;--pin:#FF7A00;--on-ac:#111">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
@@ -21,8 +21,8 @@
 <link rel="preload" as="image" href="img/hero-sedan-orange.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../blank/blank.css?v=a8de9ca9">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../blank/blank.css?v=5dc01b02">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">
 {
@@ -80,9 +80,13 @@
 <main>
 <section class="hero" id="top">
   <div class="wrap grid">
-    <div>
+    <div class="htop">
+      
+      <p class="haddr rv"><svg class="pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>Минск, пр-т Машерова, 25, корп. 1</p>
       <h1 class="rv">Ремонт и ТО авто на пр-те <em>Машерова</em></h1>
-      <p class="lead rv" style="--d:0.1s">Диагностика бесплатно, если ремонтируете у нас. Без выходных, 8:00–20:00.</p>
+    </div>
+    <div class="hbody">
+      <p class="lead rv" style="--d:0.1s">Ремонт и ТО без выходных, с 8:00 до 20:00. Диагностика — 0 BYN при ремонте у нас.</p>
       <div class="acts rv" style="--d:0.2s">
         <a class="btn btn-ac" href="tel:+375295562200">Позвонить</a>
         <a class="btn btn-gh" href="https://yandex.by/maps/org/moy_mekhanik/220123975529/" target="_blank" rel="noopener">Как проехать</a>
@@ -95,7 +99,7 @@
 </section>
 <section id="blok" class="notitle" style="padding-top:0"><div class="wrap">
   
-  <div class="cards c3"><div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5 21 21"/><circle cx="10" cy="10" r="2"/></svg></span><h3>Бесплатная диагностика</h3><p>При ремонте у нас в день обращения</p></div><div class="rv" style="--d:0.06s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></span><h3>Шиномонтаж</h3><p>От 60 BYN</p></div><div class="rv" style="--d:0.12s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h12v9H2zM14 10h4l4 3v3h-8z"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></span><h3>Эвакуатор 24/7</h3><p>Круглосуточно</p></div></div></div></section>
+  <div class="cards c2"><div class="rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L4 16.8V20h3.2l5.3-5.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></span><h3>Шиномонтаж</h3><p>От 60 BYN</p></div><div class="rv" style="--d:0.06s"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h12v9H2zM14 10h4l4 3v3h-8z"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg></span><h3>Эвакуатор 24/7</h3><p>Круглосуточно</p></div></div></div></section>
 <section id="ceny" class="sec-prices"><div class="wrap">
   <div class="ph2"><div><h2 class="rv">Цены</h2><p class="rv" style="--d:0.08s">Цены в белорусских рублях.</p></div></div>
   <div class="pgrid"><details class="pg rv" open>
@@ -184,7 +188,7 @@
 </main>
 <footer class="ftr"><div class="wrap">
   <div class="top">
-    <div class="brand"><span class="logo">Мой Механик</span><p>Диагностика бесплатно, если ремонтируете у нас. Без выходных, 8:00–20:00.</p>
+    <div class="brand"><span class="logo">Мой Механик</span><p>Ремонт и ТО без выходных, с 8:00 до 20:00. Диагностика — 0 BYN при ремонте у нас.</p>
       <span class="stars" aria-label="5 из 5"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8l-5.3 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8l-5.3 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8l-5.3 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8l-5.3 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .7-4.5 4.1 1.2 5.9L10 14.8l-5.3 2.9 1.2-5.9L1.4 7.7l6-.7z"/></svg></span><small>5,0 · 112 оценок на Яндекс Картах</small></div>
     <div><h4>Контакты</h4><ul>
       <li><a href="tel:+375295562200">+375 29 556-22-00</a></li><li>пр-т Машерова, 25, корп. 1</li>

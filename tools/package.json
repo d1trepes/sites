@@ -5,5 +5,14 @@
   "dependencies": {
     "@sparticuz/chromium": "*",
     "playwright-core": "*"
+  },
+  "devDependencies": {
+    "@fontsource/golos-text": "^5.3.0",
+    "@fontsource/manrope": "^5.3.0",
+    "@fontsource/onest": "^5.3.1",
+    "@fontsource/oswald": "^5.3.0",
+    "@fontsource/rubik": "^5.3.0",
+    "@fontsource/russo-one": "^5.3.0",
+    "@fontsource/unbounded": "^5.3.0"
   }
 }

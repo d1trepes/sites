@@ -33,7 +33,7 @@ function rows() {
         rating: y.rating ? `${y.rating}${y.reviews ? ` · ${y.reviews} отз.` : ""}` : (C.rating || ""),
         yandex: y.url || C.yandex || "",
         demo: A.blocks ? DEMO + d.name + "/" : "",
-        color: A.accent ? `${A.theme || ""} ${A.accent}`.trim() : "",
+        color: A.accent ? `${A.style || "классика"}, ${A.theme || ""} ${A.accent}`.trim() : "",
         status: C.status || (A.blocks ? "демо готово" : "кандидат"),
         next: C.next || "",
         created: C.created || "",
@@ -59,7 +59,7 @@ function op(p) {
 }
 
 const COLS = [["name", "Название"], ["status", "Статус"], ["next", "Следующий шаг"], ["phones", "Телефон"], ["address", "Адрес"],
-  ["rating", "Рейтинг"], ["demo", "Демо"], ["yandex", "Яндекс Карты"], ["color", "Цвет"], ["created", "Создан"],
+  ["rating", "Рейтинг"], ["demo", "Демо"], ["yandex", "Яндекс Карты"], ["color", "Стиль и цвет"], ["created", "Создан"],
   ["last", "Последний контакт"], ["price", "Цена"], ["domain", "Домен"], ["note", "Заметка"], ["folder", "Папка"]];
 
 function md(R) {

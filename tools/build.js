@@ -18,6 +18,60 @@ const hash = f => crypto.createHash("md5").update(fs.readFileSync(f)).digest("he
 const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const hm = x => String(Math.floor(x)).padStart(2, "0") + ":" + String(Math.round((x % 1) * 60)).padStart(2, "0");
 
+/* СТИЛИ САЙТА (поле "style" в анкете) → шрифты. Вид каждого стиля — в blank/blank.css, [data-style="…"] */
+const STYLES = {
+  "классика": "family=Onest:wght@400;500;600&family=Unbounded:wght@500;700",
+  "мастерская": "family=Golos+Text:wght@400;500;600&family=Oswald:wght@500;600;700",
+  "чистый": "family=Manrope:wght@400;500;600;700;800",
+  "плакат": "family=Rubik:wght@400;500;600&family=Russo+One"
+};
+
+/* ПОВТОРЫ ТЕКСТА: одна и та же фраза в двух местах сайта или на другом сайте */
+const TXT_KEYS = new Set(["title", "lead", "text", "t", "d", "sub", "note", "caption", "entry", "description", "ogDescription"]);
+function texts(S) {
+  const out = [];
+  const walk = (v, where) => {
+    if (Array.isArray(v)) return v.forEach(x => walk(x, where));
+    if (!v || typeof v !== "object") return;
+    for (const [k, x] of Object.entries(v)) {
+      if (typeof x === "string" && TXT_KEYS.has(k)) out.push({ where, s: x });
+      else if (typeof x === "object") walk(x, where);
+    }
+  };
+  strip(S).blocks.forEach((b, i) => { if (b.type !== "reviews") walk(b, `${b.type}#${i + 1}`); });
+  return out;
+}
+const words = s => s.toLowerCase().replace(/ё/g, "е").replace(/[^a-zа-я0-9\s]/g, " ").split(/\s+/).filter(Boolean);
+const _sh = (s, n) => { const w = words(s), r = []; for (let i = 0; i + n <= w.length; i++) r.push(w.slice(i, i + n).join(" ")); return r; };
+function repeats(S, dir) {
+  const w = [], seen = new Map();
+  // адрес, часы и цены повторять можно — это данные, а не фразы
+  const addr = words(S.address || "").join(" ");
+  const ok = sh => !addr.includes(sh) && sh.split(" ").filter(x => /\d/.test(x)).length < 2;
+  const T = texts(S);
+  const shingles = (s, n) => _sh(s, n).filter(ok);
+  // внутри сайта: 5 слов подряд в двух разных блоках
+  for (const { where, s } of T) for (const sh of new Set(shingles(s, 5))) {
+    const prev = seen.get(sh);
+    if (prev && prev !== where) { w.push(`повтор внутри сайта: «${sh}…» — в ${prev} и ${where}`); seen.set(sh, where); }
+    else if (!prev) seen.set(sh, where);
+  }
+  // между сайтами: 6 слов подряд, которые уже есть на другом сайте
+  const mine = new Map();
+  T.forEach(({ where, s }) => shingles(s, 6).forEach(sh => mine.set(sh, where)));
+  const hero = words(strip(S).blocks.find(b => b.type === "hero")?.title || "").join(" ");
+  for (const d of fs.readdirSync(ROOT)) {
+    const f = path.join(ROOT, d, "anketa.json");
+    if (d === dir || !fs.existsSync(f)) continue;
+    let O; try { O = JSON.parse(fs.readFileSync(f, "utf8")); } catch { continue; }
+    const other = new Set(texts(O).flatMap(x => shingles(x.s, 6)));
+    const hit = [...mine].filter(([sh]) => other.has(sh));
+    if (hit.length) w.push(`как на сайте ${d}: «${hit[0][0]}…» (${hit[0][1]})${hit.length > 1 ? ` и ещё ${hit.length - 1}` : ""} — перепиши своими словами`);
+    if (hero && hero === words(O.blocks?.find(b => b.type === "hero")?.title || "").join(" ")) w.push(`заголовок первого экрана такой же, как у ${d}`);
+  }
+  return [...new Set(w)].slice(0, 8);
+}
+
 function check(S, dir) {
   const need = ["name", "phone", "address", "seo", "blocks"];
   const miss = need.filter(k => !S[k]);
@@ -40,6 +94,8 @@ function warn(S, dir) {
     if (b.type === "services" && b.style === "tiles" && (b.cols || 2) === 3) w.push("services: плитки в 3 колонки дают пустоты — лучше style: side");
   }
   if (on.length < 6) w.push(`всего ${on.length} блоков — сайт выглядит пустым, нужно 7+ (см. blank/БЛОКИ.md)`);
+  if (S.style && !STYLES[S.style]) w.push(`style: нет стиля «${S.style}» — есть ${Object.keys(STYLES).join(", ")}`);
+  w.push(...repeats(S, dir));
   w.forEach(x => console.log(`  ⚠ ${dir}: ${x}`));
 }
 
@@ -71,9 +127,10 @@ function page(S, { url, css, js, demo }) {
   const cols = Object.entries(S.colors || {}).map(([k, v]) => `;--${k}:${v}`).join("");
   const style = `--ac:${ac};--ac-tx:${S.accentText || ac};--pin:${ac};--on-ac:${S.onAccent || "#ffffff"}${cols}`;
   const theme = S.theme || "тёмная";
+  const st = STYLES[S.style] ? S.style : "классика";
   const bg = S.colors?.bg || (theme === "светлая" ? "#f5f1ea" : "#0b0b0c");
   return `<!doctype html>
-<html lang="ru" data-theme="${esc(theme)}" style="${style}">
+<html lang="ru" data-theme="${esc(theme)}" data-style="${esc(st)}" style="${style}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cut">
@@ -89,7 +146,7 @@ ${demo ? '<meta name="robots" content="noindex, nofollow">\n' : ""}<title>${esc(
 <meta property="og:description" content="${esc(seo.ogDescription || seo.description)}">
 ${ogImg ? `<meta property="og:image" content="${ogImg}">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta name="twitter:card" content="summary_large_image">\n` : ""}${hero?.img ? `<link rel="preload" as="image" href="${esc(hero.img)}" fetchpriority="high">\n` : ""}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?${STYLES[st]}&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${css}">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">

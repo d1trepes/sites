@@ -13,6 +13,17 @@ const ROOT = path.join(__dirname, "..");
 const dir = process.argv[2];
 if (!dir) { console.error("Укажи папку: node tools/check.js ИМЯ-ПАПКИ"); process.exit(1); }
 
+/* шрифты сайта с диска (из npm-пакетов @fontsource), чтобы снимки были с настоящими шрифтами стиля */
+const FONTS = (() => {
+  const fam = { onest: [400, 500, 600], unbounded: [500, 700], oswald: [500, 600, 700], "golos-text": [400, 500, 600], manrope: [400, 500, 600, 700, 800], "russo-one": [400], rubik: [400, 500, 600] };
+  let css = "";
+  for (const [f, ws] of Object.entries(fam)) for (const w of ws) for (const sub of ["cyrillic", "latin"]) {
+    const d = path.join(__dirname, "node_modules/@fontsource", f), file = path.join(d, `${sub}-${w}.css`);
+    if (fs.existsSync(file)) css += fs.readFileSync(file, "utf8").replace(/url\(\.\/files\//g, `url(file://${d}/files/`);
+  }
+  return css;
+})();
+
 (async () => {
   const { chromium } = require("playwright-core");
   let exe, args = [];
@@ -23,7 +34,10 @@ if (!dir) { console.error("Укажи папку: node tools/check.js ИМЯ-П�
   for (const [name, w, h, mob] of [["телефон", 375, 800, true], ["комп", 1440, 900, false]]) {
     const b = await chromium.launch({ executablePath: exe, args });
     const p = await b.newPage({ viewport: { width: w, height: h }, isMobile: mob, hasTouch: mob });
+    await p.route(/fonts\.(googleapis|gstatic)\.com/, r => r.fulfill({ status: 200, contentType: "text/css", body: "" }));
     await p.goto(url, { waitUntil: "load", timeout: 30000 }).catch(() => {});
+    if (FONTS) await p.addStyleTag({ content: FONTS }).catch(() => {});
+    await p.evaluate(() => document.fonts.ready).catch(() => {});
     await p.waitForTimeout(500);
     await p.evaluate(() => Promise.all([...document.images].map(i => { i.loading = "eager"; i.decoding = "sync"; return (i.complete ? Promise.resolve() : new Promise(r => { i.onload = i.onerror = r; setTimeout(r, 5000); })).then(() => i.decode().catch(() => {})); })));
     await p.waitForTimeout(800);

@@ -60,7 +60,7 @@ function ctx(S) {
     tel: "tel:" + digits(S.phone),
     viber: S.viber ? "viber://chat?number=" + encodeURIComponent(digits(S.viber)) : "",
     tg: S.telegram ? "https://t.me/" + encodeURI(S.telegram.replace(/^@/, "")) : "",
-    street: S.address.replace(/^Минск,\s*/, ""),
+    street: S.address.replace(/^(Минск|Minsk),\s*/, ""),
     marks: y.marks ? `${y.marks} ${plural(y.marks, "оценка", "оценки", "оценок")}` : "",
     revs: y.reviews ? `${y.reviews} ${plural(y.reviews, "отзыв", "отзыва", "отзывов")}` : "",
     city: S.city || "Минск"
@@ -92,8 +92,12 @@ const BLOCKS = {
     const title = b.accent ? esc(b.title).replace(esc(b.accent), `<${tag}>${esc(b.accent)}</${tag}>`) : esc(b.title);
     return `<section class="hero" id="top">
   <div class="wrap grid">
-    <div>
+    <div class="htop">
+      ${b.badge ? `<p class="hbadge rv">${b.badge.icon ? icon(b.badge.icon) : "<i></i>"}<span>${esc(b.badge.t || b.badge)}</span></p>` : ""}
+      ${(b.lead || "").includes(c.street.split(",")[0]) ? "" : `<p class="haddr rv">${PIN}${esc(S.address)}</p>`}
       <h1 class="rv">${title}</h1>
+    </div>
+    <div class="hbody">
       ${b.lead ? `<p class="lead rv"${d(.1)}>${esc(b.lead)}</p>` : ""}
       <div class="acts rv"${d(.2)}>
         <a class="btn btn-ac" href="${c.tel}">${esc(b.button || "Позвонить")}</a>

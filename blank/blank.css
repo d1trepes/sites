@@ -520,3 +520,132 @@ section.notitle{padding-top:clamp(8px,2vw,24px)!important}
 
 /* Одна группа цен — на всю ширину */
 .pgrid:has(> .pg:only-child){columns:1}
+
+/* ======================= СТИЛИ САЙТА (поле "style" в анкете) =======================
+   классика — как выше (по умолчанию). Ниже — отличия трёх других стилей.
+   Шрифты стилей подключает сборщик (tools/build.js, STYLES).                          */
+
+/* первый экран: верх (плашка, заголовок) и низ (текст, кнопки, рейтинг) слева, картинка справа на обе строки */
+@media(min-width:901px){
+  .hero .grid{row-gap:0;align-content:center}
+  .hero .htop{grid-column:1;grid-row:1;align-self:end}
+  .hero .hbody{grid-column:1;grid-row:2;align-self:start}
+  .hero .car{grid-column:2;grid-row:1/3}
+}
+/* общее: плашка-изюминка над заголовком и строка адреса (адрес — только в новых стилях) */
+.hbadge{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;padding:8px 16px 8px 12px;border-radius:99px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);font-weight:600;font-size:15px;line-height:1.25}
+.hbadge svg{width:20px;height:20px;color:var(--ac-tx);flex:none}
+.hbadge i{width:8px;height:8px;border-radius:50%;background:var(--ac);flex:none;margin-left:4px}
+.haddr{display:none;align-items:center;gap:8px;margin-bottom:18px;font-size:15px;color:var(--mut)}
+.haddr .pin{width:16px;height:16px}
+@media(max-width:640px){.hbadge{font-size:14px;margin-bottom:16px}}
+
+/* ---------- МАСТЕРСКАЯ: строгий узкий шрифт, прописные заголовки, острые углы, сетка-чертёж ---------- */
+[data-style="мастерская"]{--f-head:"Oswald",system-ui,sans-serif;--f-body:"Golos Text",system-ui,sans-serif;--r:6px;--r-sm:4px}
+[data-style="мастерская"] h1,[data-style="мастерская"] h2,[data-style="мастерская"] h3{text-transform:uppercase;letter-spacing:.005em;font-weight:600;line-height:1.04}
+[data-style="мастерская"] h2{font-size:clamp(32px,4.6vw,60px);max-width:22ch}
+[data-style="мастерская"] h2:not(.cta h2,.zap h2)::before{content:"";display:block;width:48px;height:4px;background:var(--ac);margin-bottom:20px}
+[data-style="мастерская"] .btn{border-radius:6px;text-transform:uppercase;letter-spacing:.06em;font-size:14.5px;font-weight:600}
+[data-style="мастерская"] .btn-sm{border-radius:5px;font-size:13.5px}
+[data-style="мастерская"] .burger{border-radius:6px}
+[data-style="мастерская"] .logo{font:700 22px var(--f-head);text-transform:uppercase;letter-spacing:.02em}
+[data-style="мастерская"] .hbadge{border-radius:4px;text-transform:uppercase;letter-spacing:.05em;font-size:13px}
+[data-style="мастерская"] .haddr{display:flex;text-transform:uppercase;letter-spacing:.08em;font-size:13px}
+/* первый экран: огромный заголовок на всю ширину, под ним текст слева и картинка справа, фон — сетка */
+[data-style="мастерская"] .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;-webkit-mask:radial-gradient(ellipse 70% 70% at 70% 55%,#000 10%,transparent 75%);mask:radial-gradient(ellipse 70% 70% at 70% 55%,#000 10%,transparent 75%);opacity:.55;pointer-events:none}
+[data-style="мастерская"] .hero h1{font-size:clamp(40px,6.2vw,92px);line-height:.98}
+[data-style="мастерская"] .hero .trust b{font-weight:600}
+@media(min-width:901px){
+  [data-style="мастерская"] .hero .grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);column-gap:40px}
+  [data-style="мастерская"] .hero .htop{grid-column:1/-1;margin-bottom:6px}
+  [data-style="мастерская"] .hero .hbody{grid-row:2;align-self:center}
+  [data-style="мастерская"] .hero .car{grid-row:2;align-self:center;width:100%}
+  [data-style="мастерская"] .hero .car.w{width:108%}
+  [data-style="мастерская"] .hero .car:not(.w){aspect-ratio:auto;height:min(46vh,420px);width:100%;justify-self:center}
+  [data-style="мастерская"] .hero .car:not(.w) img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+  [data-style="мастерская"] .hero .car.circ::before{width:auto;height:96%;right:8%}
+}
+/* карточки: острые, с порядковым номером в углу */
+[data-style="мастерская"] .cards,[data-style="мастерская"] .why,[data-style="мастерская"] .svl,[data-style="мастерская"] .promo{counter-reset:n}
+[data-style="мастерская"] .cards>div,[data-style="мастерская"] .why>div:not(.brands),[data-style="мастерская"] .promo>div{position:relative;counter-increment:n}
+[data-style="мастерская"] .cards>div::after,[data-style="мастерская"] .why>div:not(.brands)::after,[data-style="мастерская"] .promo>div::after{content:counter(n,decimal-leading-zero);position:absolute;top:24px;right:26px;font:600 15px/1 var(--f-head);color:var(--mut);letter-spacing:.06em}
+[data-style="мастерская"] .ic{border-radius:4px}
+[data-style="мастерская"] .sl{border-left:3px solid var(--ac)}
+[data-style="мастерская"] .sl h3{text-transform:none;font-family:var(--f-body)}
+[data-style="мастерская"] .chips span{border-radius:4px}
+[data-style="мастерская"] .pg summary h3{font-size:21px}
+[data-style="мастерская"] .pg li b,[data-style="мастерская"] .pcard b,[data-style="мастерская"] .nch b,[data-style="мастерская"] .rate .big b,[data-style="мастерская"] .promo .big{font-family:var(--f-head);font-weight:600}
+[data-style="мастерская"] .step i{font-family:var(--f-head);font-size:18px}
+[data-style="мастерская"] .marq span{text-transform:uppercase;font-weight:600}
+[data-style="мастерская"] .ava,[data-style="мастерская"] .x{border-radius:6px}
+[data-style="мастерская"] .cta,[data-style="мастерская"] .zap{border-radius:8px}
+[data-style="мастерская"] .photos figcaption,[data-style="мастерская"] .ba .tag,[data-style="мастерская"] .map .cover span{border-radius:4px}
+
+/* ---------- ЧИСТЫЙ: спокойный шрифт, заголовки по центру, мягкие карточки без рамок, много воздуха ---------- */
+[data-style="чистый"]{--f-head:"Manrope",system-ui,sans-serif;--f-body:"Manrope",system-ui,sans-serif;--r:28px;--r-sm:20px}
+[data-style="чистый"] h1,[data-style="чистый"] h2,[data-style="чистый"] h3{font-weight:800;letter-spacing:-.035em}
+[data-style="чистый"] .logo{font-weight:800;letter-spacing:-.03em}
+[data-style="чистый"] section:not(.hero)>.wrap>h2,[data-style="чистый"] .ph2 h2{margin-left:auto;margin-right:auto;text-align:center}
+[data-style="чистый"] .kick,[data-style="чистый"] .ph2 p{text-align:center;margin-left:auto;margin-right:auto}
+[data-style="чистый"] .ph2{text-align:center}
+[data-style="чистый"] .cards>div,[data-style="чистый"] .why>div,[data-style="чистый"] .sv,[data-style="чистый"] .sl,[data-style="чистый"] .pg,[data-style="чистый"] .pcard,[data-style="чистый"] .promo>div,[data-style="чистый"] .q,[data-style="чистый"] .rate,[data-style="чистый"] .info,[data-style="чистый"] .hlc>div,[data-style="чистый"] .nch,[data-style="чистый"] .pnote,[data-style="чистый"] .more,[data-style="чистый"] .bnr{border-color:transparent;box-shadow:0 1px 2px rgba(0,0,0,.05),0 10px 30px -12px rgba(0,0,0,.14)}
+[data-style="чистый"][data-theme="тёмная"] .cards>div,[data-style="чистый"][data-theme="тёмная"] .why>div,[data-style="чистый"][data-theme="тёмная"] .sv,[data-style="чистый"][data-theme="тёмная"] .sl,[data-style="чистый"][data-theme="тёмная"] .pg,[data-style="чистый"][data-theme="тёмная"] .q{border-color:var(--line);box-shadow:none}
+[data-style="чистый"] .ic{border-radius:50%;background:color-mix(in srgb,var(--ac) 12%,var(--card))}
+[data-style="чистый"] .cards>div,[data-style="чистый"] .why>div{padding:32px}
+/* первый экран: всё по центру, картинка ниже на мягкой цветной подложке */
+[data-style="чистый"] .hero{text-align:center;min-height:auto;padding-bottom:clamp(40px,5vw,72px)}
+[data-style="чистый"] .hero .grid{grid-template-columns:1fr;justify-items:center;gap:clamp(28px,4vw,48px)}
+[data-style="чистый"] .hero .htop,[data-style="чистый"] .hero .hbody{display:flex;flex-direction:column;align-items:center;max-width:860px;grid-column:1!important;grid-row:auto!important}
+[data-style="чистый"] .hero .grid,[data-style="чистый"] .hero .grid:has(.car.w){row-gap:0;grid-template-columns:1fr}
+[data-style="чистый"] .hero .trust>div{text-align:left}
+[data-style="чистый"] .hero h1{font-size:clamp(34px,4.4vw,60px);line-height:1.05}
+[data-style="чистый"] .hero .lead{margin-left:auto;margin-right:auto;max-width:48ch}
+[data-style="чистый"] .hero .acts{justify-content:center}
+[data-style="чистый"] .hero .trust{border-top:0;padding-top:0;justify-content:center}
+[data-style="чистый"] .hero .car,[data-style="чистый"] .hero .car.w,[data-style="чистый"] .hero .car.m,[data-style="чистый"] .hero .car.s{order:0;width:min(100%,980px);aspect-ratio:auto;height:clamp(240px,26vw,360px);margin:0;justify-self:center;background:radial-gradient(120% 90% at 50% 100%,color-mix(in srgb,var(--ac) 22%,transparent),transparent 70%),var(--card);border-radius:36px;overflow:hidden}
+[data-style="чистый"] .hero .car{grid-column:1!important;grid-row:auto!important}
+[data-style="чистый"] .hero .car::before{display:none}
+[data-style="чистый"] .hero .car::after{display:none}
+[data-style="чистый"] .hero .car img{position:absolute;inset:8% 6% 6%;width:88%;height:86%;object-fit:contain;filter:drop-shadow(0 24px 24px rgba(0,0,0,.18))}
+@media(min-width:901px){[data-style="чистый"] .hero{padding-top:112px}[data-style="чистый"] .hero .acts{margin-top:28px}[data-style="чистый"] .hero .trust{margin-top:18px}}
+@media(max-width:900px){[data-style="чистый"] .hero .car,[data-style="чистый"] .hero .car.w,[data-style="чистый"] .hero .car.m,[data-style="чистый"] .hero .car.s{order:0;height:230px;border-radius:24px}[data-style="чистый"] .hero .grid{gap:28px}}
+
+/* ---------- ПЛАКАТ: первый экран целиком в цвете сервиса, крупный шрифт, жирные рамки карточек ---------- */
+[data-style="плакат"]{--f-head:"Russo One",system-ui,sans-serif;--f-body:"Rubik",system-ui,sans-serif;--r:18px;--r-sm:12px}
+[data-style="плакат"] h1,[data-style="плакат"] h2,[data-style="плакат"] h3{font-weight:400;letter-spacing:-.01em}
+[data-style="плакат"] h2{font-size:clamp(30px,4.8vw,62px)}
+[data-style="плакат"] .logo{font-weight:400}
+[data-style="плакат"] .cards>div,[data-style="плакат"] .why>div,[data-style="плакат"] .sv,[data-style="плакат"] .sl,[data-style="плакат"] .pg,[data-style="плакат"] .pcard,[data-style="плакат"] .promo>div,[data-style="плакат"] .q,[data-style="плакат"] .rate,[data-style="плакат"] .info,[data-style="плакат"] .hlc>div,[data-style="плакат"] .nch,[data-style="плакат"] .pnote,[data-style="плакат"] .more,[data-style="плакат"] .bnr,[data-style="плакат"] .map{border:2px solid var(--tx)}
+[data-style="плакат"] .cards .ic,[data-style="плакат"] .why .ic{background:var(--ac);color:var(--on-ac);border-radius:12px}
+[data-style="плакат"] .pg li,[data-style="плакат"] .pg li b{font-weight:500}
+/* первый экран в цвете сервиса: текст и кнопки — цветом надписи на кнопках (onAccent) */
+[data-style="плакат"] .hero{background:var(--ac);color:var(--on-ac);border-radius:0 0 clamp(28px,4vw,48px) clamp(28px,4vw,48px);padding-bottom:clamp(36px,4vw,56px)}
+[data-style="плакат"] .hero::before{content:"";position:absolute;width:min(70vw,860px);aspect-ratio:1;border-radius:50%;right:-12%;top:50%;transform:translateY(-50%);box-shadow:inset 0 0 0 clamp(40px,6vw,90px) color-mix(in srgb,var(--on-ac) 9%,transparent);pointer-events:none}
+[data-style="плакат"] .hero h1{font-size:clamp(36px,4.9vw,72px);line-height:1.02}
+[data-style="плакат"] .hero h1 em{color:inherit;background:var(--on-ac);color:var(--ac);padding:0 .14em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+[data-style="плакат"] .hero h1 mark{background:var(--on-ac);color:var(--ac);padding:0 .14em;border-radius:.12em}
+[data-style="плакат"] .hero .lead,[data-style="плакат"] .hero .now,[data-style="плакат"] .hero .trust span:not(.stars),[data-style="плакат"] .haddr{color:color-mix(in srgb,var(--on-ac) 82%,transparent)}
+[data-style="плакат"] .haddr{display:flex}
+[data-style="плакат"] .haddr .pin{color:currentColor}
+[data-style="плакат"] .hero .trust{border-top-color:color-mix(in srgb,var(--on-ac) 30%,transparent)}
+[data-style="плакат"] .hero .stars{color:var(--on-ac)}
+[data-style="плакат"] .hbadge{background:color-mix(in srgb,var(--on-ac) 14%,transparent);box-shadow:none;color:var(--on-ac)}
+[data-style="плакат"] .hbadge svg{color:currentColor}[data-style="плакат"] .hbadge i{background:var(--on-ac)}
+[data-style="плакат"] .hero .btn-ac{background:var(--on-ac);color:var(--ac);--fill:var(--bg)}
+[data-style="плакат"] .hero .btn-gh{background:transparent;color:var(--on-ac);--bd:color-mix(in srgb,var(--on-ac) 55%,transparent);--fill:var(--on-ac)}
+@media(hover:hover){[data-style="плакат"] .hero .btn-ac:hover{color:var(--tx)}[data-style="плакат"] .hero .btn-gh:hover{color:var(--ac)}}
+[data-style="плакат"] .hero .car::after{display:none}
+[data-style="плакат"] .hero .car img{filter:drop-shadow(0 30px 30px rgba(0,0,0,.35))}
+[data-style="плакат"] .hero .car.circ::before{background:color-mix(in srgb,var(--on-ac) 16%,transparent)}
+/* шапка поверх цветного экрана, пока не прокрутили */
+html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid){color:var(--on-ac)}
+html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .nav a{color:color-mix(in srgb,var(--on-ac) 80%,transparent)}
+html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .hh{color:color-mix(in srgb,var(--on-ac) 75%,transparent)}
+html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .logo b,html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .logo.ac{color:var(--on-ac)}
+html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .logo i{background:var(--on-ac)}
+html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .btn-ac{background:var(--on-ac);color:var(--ac)}
+html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .burger{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--on-ac) 45%,transparent)}
+html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .burger i,html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .burger i::before,html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .burger i::after{background:var(--on-ac)}
+html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .burger i{background:var(--on-ac)}
+@media(min-width:961px){html[data-style="плакат"] .hdr:not(.solid) .nav a:hover{color:var(--on-ac)}}
+[data-style="плакат"] .cta{border:2px solid var(--tx)}
