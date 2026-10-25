@@ -674,3 +674,29 @@ h2 em{font-style:normal;color:inherit}
 [data-style="плакат"] .hero::before{outline:0;box-shadow:none;border-radius:0;transform:none;top:0;bottom:0;right:0;left:auto;width:min(58vw,820px);aspect-ratio:auto;background-image:radial-gradient(color-mix(in srgb,var(--on-ac) 32%,transparent) 2.6px,transparent 2.9px);background-size:34px 34px;-webkit-mask:radial-gradient(ellipse 70% 75% at 70% 45%,#000 20%,transparent 72%);mask:radial-gradient(ellipse 70% 75% at 70% 45%,#000 20%,transparent 72%)}
 [data-style="плакат"] .hero::after{content:"";position:absolute;left:-20px;bottom:-10px;width:min(46vw,520px);height:220px;background-image:radial-gradient(color-mix(in srgb,var(--on-ac) 30%,transparent) 1.6px,transparent 1.8px);background-size:22px 22px;-webkit-mask:radial-gradient(ellipse at 0% 100%,#000 10%,transparent 70%);mask:radial-gradient(ellipse at 0% 100%,#000 10%,transparent 70%);pointer-events:none}
 @media(max-width:900px){[data-style="плакат"] .hero::after{height:160px;width:70vw}}
+
+/* ---------- ТЕЛЕФОН: собраннее (25.10) ---------- */
+/* плакат: точки ровной сеткой на весь первый экран, без обрывов */
+[data-style="плакат"] .hero::before{left:0;right:0;width:auto;-webkit-mask:none;mask:none;background-image:radial-gradient(color-mix(in srgb,var(--on-ac) 18%,transparent) 1.6px,transparent 1.9px);background-size:28px 28px;background-position:center}
+[data-style="плакат"] .hero::after{display:none}
+@media(max-width:900px){
+  .hero{padding-top:76px}
+  .hero .grid{row-gap:0}
+  .car{aspect-ratio:2;margin:0 0 8px;max-height:230px}
+  .hero h1{margin-top:0}
+  .hero .lead{margin-top:14px}
+  .hero .acts{margin-top:24px}
+  .hbadge,.haddr{margin-top:4px}
+}
+/* карточка услуги на телефоне: название, картинка, метки, кнопка — кнопка внизу */
+@media(max-width:560px){
+  .sv,.svc.tiles .sv{display:flex;flex-direction:column;gap:14px}
+  .sv h3{order:0;margin-bottom:0!important}
+  .sv .pic{order:1}
+  .sv .chips{order:2}
+  .sv>.btn{order:3;margin-top:4px;align-self:stretch}
+}
+/* блок «Как записаться» в цвете: на телефоне на всю ширину */
+@media(max-width:960px){.zap{grid-template-columns:1fr}.zap .tools{display:none}}
+@media(max-width:900px){.car.s,.car.m{max-height:none;width:100%;display:flex;justify-content:center}.car.s img,.car.m img{max-height:220px;width:auto;max-width:100%}}
+@media(max-width:900px){.car.circ::before,[data-style="мастерская"] .hero .car.circ::before{width:auto;height:82%;right:calc(50% - 135px);top:46%}}
