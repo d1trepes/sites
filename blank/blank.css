@@ -668,9 +668,9 @@ h2 em{font-style:normal;color:var(--ac-tx)}
 /* ---------- ПЛАКАТ: спокойные карточки, отступ после цветного экрана, акцент — подчёркивание, узор на первом экране ---------- */
 [data-style="плакат"]{--r:14px;--r-sm:10px}
 [data-style="плакат"] .hero{margin-bottom:clamp(40px,6vw,88px)}
-[data-style="плакат"] .hero h1 em,[data-style="плакат"] .hero h1 mark{background:none;color:inherit;padding:0;text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--on-ac) 70%,transparent);text-decoration-thickness:.09em;text-underline-offset:.12em;text-decoration-skip-ink:none}
+[data-style="плакат"] .hero h1 em,[data-style="плакат"] .hero h1 mark{background:var(--on-ac);color:var(--ac);padding:0 .12em;margin:0 -.04em;border-radius:.1em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-decoration:none}
 [data-style="плакат"] .cards .ic,[data-style="плакат"] .why .ic{border-radius:10px}
-/* узор: второе тонкое кольцо вокруг большого и сетка точек в левом нижнем углу */
-[data-style="плакат"] .hero::before{outline:1px solid color-mix(in srgb,var(--on-ac) 22%,transparent);outline-offset:clamp(28px,4vw,56px)}
+/* узор: без колец — сетка крупных точек справа за картинкой и мелких слева внизу */
+[data-style="плакат"] .hero::before{outline:0;box-shadow:none;border-radius:0;transform:none;top:0;bottom:0;right:0;left:auto;width:min(58vw,820px);aspect-ratio:auto;background-image:radial-gradient(color-mix(in srgb,var(--on-ac) 32%,transparent) 2.6px,transparent 2.9px);background-size:34px 34px;-webkit-mask:radial-gradient(ellipse 70% 75% at 70% 45%,#000 20%,transparent 72%);mask:radial-gradient(ellipse 70% 75% at 70% 45%,#000 20%,transparent 72%)}
 [data-style="плакат"] .hero::after{content:"";position:absolute;left:-20px;bottom:-10px;width:min(46vw,520px);height:220px;background-image:radial-gradient(color-mix(in srgb,var(--on-ac) 30%,transparent) 1.6px,transparent 1.8px);background-size:22px 22px;-webkit-mask:radial-gradient(ellipse at 0% 100%,#000 10%,transparent 70%);mask:radial-gradient(ellipse at 0% 100%,#000 10%,transparent 70%);pointer-events:none}
 @media(max-width:900px){[data-style="плакат"] .hero::after{height:160px;width:70vw}}
