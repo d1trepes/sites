@@ -92,11 +92,12 @@ const BLOCKS = {
     const { S, y } = c;
     const tag = b.accentStyle === "mark" ? "mark" : "em";
     const title = b.accent ? esc(b.title).replace(esc(b.accent), `<${tag}>${esc(b.accent)}</${tag}>`) : esc(b.title);
-    return `<section class="hero${b.dots === false ? " nodots" : ""}" id="top">
+    const badgeAddr = b.badge === "address" || b.badge?.t === "address";
+    return `<section class="hero${b.dots === false ? " nodots" : ""}${b.decor ? " deco" : ""}" id="top">
   <div class="wrap grid">
     <div class="htop">
-      ${b.badge ? `<p class="hbadge rv">${b.badge.icon ? icon(b.badge.icon) : "<i></i>"}<span>${esc(b.badge.t || b.badge)}</span></p>` : ""}
-      ${(b.lead || "").includes(c.street.split(",")[0]) ? "" : `<p class="haddr rv">${PIN}${esc(S.address)}</p>`}
+      ${badgeAddr ? `<p class="hbadge haddr-b rv">${PIN}<span>${esc(S.address)}</span></p>` : b.badge ? `<p class="hbadge rv">${b.badge.icon ? icon(b.badge.icon) : "<i></i>"}<span>${esc(b.badge.t || b.badge)}</span></p>` : ""}
+      ${badgeAddr || (b.lead || "").includes(c.street.split(",")[0]) ? "" : `<p class="haddr rv">${PIN}${esc(S.address)}</p>`}
       <h1 class="rv">${title}</h1>
     </div>
     <div class="hbody">
@@ -108,7 +109,7 @@ const BLOCKS = {
       ${S.schedule?.length ? `<div class="now rv"${d(.25)} data-schedule='${esc(JSON.stringify(S.schedule))}' hidden><i></i><span></span></div>` : ""}
       ${y.rating ? `<div class="trust rv"${d(.3)}><b>${esc(y.rating)}</b><div>${stars(5)}<span style="display:block;margin-top:4px">${rating(c) ? rating(c) + " на Яндекс Картах" : "на Яндекс Картах"}</span></div></div>` : ""}
     </div>
-    ${b.img ? `<div class="car${b.imgSize ? " " + esc(b.imgSize) : ""}${b.shape === "circle" ? " circ" : ""} rv"${d(.15)}><img src="${esc(b.img)}" alt="${esc(b.imgAlt || S.name)}" fetchpriority="high"></div>` : ""}
+    ${b.img ? `<div class="car${b.imgSize ? " " + esc(b.imgSize) : ""}${b.shape === "circle" ? " circ" : ""}${b.decor ? " ring" : ""} rv"${d(.15)}><img src="${esc(b.img)}" alt="${esc(b.imgAlt || S.name)}" fetchpriority="high"></div>` : ""}
   </div>
 </section>`;
   },

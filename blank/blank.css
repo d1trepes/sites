@@ -706,3 +706,19 @@ h2 em{font-style:normal;color:inherit}
 [data-style="плакат"] .hero::after{bottom:0;left:0;top:auto;right:auto;-webkit-mask:radial-gradient(circle at 0 100%,#000 0,#000 25%,transparent 70%);mask:radial-gradient(circle at 0 100%,#000 0,#000 25%,transparent 70%)}
 @media(max-width:900px){[data-style="плакат"] .hero::before,[data-style="плакат"] .hero::after{width:170px;height:170px}}
 .hero.nodots::before,.hero.nodots::after{display:none!important}
+
+/* Плакат: decor — сетка на фоне первого экрана и круги за картинкой (anketa: hero.decor: true) */
+[data-style="плакат"] .hero.deco::before{top:0;right:0;bottom:0;left:0;width:auto;height:auto;background-image:linear-gradient(color-mix(in srgb,var(--on-ac) 14%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--on-ac) 14%,transparent) 1px,transparent 1px);background-size:56px 56px;background-position:center;-webkit-mask:radial-gradient(ellipse 60% 80% at 78% 50%,#000 15%,transparent 75%);mask:radial-gradient(ellipse 60% 80% at 78% 50%,#000 15%,transparent 75%)}
+[data-style="плакат"] .hero .car.ring{isolation:isolate}
+[data-style="плакат"] .hero .car.ring::before,[data-style="плакат"] .hero .car.ring::after{content:"";display:block;position:absolute;z-index:0;left:50%;top:50%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
+[data-style="плакат"] .hero .car.ring::before{width:86%;height:auto;bottom:auto;right:auto;background:radial-gradient(circle,color-mix(in srgb,var(--on-ac) 20%,transparent),color-mix(in srgb,var(--on-ac) 8%,transparent) 70%);box-shadow:0 0 0 1px color-mix(in srgb,var(--on-ac) 25%,transparent)}
+[data-style="плакат"] .hero .car.ring::after{width:118%;height:auto;bottom:auto;right:auto;background:none;filter:none;border:1.5px dashed color-mix(in srgb,var(--on-ac) 28%,transparent)}
+.hbadge.haddr-b .pin{width:18px;height:18px;color:var(--ac-tx);flex:none}
+[data-style="плакат"] .hbadge.haddr-b{background:color-mix(in srgb,var(--on-ac) 14%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--on-ac) 22%,transparent);color:var(--on-ac)}
+[data-style="плакат"] .hbadge.haddr-b .pin{color:var(--on-ac)}
+@media(max-width:900px){
+  [data-style="плакат"] .hero.deco::before{-webkit-mask:linear-gradient(#000,transparent 55%);mask:linear-gradient(#000,transparent 55%);background-size:40px 40px}
+  [data-style="плакат"] .hero .car.ring{padding:18px 0;overflow:visible}
+  [data-style="плакат"] .hero .car.ring::before{width:auto;height:92%}
+  [data-style="плакат"] .hero .car.ring::after{width:auto;height:118%}
+}
