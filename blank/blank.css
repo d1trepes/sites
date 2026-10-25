@@ -621,7 +621,7 @@ html[data-style="плакат"]:not(.menu-open) .hdr:not(.solid) .burger i{backg
 /* шапка: часы не вплотную к кнопке */
 .hh{margin:0 14px 0 6px}
 /* акцент в заголовке блока: *слово* в анкете — цветом */
-h2 em{font-style:normal;color:var(--ac-tx)}
+h2 em{font-style:normal;color:inherit}
 .cta h2 em,.zap h2 em{color:inherit;text-decoration:none}
 /* контакты без часов: данные строкой сверху, карта на всю ширину — без пустоты под кнопками */
 @media(min-width:861px){
@@ -631,16 +631,16 @@ h2 em{font-style:normal;color:var(--ac-tx)}
   .cnt:not(:has(.hrs)) .map{min-height:380px}
 }
 /* ---------- МАСТЕРСКАЯ: компактнее заголовок и первый экран, акцент — подчёркивание ---------- */
-[data-style="мастерская"] .hero h1{font-size:clamp(36px,4.2vw,62px);line-height:1}
+[data-style="мастерская"] .hero h1{font-size:clamp(36px,4.2vw,62px);line-height:1.1}
 [data-style="мастерская"] h2{font-size:clamp(30px,4vw,52px)}
-[data-style="мастерская"] h2 em,[data-style="мастерская"] .hero h1 em{color:var(--ac-tx);text-decoration:none}
+[data-style="мастерская"] .hero h1 em{color:var(--ac-tx);text-decoration:none}
 @media(min-width:901px){
   [data-style="мастерская"] .hero .grid{column-gap:32px}
   [data-style="мастерская"] .hero .htop{margin-bottom:0}
   [data-style="мастерская"] .hero .hbody{align-self:start}
   [data-style="мастерская"] .hero .lead{margin-top:20px}
   [data-style="мастерская"] .hero .acts{margin-top:26px}
-  [data-style="мастерская"] .hero .car:not(.w){height:min(40vh,360px)}
+  [data-style="мастерская"] .hero .car:not(.w){height:min(54vh,480px)}
 }
 [data-style="мастерская"] .rate .btn{height:52px;padding:0 24px;text-transform:none;letter-spacing:0;font-size:15px}
 
